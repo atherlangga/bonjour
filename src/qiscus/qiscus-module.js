@@ -17,4 +17,13 @@ angular.module('qiscusModule')
 	function(apiClient) {
 		return new qiscus.User(apiClient);
 	}]
-);
+)
+.factory('listener', ['user',
+	function(user) {
+		var pusher = new Pusher('896d049b53f1659213a2');
+		return new qiscusListener.pusher.QiscusPusherListener(
+			pusher,
+			user);
+	}]
+)
+;
