@@ -8,13 +8,14 @@ angular.module('bonjour', [
 	'roomModule'
 ]);
 
-// Define the routing.
+// Configure the application.
 angular.module('bonjour')
-.config(
-	['$routeProvider', function($routeProvider) {
-		$routeProvider
-			.when('/', {
-				templateUrl: 'src/room/room-index.html',
-				action: 'roomModule.RoomController'
-			})
-	}]);
+.config(['$routeProvider',
+	function($routeProvider) {
+		// Define the routing.
+		$routeProvider.when('/', {
+			templateUrl: 'src/room/room-index.html',
+			action: 'roomModule.RoomController'
+		});
+	}
+]);
