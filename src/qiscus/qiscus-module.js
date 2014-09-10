@@ -7,7 +7,7 @@
 angular.module('qiscusModule')
 .factory('apiClient', ['$http',
 	function($http) {
-		return new qiscusApiClient.QiscusApiClient(
+		return new qiscusApiClient.QiscusApiClientAngular(
 			$http,
 			"https://www.qisc.us",
 			"9anyxaB_X2Uaq4insW4y");
