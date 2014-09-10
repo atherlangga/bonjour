@@ -7,10 +7,10 @@
 angular.module('qiscusModule')
 .factory('apiClient', ['$http',
 	function($http) {
-		return new qiscusApiClient.QiscusApiClientAngular(
+		return new qiscusApiClient.angular.QiscusApiClientAngular(
 			$http,
-			"https://www.qisc.us",
-			"9anyxaB_X2Uaq4insW4y");
+			"http://staging.qisc.us",
+			"PP5H4HUz7UaiTBfyobzW");
 	}]
 )
 .factory('user', ['apiClient',
