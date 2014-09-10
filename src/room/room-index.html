@@ -1,0 +1,13 @@
+<div ng-controller="RoomController">
+	{{ test }}
+	<ul>
+		<li ng-repeat="room in rooms">
+			{{ room.name }}
+			<ul>
+				<li ng-repeat="topic in room.topics">
+					{{ topic.title }}
+				</li>
+			</ul>
+		</li>
+	</ul>
+</div>

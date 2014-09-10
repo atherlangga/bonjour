@@ -1,0 +1,30 @@
+<html ng-app="bonjour">
+	<head>
+	</head>
+
+	<body>
+		<div ng-view></div>
+
+
+		<!-- 
+		     Define the Javascript loading below.
+		     Note that order matters!
+		-->
+
+		<!-- First, we load all the required library/module -->
+		<script type="text/javascript" src="lib/lodash/lodash.js"></script>
+		<script type="text/javascript" src="lib/angular/angular.js"></script>
+		<script type="text/javascript" src="lib/angular/angular-route.js"></script>
+		<script type="text/javascript" src="lib/qiscus/qiscus.js"></script>
+		<script type="text/javascript" src="lib/qiscus/qiscus-api-client.js"></script>
+
+		<!-- Next, we load the application configuration -->
+		<script type="text/javascript" src="src/app.js"></script>
+
+		<!-- Then, load the essential module -->
+		<script type="text/javascript" src="src/qiscus/qiscus-module.js"></script>
+		
+		<!-- Last, we load all the controllers -->
+		<script type="text/javascript" src="src/room/room-controller.js"></script>
+	</body>
+</html>
