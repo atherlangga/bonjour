@@ -7,7 +7,7 @@
 angular.module('qiscusModule')
 .factory('apiClient', ['$http',
 	function($http) {
-		return new qiscusApiClient.angular.QiscusApiClientAngular(
+		return new qiscusApiClient.Angular(
 			$http,
 			"http://staging.qisc.us",
 			"PP5H4HUz7UaiTBfyobzW");
@@ -21,7 +21,7 @@ angular.module('qiscusModule')
 .factory('listener', ['user',
 	function(user) {
 		var pusher = new Pusher('896d049b53f1659213a2');
-		return new qiscusListener.pusher.QiscusPusherListener(
+		return new qiscusListener.Pusher(
 			pusher,
 			user);
 	}]
