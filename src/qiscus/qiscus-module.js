@@ -7,14 +7,23 @@
 angular.module('qiscusModule')
 .factory('apiClient', ['$http',
 	function($http) {
-		return new qiscusApiClient.QiscusApiClient(
+		return new qiscusApiClient.Angular(
 			$http,
-			"https://www.qisc.us",
-			"9anyxaB_X2Uaq4insW4y");
+			"http://staging.qisc.us",
+			"PP5H4HUz7UaiTBfyobzW");
 	}]
 )
 .factory('user', ['apiClient',
 	function(apiClient) {
 		return new qiscus.User(apiClient);
 	}]
-);
+)
+.factory('listener', ['user',
+	function(user) {
+		var pusher = new Pusher('896d049b53f1659213a2');
+		return new qiscusListener.Pusher(
+			pusher,
+			user);
+	}]
+)
+;
