@@ -1,10 +1,12 @@
 // Declare all the available modules.
+angular.module('connectivityModule', []);
 angular.module('qiscusModule', []);
 angular.module('roomModule', ['qiscusModule']);
 
 // Declare this application main module.
 angular.module('bonjour', [
 	'ngRoute',
+	'connectivityModule',
 	'roomModule'
 ]);
 
