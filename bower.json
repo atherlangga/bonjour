@@ -1,0 +1,30 @@
+{
+  "name": "bonjour",
+  "version": "0.0.1",
+  "homepage": "https://github.com/waskito/bonjour",
+  "authors": [
+    "waskito <yg.waskito@gmail.com>"
+  ],
+  "description": "qiscus chrome app",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "angular",
+    "qiscus",
+    "pusher",
+    "chat",
+    "discussion"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "assets/components",
+    "test",
+    "tests"
+  ]
+}
