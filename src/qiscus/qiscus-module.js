@@ -28,7 +28,7 @@ angular.module('qiscusModule')
 			// Everytime Pusher done processing event, we'll
 			// ask Angular to start the digest cycle.
 			$rootScope.$digest();
-		}
+		};
 
 		var listener = new qiscusListener.Pusher(
 			pusher, user, onAfterEvent);
