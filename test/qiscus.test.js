@@ -28,6 +28,22 @@ describe("User", function() {
 		assert.equal(0, user.rooms.length);
 	});
 
+	it ("is able to find room which a certain topic Id is contained", function() {
+		var someRoom = new qiscus.Room(1, "One");
+		var someTopic = new qiscus.Topic(10, "OneTen");
+		var user = new qiscus.User();
+
+		someRoom.addTopic(someTopic);
+		user.addRoom(someRoom);
+
+		// Make sure that the Room's topics count is 1
+		assert.equal(1, someRoom.topics.length);
+
+		var roomOne = user.findRoomOfTopic(10);
+
+		assert.equal(roomOne, someRoom);
+	});
+
 	it ("won't receive new Room with the same existing ID", function() {
 		var user = new qiscus.User();
 		var oldRoom = new qiscus.Room(1, "One");
@@ -53,12 +69,34 @@ describe("User", function() {
 		};
 
 		var r = new RoomLoader();
-		var user = new qiscus.User(new RoomLoader());
+		var user = new qiscus.User("a@a.com", new RoomLoader());
 
 		user.loadRooms();
 
 		assert.equal(2, user.rooms.length);
 		assert.equal(roomOne, user.rooms[0]);
 		assert.equal(roomTwo, user.rooms[1]);
+	});
+});
+
+describe("Room", function() {
+	it("should be able to contain a new topic", function() {
+		var room = new qiscus.Room(1, "One");
+		assert.equal(0, room.topics.length);
+
+		var topic = new qiscus.Topic(10, "OneTen");
+		room.addTopic(topic);
+		assert.equal(1, room.topics.length);
+	});
+
+	it("should be able to delete topic based on its ID", function() {
+		var room = new qiscus.Room(1, "One");
+		var topic = new qiscus.Topic(10, "OneTen");
+
+		room.addTopic(topic);
+		assert.equal(1, room.topics.length);
+
+		room.deleteTopic(topic.id);
+		assert.equal(0, room.topics.length);
 	});
 });
