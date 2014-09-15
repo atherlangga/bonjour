@@ -1,8 +1,30 @@
 <html ng-app="bonjour">
 	<head>
+		<title>Qiscus | Messaging For Getting Work Done</title>
+		<!-- Sets initial viewport load and disables zooming  -->
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="assets/components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/components/Bootflat/bootflat/css/bootflat.min.css">
+		<link rel="stylesheet" href="">
 	</head>
 
 	<body>
+		<nav class="navbar navbar-default bonjour-navbar" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><img src="bonjour-128.png" alt="Bonjour" height="40px"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+              <p class="navbar-text">Signed in as Mark Otto</p>
+            </div>
+          </div>
+        </nav>
 		<div ng-view></div>
 
 
@@ -12,15 +34,19 @@
 		-->
 
 		<!-- First, we load all the required library/module -->
-		<script type="text/javascript" src="lib/lodash/lodash.js"></script>
-		<script type="text/javascript" src="lib/pusher/pusher.js"></script>
-		<script type="text/javascript" src="lib/angular/angular.js"></script>
+		<script type="text/javascript" src="assets/components/lodash/dist/lodash.min.js"></script>
+		<script type="text/javascript" src="assets/components/pusher/dist/pusher.min.js"></script>
+		<script type="text/javascript" src="assets/components/angular/angular.min.js"></script>
 		<script type="text/javascript" src="lib/angular/angular-route.js"></script>
 		<script type="text/javascript" src="lib/qiscus/qiscus.js"></script>
 		<script type="text/javascript" src="lib/qiscus/qiscus-api-client-base.js"></script>
 		<script type="text/javascript" src="lib/qiscus/qiscus-api-client-angular.js"></script>
 		<script type="text/javascript" src="lib/qiscus/qiscus-listener-base.js"></script>
 		<script type="text/javascript" src="lib/qiscus/qiscus-listener-pusher.js"></script>
+
+		<!-- Library for UI -->
+		<script type="text/javascript" src="assets/components/angular-strap/dist/angular-strap.min.js"></script>
+		<script type="text/javascript" src="assets/components/angular-strap/dist/angular-strap.tpl.min.js"></script>
 
 		<!-- Next, we load the application configuration -->
 		<script type="text/javascript" src="src/app.js"></script>

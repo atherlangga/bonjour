@@ -5,7 +5,8 @@ angular.module('roomModule', ['qiscusModule']);
 // Declare this application main module.
 angular.module('bonjour', [
 	'ngRoute',
-	'roomModule'
+	'roomModule',
+	'mgcrea.ngStrap'
 ]);
 
 // Configure the application.

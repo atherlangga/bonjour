@@ -1,7 +1,7 @@
 {
-	"name": "Qiscus",
+	"name": "Bonjour Qiscus",
 	"description": "Qiscus - An awesome group-based working collaboration platform",
-	"version": "0.1",
+	"version": "0.0.1",
 	"manifest_version": 2,
 	"app": {
 		"background": {
@@ -9,7 +9,7 @@
 		}
 	},
 	"icons": {
-		"16": "calculator-16.png",
-		"128": "calculator-128.png"
+		"16": "bonjour-16.png",
+		"128": "bonjour-128.png"
 	}
 }
