@@ -1,0 +1,38 @@
+{
+  "name": "bonjour",
+  "version": "0.0.1",
+  "homepage": "https://github.com/waskito/bonjour",
+  "authors": [
+    "waskito <yg.waskito@gmail.com>"
+  ],
+  "description": "qiscus chrome app",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "angular",
+    "qiscus",
+    "pusher",
+    "chat",
+    "discussion"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "assets/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "angular": "~1.2.24",
+    "Bootflat": "~2.0.4",
+    "angular-strap": "~2.1.0",
+    "sinonjs": "~1.10.2",
+    "pusher": "~2.2.3"
+  }
+}
