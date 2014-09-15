@@ -29,6 +29,7 @@
   ],
   "dependencies": {
     "lodash": "~2.4.1",
+    "q": "~1.0.1",
     "angular": "~1.2.24",
     "angular-route": "~1.2.24",
     "Bootflat": "~2.0.4",
