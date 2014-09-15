@@ -75,7 +75,7 @@ describe("User", function() {
 			var deferred = Q.defer();
 			return {
 				promise: deferred.promise,
-				fulfill: deferred.resolve,
+				resolve: deferred.resolve,
 				reject : deferred.reject
 			};
 		}
