@@ -1,9 +1,8 @@
-
 	<div class="row bonjour-home-container">
 		<div class="col-md-3">
             <div class="list-group">
               <!-- <span class="badge badge-primary">38</span> -->
-              <a href="#" class="list-group-item" ng-repeat="room in rooms" ng-cloak>
+              <a class="list-group-item" ng-repeat="room in rooms" ng-cloak ng-click="selectRoom($index)">
               	<div class="pull-left">
               		<img class="events-object img-rounded" src="bonjour-128.png" height="40px">
               	</div>
@@ -13,29 +12,33 @@
               	</div>
               </a>
             </div>
-          </div>
+        </div>
+        <div class="col-md-6">
+        	
+        </div>
+        <div class="col-md-3">
+        	<div class="list-group">
+              <!-- <span class="badge badge-primary">38</span> -->
+              <a class="list-group-item" ng-repeat="topic in rooms[selectedRoom].topics" ng-cloak>
+              	<div class="pull-left">
+              		<img class="events-object img-rounded" src="bonjour-128.png" height="40px">
+              	</div>
+              	<div class="bonjour-room-body">
+              		<h4 class="events-heading bonjour-room-heading">{{ topic.title }}</h4>
+              		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.</p>
+              	</div>
+              </a>
+            </div>
+        </div>
 	</div>
+<script>
+	document.addEventListener('DOMContentLoaded',function(e){
+		var homeContainer = document.querySelector(".bonjour-home-container");
+		homeContainer.style.height = document.body.clientHeight - 70;
+	})
 
-<!-- <div class="room-controller" >
-	{{ test }}
-	<ul>
-		<li ng-repeat="room in rooms">
-			{{ room.name || "Loading..."}}
-			<ul>
-				<li ng-repeat="topic in room.topics">
-					{{ topic.title }}
-				</li>
-			</ul>
-		</li>
-	</ul>
-</div> -->
-
-<div class="well">
-							  <div class="pull-left">
-								  
-							  </div>
-							  <div class="events-body">
-								  <h4 class="events-heading">Bootflat</h4>
-								  <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
-							  </div>
-						  </div>
+	window.onresize = function(){
+		var homeContainer = document.querySelector(".bonjour-home-container");
+		homeContainer.style.height = document.body.clientHeight - 70;
+	}
+</script>

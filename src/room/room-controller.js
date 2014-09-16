@@ -6,5 +6,12 @@ angular.module('roomModule')
 		$scope.test = "Room List :D";
 		$scope.rooms = user.rooms;
 
-		user.loadRooms();	}
+		user.loadRooms();
+
+		$scope.selectRoom = function($index){
+			$scope.selectedRoom = $index;
+		}
+
+		$scope.selectRoom(0);
+	}
 ]);
