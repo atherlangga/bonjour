@@ -2,12 +2,13 @@
 		<div class="col-md-3">
             <div class="list-group">
               <!-- <span class="badge badge-primary">38</span> -->
-              <a class="list-group-item" ng-repeat="room in rooms" ng-cloak ng-click="selectRoom($index)">
+              {{ loading }}
+              <a class="list-group-item" ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id)">
               	<div class="pull-left">
               		<img class="events-object img-rounded" src="bonjour-128.png" height="40px">
               	</div>
               	<div class="bonjour-room-body">
-              		<h4 class="events-heading bonjour-room-heading">{{ room.name }}</h4>
+              		<h4 class="events-heading bonjour-room-heading">{{ room.name}}</h4>
               		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.</p>
               	</div>
               </a>
@@ -20,12 +21,8 @@
         	<div class="list-group">
               <!-- <span class="badge badge-primary">38</span> -->
               <a class="list-group-item" ng-repeat="topic in rooms[selectedRoom].topics" ng-cloak>
-              	<div class="pull-left">
-              		<img class="events-object img-rounded" src="bonjour-128.png" height="40px">
-              	</div>
-              	<div class="bonjour-room-body">
-              		<h4 class="events-heading bonjour-room-heading">{{ topic.title }}</h4>
-              		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.</p>
+              	<div class="bonjour-topic-body">
+              		<h5 class="bonjour-topic-heading"><i class="fa fa-comment"></i> {{ topic.title }}</h5>
               	</div>
               </a>
             </div>

@@ -3,15 +3,17 @@ angular.module('roomModule')
 	'$scope',
 	'user',
 	function($scope, user) {
-		$scope.test = "Room List :D";
 		$scope.rooms = user.rooms;
 
-		user.loadRooms();
+		var loading = user.loadRooms();
+		$scope.loading = "Loading";
+		loading.then(function(){
+			$scope.loading= "";
+			$scope.selectRoom(user.rooms[0].id);
+		})
 
-		$scope.selectRoom = function($index){
-			$scope.selectedRoom = $index;
+		$scope.selectRoom = function(id){
+			user.loadRooms(id);
 		}
-
-		$scope.selectRoom(0);
 	}
 ]);
