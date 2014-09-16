@@ -1,5 +1,5 @@
-	<div class="row bonjour-home-container">
-		<div class="col-md-3">
+	<div class="row bonjour-home-container" bonjour-container>
+		<div class="col-xs-3">
             <div class="list-group">
               <!-- <span class="badge badge-primary">38</span> -->
               {{ loading }}
@@ -9,15 +9,15 @@
               	</div>
               	<div class="bonjour-room-body">
               		<h4 class="events-heading bonjour-room-heading">{{ room.name}}</h4>
-              		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.</p>
+              		<p>Raw denim you probably haven't heard of them jean shorts Austin..</p>
               	</div>
               </a>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-xs-6">
         	
         </div>
-        <div class="col-md-3">
+        <div class="col-xs-3">
         	<div class="list-group">
               <!-- <span class="badge badge-primary">38</span> -->
               <a class="list-group-item" ng-repeat="topic in rooms[selectedRoom].topics" ng-cloak>
@@ -28,14 +28,3 @@
             </div>
         </div>
 	</div>
-<script>
-	document.addEventListener('DOMContentLoaded',function(e){
-		var homeContainer = document.querySelector(".bonjour-home-container");
-		homeContainer.style.height = document.body.clientHeight - 70;
-	})
-
-	window.onresize = function(){
-		var homeContainer = document.querySelector(".bonjour-home-container");
-		homeContainer.style.height = document.body.clientHeight - 70;
-	}
-</script>

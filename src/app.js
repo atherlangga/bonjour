@@ -23,14 +23,22 @@ angular.module('bonjour')
 	}
 ]);
 
-
-// Init setup and attach event listeners.
-/*document.addEventListener('DOMContentLoaded', function(e) {
-  var closeButton = document.querySelector('#close');
-  closeButton.addEventListener('click', function(e) {
-    chrome.app.window.current().close();
-  });
-});*/
+angular.module('roomModule')
+.directive('bonjourContainer',function($timeout){
+  return{
+    restrict:'A',
+    link:function(scope,elem,attrs){
+       $timeout(function(){
+         elem[0].style.height = window.innerHeight-70;
+         //console.log(elem.clientHeight);
+         //console.log(elem[0].style.height);
+       },0);
+       window.onresize = function(){
+       	 elem[0].style.height = window.innerHeight-70;
+       }
+  	}
+  } 
+});
 
 
 
