@@ -35,6 +35,7 @@
     "Bootflat": "~2.0.4",
     "angular-strap": "~2.1.0",
     "sinonjs": "~1.10.2",
-    "pusher": "~2.2.3"
+    "pusher": "~2.2.3",
+    "fontawesome": "~4.2.0"
   }
 }
