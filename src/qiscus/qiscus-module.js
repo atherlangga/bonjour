@@ -17,6 +17,7 @@ angular.module('qiscusModule')
 	// Create Promises/A+ adapter for Angular's $q.
 	function($q) {
 		return {
+			all     : $q.all,
 			resolved: $q.resolve,
 			rejected: $q.reject,
 			deferred: function() {
@@ -65,9 +66,7 @@ angular.module('qiscusModule')
 	//    attach our listeners' event handler to it.
 	user.addOnRoomLoadedListener(function (rooms) {
 		_.each(rooms, function(room) {
-			if (typeof room.channelCode !== 'undefined') {
-				listener.listenRoomEvent(room.channelCode);
-			}
+			listener.listenRoomEvent(room.channelCode);
 		});
 	});
 }])
