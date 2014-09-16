@@ -1,15 +1,27 @@
 {
-	"name": "Bonjour Qiscus",
-	"description": "Qiscus - An awesome group-based working collaboration platform",
-	"version": "0.0.1",
-	"manifest_version": 2,
+	// Required
 	"app": {
 		"background": {
 			"scripts": ["main.js"]
 		}
 	},
+	"manifest_version": 2,
+	"name": "Bonjour Qiscus",
+	"description": "Qiscus - An awesome group-based working collaboration platform",
+	"version": "0.0.1",
+
+	// Recommended
 	"icons": {
 		"16": "bonjour-16.png",
 		"128": "bonjour-128.png"
-	}
+	},
+
+	// Optional
+	"permissions":[
+		"http://staging.qisc.us/",
+		"http://stats.pusher.com/",
+		"experimental",
+		"notifications",
+		"storage"
+	]
 }

@@ -1,4 +1,22 @@
-<div ng-controller="RoomController">
+
+	<div class="row bonjour-home-container">
+		<div class="col-md-3">
+            <div class="list-group">
+              <!-- <span class="badge badge-primary">38</span> -->
+              <a href="#" class="list-group-item" ng-repeat="room in rooms" ng-cloak>
+              	<div class="pull-left">
+              		<img class="events-object img-rounded" src="bonjour-128.png" height="40px">
+              	</div>
+              	<div class="bonjour-room-body">
+              		<h4 class="events-heading bonjour-room-heading">{{ room.name }}</h4>
+              		<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse.</p>
+              	</div>
+              </a>
+            </div>
+          </div>
+	</div>
+
+<!-- <div class="room-controller" >
 	{{ test }}
 	<ul>
 		<li ng-repeat="room in rooms">
@@ -10,4 +28,14 @@
 			</ul>
 		</li>
 	</ul>
-</div>
+</div> -->
+
+<div class="well">
+							  <div class="pull-left">
+								  
+							  </div>
+							  <div class="events-body">
+								  <h4 class="events-heading">Bootflat</h4>
+								  <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+							  </div>
+						  </div>

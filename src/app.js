@@ -18,7 +18,18 @@ angular.module('bonjour')
 		// Define the routing.
 		$routeProvider.when('/', {
 			templateUrl: 'src/room/room-index.html',
-			action: 'roomModule.RoomController'
+			controller: 'RoomController'
 		});
 	}
 ]);
+
+
+// Init setup and attach event listeners.
+/*document.addEventListener('DOMContentLoaded', function(e) {
+  var closeButton = document.querySelector('#close');
+  closeButton.addEventListener('click', function(e) {
+    chrome.app.window.current().close();
+  });
+});*/
+
+

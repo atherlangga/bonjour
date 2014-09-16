@@ -1,31 +1,56 @@
-<html ng-app="bonjour">
+<html ng-app="bonjour" ng-csp>
 	<head>
 		<title>Qiscus | Messaging For Getting Work Done</title>
 		<!-- Sets initial viewport load and disables zooming  -->
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link rel="stylesheet" href="assets/components/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="assets/components/Bootflat/bootflat/css/bootflat.min.css">
-		<link rel="stylesheet" href="">
+		<link rel="stylesheet" href="assets/components/fontawesome/css/font-awesome.css">
+		<link rel="stylesheet" href="assets/css/app.css">
 	</head>
 
 	<body>
+		<div class="toolbar">
+			<div class="bonjour-draggable">
+				Bonjour Qiscus
+			</div>
+			<div class="bonjour-controls" ng-controller="NavController">
+				<a class="bonjour-window-control bonjour-control-minimize" ng-click="minimize()"><i class="fa fa-minus"></i></a>
+            	<a class="bonjour-window-control bonjour-control-maximize" ng-click="maximize()"><i class="fa fa-expand"></i></a>
+      			<a class="bonjour-window-control bonjour-control-close" ng-click="close()"><i class="fa fa-times"></i></a>
+			</div>	
+		</div>
+		<div class="bonjour-company-logo">
+			<img src="bonjour-128.png" alt="Bonjour">
+		</div>
 		<nav class="navbar navbar-default bonjour-navbar" role="navigation">
           <div class="container-fluid">
-            <div class="navbar-header">
+            <!-- <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#"><img src="bonjour-128.png" alt="Bonjour" height="40px"></a>
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-              <p class="navbar-text">Signed in as Mark Otto</p>
+              <a class="navbar-brand col-xs-5" href="#"><img src="bonjour-128.png" alt="Bonjour" height="40px"></a>
+              
+            </div> -->
+            <!-- <div class="collapse navbar-collapse">
+              
+              <ul class="nav navbar-nav navbar-right">
+              	              <li><a class="nav-link bonjour-current-user" href="#"><img src="public/img/avatar/avatar.jpg" alt="yanu" height="40px"></a></li>
+              	          </ul>
+            </div> -->
+            <div class="row">
+            	<div class="col-xs-2">
+            		
+            	</div>
             </div>
           </div>
         </nav>
-		<div ng-view></div>
+		<div ng-view>
+			
+		</div>
 
 
 		<!-- 
@@ -37,8 +62,8 @@
 
 		<script type="text/javascript" src="assets/components/lodash/dist/lodash.min.js"></script>
 		<script type="text/javascript" src="assets/components/pusher/dist/pusher.min.js"></script>
-		<script type="text/javascript" src="assets/components/angular/angular.min.js"></script>
-		<script type="text/javascript" src="assets/components/onlinejs/dist/onlinejs.min.js"></script>
+		<script type="text/javascript" src="assets/components/angular/angular.js"></script>
+		<script type="text/javascript" src="assets/components/onlinejs/src/online.js"></script>
 		<script type="text/javascript" src="lib/angular/angular-route.js"></script>
 
 		<script type="text/javascript" src="lib/qiscus/qiscus.js"></script>
@@ -59,6 +84,7 @@
 		<script type="text/javascript" src="src/qiscus/qiscus-module.js"></script>
 		
 		<!-- Last, we load all the controllers -->
+		<script type="text/javascript" src="src/nav-controller.js"></script>
 		<script type="text/javascript" src="src/room/room-controller.js"></script>
 	</body>
 </html>
