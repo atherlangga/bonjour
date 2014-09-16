@@ -4,16 +4,22 @@ angular.module('roomModule')
 	'user',
 	function($scope, user) {
 		$scope.rooms = user.rooms;
+		$scope.currentRoom = null;
 
-		var loading = user.loadRooms();
+		var roomsPromise = user.loadRooms();
 		$scope.loading = "Loading";
-		loading.then(function(){
+		roomsPromise.then(function(){
 			$scope.loading= "";
 			$scope.selectRoom(user.rooms[0].id);
 		})
 
 		$scope.selectRoom = function(id){
-			user.loadRooms(id);
+			var roomPromise = user.loadRoom(id);
+			$scope.loadingTopic = "Loading";
+			roomPromise.then(function(){
+				$scope.loadingTopic = "";
+				$scope.currentRoom = user.getRoom(id);
+			})
 		}
 	}
 ]);
