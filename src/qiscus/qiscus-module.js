@@ -13,9 +13,27 @@ angular.module('qiscusModule')
 			"PP5H4HUz7UaiTBfyobzW");
 	}]
 )
-.factory('user', ['apiClient',
-	function(apiClient) {
-		return new qiscus.User("qiscustest01@dispostable.com", apiClient);
+.factory('promises', ['$q',
+	// Create Promises/A+ adapter for Angular's $q.
+	function($q) {
+		return {
+			resolved: $q.resolve,
+			rejected: $q.reject,
+			deferred: function() {
+				var deferred = $q.defer();
+
+				return {
+					promise: deferred.promise,
+					resolve: deferred.resolve,
+					reject: deferred.reject
+				};
+			}
+		}
+	}]
+)
+.factory('user', ['apiClient', 'promises',
+	function(apiClient, promises) {
+		return new qiscus.User("qiscustest01@dispostable.com", apiClient, promises);
 	}]
 )
 .factory('listener', ['$rootScope', 'user',

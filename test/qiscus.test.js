@@ -1,5 +1,6 @@
 var assert = require("assert");
 var qiscus = require("../lib/qiscus/qiscus");
+var Q      = require("../assets/components/q/q");
 
 describe("User", function() {
 	it ("won't have Room when first instantiated", function() {
@@ -68,8 +69,19 @@ describe("User", function() {
 			onSuccess([roomOne, roomTwo]);
 		};
 
+		// Create partial Q promises adapter
+		var promisesAdapter = {};
+		promisesAdapter.deferred = function() {
+			var deferred = Q.defer();
+			return {
+				promise: deferred.promise,
+				resolve: deferred.resolve,
+				reject : deferred.reject
+			};
+		}
+
 		var r = new RoomLoader();
-		var user = new qiscus.User("a@a.com", new RoomLoader());
+		var user = new qiscus.User("a@a.com", new RoomLoader(), promisesAdapter);
 
 		user.loadRooms();
 

@@ -1,5 +1,6 @@
 angular.module('connectivityModule')
-.factory('connectivityEvent', function() {
+.factory('connectivityEvent', [function() {
+	
 	var ConnectivityEvent = function() {
 		this.onlineHandlers = [];
 		this.offlineHandlers = [];
@@ -7,20 +8,10 @@ angular.module('connectivityModule')
 
 	ConnectivityEvent.prototype.addOnlineHandler = function(handler) {
 		this.onlineHandlers.push(handler);
-
-		// Give a chance to the handler to execute the first time.
-		if (window.onLine === true) {
-			handler();
-		}
 	};
 
 	ConnectivityEvent.prototype.addOfflineHandler = function(handler) {
 		this.offlineHandlers.push(handler);
-
-		// Give a chance to the handler to execute the first time.
-		if (window.onLine === false) {
-			handler();
-		}
 	};
 
 	var connectivityEvent = new ConnectivityEvent();
@@ -40,9 +31,9 @@ angular.module('connectivityModule')
 		});
 	};
 
-	// ..and we can also define our own check URL here.
+	// .. and perhaps we need to define our own check URL here?
 	//window.onLineURL = "http://staging.qisc.us";
 
 	return connectivityEvent;
-})
+}])
 ;
