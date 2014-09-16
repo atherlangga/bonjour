@@ -19,6 +19,7 @@ angular.module('roomModule')
 			roomPromise.then(function(){
 				$scope.loadingTopic = "";
 				$scope.currentRoom = user.getRoom(id);
+				console.log($scope.currentRoom.lastActiveTopic);
 			})
 		}
 	}
