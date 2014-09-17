@@ -16,10 +16,12 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'assets/components/lodash/dist/lodash.js',
+      'assets/components/pusher/pusher.js',
       'assets/components/angular/angular.js',
       'assets/components/angular-route/angular-route.js',
       'assets/components/angular-strap/dist/angular-strap.js',
       'assets/components/angular-mocks/angular-mocks.js',
+      'lib/**/*.js',
       'src/app.js',
       'src/**/*.js',
       'test/ui/*test.js'
