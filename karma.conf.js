@@ -15,17 +15,17 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'assets/components/lodash/dist/lodash.js',
-      'assets/components/pusher/dist/pusher.js',
-      'assets/components/angular/angular.js',
-      'assets/components/angular-route/angular-route.js',
+      'lib/lodash/lodash.js',
+      'lib/pusher/pusher.js',
+      'lib/angular/angular.js',
+      'lib/qiscus/qiscus.js',
+      'lib/qiscus/qiscus-api-client.js',
+      'lib/qiscus/qiscus-listener.js',
+      'lib/qiscus-adapters/qiscus-api-client-angular.js',
+      'lib/qiscus-adapters/qiscus-listener-pusher.js',
+      'lib/angular-route/angular-route.js',
       'assets/components/angular-strap/dist/angular-strap.js',
       'assets/components/angular-mocks/angular-mocks.js',
-      'lib/qiscus/qiscus.js',
-      'lib/qiscus/qiscus-api-client-base.js',
-      'lib/qiscus/qiscus-api-client-angular.js',
-      'lib/qiscus/qiscus-listener-base.js',
-      'lib/qiscus/qiscus-listener-pusher.js',
       'src/app.js',
       'src/**/*.js',
       'test/ui/*test.js'
