@@ -23,6 +23,7 @@ module.exports = function(config) {
       'lib/qiscus/qiscus-listener.js',
       'lib/qiscus-adapters/qiscus-api-client-angular.js',
       'lib/qiscus-adapters/qiscus-listener-pusher.js',
+      'lib/qiscus-adapters/qiscus-promises-angular.js',
       'lib/angular-route/angular-route.js',
       'assets/components/angular-strap/dist/angular-strap.js',
       'assets/components/angular-mocks/angular-mocks.js',
