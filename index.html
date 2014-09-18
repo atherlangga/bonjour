@@ -43,20 +43,24 @@
 		-->
 
 		<!-- First, we load all the base library/module -->
-		<script type="text/javascript" src="assets/components/lodash/dist/lodash.min.js"></script>
-		<script type="text/javascript" src="assets/components/pusher/dist/pusher.min.js"></script>
-		<script type="text/javascript" src="assets/components/angular/angular.js"></script>
-		<script type="text/javascript" src="assets/components/onlinejs/src/online.js"></script>
-		<script type="text/javascript" src="assets/components/angular-route/angular-route.js"></script>
+		<script type="text/javascript" src="lib/lodash/lodash.js"></script>
+		<script type="text/javascript" src="lib/pusher/pusher.js"></script>
+		<script type="text/javascript" src="lib/angular/angular.js"></script>
 
 		<!-- Next, we load Qiscus-specific library -->
 		<script type="text/javascript" src="lib/qiscus/qiscus.js"></script>
-		<script type="text/javascript" src="lib/qiscus/qiscus-api-client-base.js"></script>
-		<script type="text/javascript" src="lib/qiscus/qiscus-api-client-angular.js"></script>
-		<script type="text/javascript" src="lib/qiscus/qiscus-listener-base.js"></script>
-		<script type="text/javascript" src="lib/qiscus/qiscus-listener-pusher.js"></script>
+		<script type="text/javascript" src="lib/qiscus/qiscus-api-client.js"></script>
+		<script type="text/javascript" src="lib/qiscus/qiscus-listener.js"></script>
 
-		<!-- Library for UI -->
+		<!-- Load the adapters for Qiscus -->
+		<script type="text/javascript" src="lib/qiscus-adapters/qiscus-api-client-angular.js"></script>
+		<script type="text/javascript" src="lib/qiscus-adapters/qiscus-listener-pusher.js"></script>
+		<script type="text/javascript" src="lib/qiscus-adapters/qiscus-promises-angular.js"></script>
+		
+		<!-- Load Angular-based library -->
+		<script type="text/javascript" src="lib/angular-route/angular-route.js"></script>
+
+		<!-- Load library for UI -->
 		<script type="text/javascript" src="assets/components/angular-strap/dist/angular-strap.min.js"></script>
 		<script type="text/javascript" src="assets/components/angular-strap/dist/angular-strap.tpl.min.js"></script>
 

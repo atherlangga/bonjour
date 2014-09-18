@@ -28,14 +28,8 @@
     "tests"
   ],
   "dependencies": {
-    "lodash": "~2.4.1",
-    "q": "~1.0.1",
-    "angular": "~1.2.24",
-    "angular-route": "~1.2.24",
     "Bootflat": "~2.0.4",
     "angular-strap": "~2.1.0",
-    "sinonjs": "~1.10.2",
-    "pusher": "~2.2.3",
     "fontawesome": "~4.2.0"
   },
   "devDependencies": {

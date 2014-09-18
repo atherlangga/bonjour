@@ -14,22 +14,8 @@ angular.module('qiscusModule')
 	}]
 )
 .factory('promises', ['$q',
-	// Create Promises/A+ adapter for Angular's $q.
 	function($q) {
-		return {
-			all     : $q.all,
-			resolved: $q.resolve,
-			rejected: $q.reject,
-			deferred: function() {
-				var deferred = $q.defer();
-
-				return {
-					promise: deferred.promise,
-					resolve: deferred.resolve,
-					reject: deferred.reject
-				};
-			}
-		}
+		return new qiscusPromises.Angular($q);
 	}]
 )
 .factory('user', ['apiClient', 'promises',
