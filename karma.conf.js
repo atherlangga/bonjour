@@ -10,18 +10,22 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
       'assets/components/lodash/dist/lodash.js',
-      'assets/components/pusher/pusher.js',
+      'assets/components/pusher/dist/pusher.js',
       'assets/components/angular/angular.js',
       'assets/components/angular-route/angular-route.js',
       'assets/components/angular-strap/dist/angular-strap.js',
       'assets/components/angular-mocks/angular-mocks.js',
-      'lib/**/*.js',
+      'lib/qiscus/qiscus.js',
+      'lib/qiscus/qiscus-api-client-base.js',
+      'lib/qiscus/qiscus-api-client-angular.js',
+      'lib/qiscus/qiscus-listener-base.js',
+      'lib/qiscus/qiscus-listener-pusher.js',
       'src/app.js',
       'src/**/*.js',
       'test/ui/*test.js'
