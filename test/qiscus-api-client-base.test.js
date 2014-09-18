@@ -1,5 +1,5 @@
 var assert = require("assert");
-var qiscusApiClient = require("../lib/qiscus/qiscus-api-client-base");
+var qiscusApiClient = require("../lib/qiscus/qiscus-api-client");
 
 describe("Qiscus API Client", function() {
 	it ("should be able to generate proper Qiscus' list rooms API", function() {
