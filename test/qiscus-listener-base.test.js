@@ -1,6 +1,6 @@
 var assert = require("assert");
 var qiscus = require("../lib/qiscus/qiscus");
-var qiscusListener = require("../lib/qiscus/qiscus-listener-base");
+var qiscusListener = require("../lib/qiscus/qiscus-listener");
 
 describe("Qiscus Listener", function() {
 	
