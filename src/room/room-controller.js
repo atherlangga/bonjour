@@ -3,6 +3,7 @@ angular.module('roomModule')
 	'$scope',
 	'user',
 	function($scope, user) {
+		//$scope.greeting = "Hello";
 		$scope.rooms = user.rooms;
 		$scope.currentRoom = null;
 

@@ -18,10 +18,6 @@
 
 	// Optional
 	"permissions":[
-		"<all_urls>",
-		"http://staging.qisc.us/",
-		"http://stats.pusher.com/",
-		"http://placekitten.com/",
 		"experimental",
 		"notifications",
 		"storage"
