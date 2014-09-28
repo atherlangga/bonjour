@@ -101,6 +101,16 @@ describe("Room", function() {
 		assert.equal(1, room.topics.length);
 	});
 
+
+	it("should be able to get an existing topic", function() {
+		var room = new qiscus.Room(1, "One");
+		assert.equal(0, room.topics.length);
+
+		var topic = new qiscus.Topic(10, "OneTen");
+		room.addTopic(topic);
+		assert.equal(topic, room.getTopic(topic.id));
+	});
+
 	it("should be able to delete topic based on its ID", function() {
 		var room = new qiscus.Room(1, "One");
 		var topic = new qiscus.Topic(10, "OneTen");
@@ -122,5 +132,17 @@ describe("Room", function() {
 		var topic = new qiscus.Topic(10, "OneTen");
 		room.addTopic(topic);
 		assert.equal(1, room.topics.length);
+	});
+});
+
+describe("Topic", function() {
+	it("should be able to receive Comment", function() {
+		var topic = new qiscus.Topic(10, "TopicNumberTen");
+		var comment = new qiscus.Comment(100, "SomeComment");
+
+		topic.addComment(comment);
+
+		assert.equal(1, topic.comments.length);
+		assert.equal(comment, topic.comments[0]);
 	});
 });
