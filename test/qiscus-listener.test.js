@@ -65,4 +65,26 @@ describe("Qiscus Listener", function() {
 		// Make sure that now, the Room's topics count is 0
 		assert.equal(0, someRoom.topics.length);
 	});
+
+	it ("should be able to handle Comment Posted event", function() {
+		var someRoom = new qiscus.Room(65, "NameDoesntMatter");
+		var someTopic = new qiscus.Topic(75, "TitleDoesntMatter");
+		var user = new qiscus.User();
+
+		someRoom.addTopic(someTopic);
+		user.addRoom(someRoom);
+
+		// Make sure that the Topic's comments contains no comment.
+		assert.equal(0, someTopic.comments.length);
+
+		var eventData = {"comment":"Test","comment_id":1210,"real_comment":"Test","username":"QiscusTest01","username_real":"qiscustest01@dispostable.com","username_avatar":{"avatar":{"url":"https://www.qisc.us/images/default-avatar.png"}},"created_at":"2014-09-25T08:56:01Z","room_id":65,"topic_id":"75","topic_title":"General Discussion","topic_description":"edit your description here","code":"q3e61511f776e297b1f42ea69a9f337aff1qe2","timestamp":1411635362042,"randomme":"","unique_id":"","event":"postcomment"};
+
+		qiscusListener.handleCommentPosted(eventData, user);
+
+		assert.equal(1, someTopic.comments.length);
+		assert.equal(1210, someTopic.comments[0].id);
+		assert.equal("Test", someTopic.comments[0].message);
+		assert.equal("QiscusTest01", someTopic.comments[0].sender);
+		assert.equal("qiscustest01@dispostable.com", someTopic.comments[0].senderEmail);
+	});
 });
