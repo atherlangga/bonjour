@@ -43,4 +43,15 @@ angular.module('roomModule')
 
 
 
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://www.qisc.us/assets/qiscus-062f3f48c42c4d051336c96edf52a4af.png', true);
+xhr.responseType = 'blob';
+xhr.onload = function(e) {
+  var img = document.createElement('img');
+  img.src = window.URL.createObjectURL(this.response);
+  //document.body.appendChild(img);
+  document.querySelector("#logo-qiscus").appendChild(img);
+  console.log('gambare nang %s',img);
+};
 
+xhr.send();

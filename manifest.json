@@ -18,6 +18,7 @@
 
 	// Optional
 	"permissions":[
+		"<all_urls>",
 		"experimental",
 		"notifications",
 		"storage"
