@@ -144,9 +144,19 @@ a.list-group-item.active:hover{
 }
 
 .room-topic-list-toolbar{
-	min-height: 54px;
+	min-height: 48px;
 }
 
 .room-topic-list-toolbar h2{
-	height: 42px;
+	height: 48px;
+}
+
+.bonjour-room-item.active .material-tile-content,
+.bonjour-topic-item.active .material-tile-content{
+	background-color: #CCD1D9;
+}
+
+.bonjour-room-item.active .material-tile-content h2,
+.bonjour-room-item.active .material-tile-content h3{
+	font-weight: 700;
 }

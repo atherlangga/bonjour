@@ -4,9 +4,9 @@
               ROOMS
             </h2>
             </material-toolbar>
-            <material-content room-topic-list-height class="material-theme-lightgrey">
+            <material-content class="material-theme-lightgrey bonjour-room-listing">
               <material-list>
-               <material-item ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.openRightMenu();" class="bonjour-room-list" ng-class="{'active':currentRoom.id==room.id}">
+               <material-item ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.openRightMenu();" class="bonjour-room-item" ng-class="{'active':currentRoom.id==room.id}">
                  <div class="material-tile-left">
                    <!-- <img ng-src="http://placekitten.com/200/300" class="face" alt="{{item.who}}"> -->
                  </div>
@@ -39,10 +39,10 @@
               TOPICS
             </h2>
             </material-toolbar>
-            <material-content room-topic-list-height class="material-theme-lightgrey">
+            <material-content class="material-theme-lightgrey bonjour-topic-listing">
               {{loadingTopic}}
               <material-list>
-               <material-item ng-repeat="topic in currentRoom.topics" ng-cloak class="bonjour-topic-list" ng-class="{'active':currentRoom.lastActiveTopic.id==topic.id}">
+               <material-item ng-repeat="topic in currentRoom.topics" ng-cloak class="bonjour-topic-item" ng-class="{'active':currentRoom.lastActiveTopic.id==topic.id}">
                  <div class="material-tile-left">
                    <!-- <i class="fa fa-comment" style="font-size:24px"></i> -->
                  </div>
