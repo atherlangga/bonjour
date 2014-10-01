@@ -26,5 +26,9 @@
   "bugs": {
     "url": "https://github.com/waskito/bonjour/issues"
   },
-  "homepage": "https://github.com/waskito/bonjour"
+  "homepage": "https://github.com/waskito/bonjour",
+  "devDependencies": {
+    "karma": "^0.12.23",
+    "karma-chrome-launcher": "^0.1.4"
+  }
 }

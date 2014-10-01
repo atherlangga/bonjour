@@ -3,6 +3,7 @@ angular.module('roomModule')
 	'$scope',
 	'user',
 	function($scope, user) {
+		//$scope.greeting = "Hello";
 		$scope.rooms = user.rooms;
 		$scope.currentRoom = null;
 
@@ -10,6 +11,7 @@ angular.module('roomModule')
 		$scope.loading = "Loading";
 		roomsPromise.then(function(){
 			$scope.loading= "";
+			console.log($scope.rooms);
 			$scope.selectRoom(user.rooms[0].id);
 		})
 
