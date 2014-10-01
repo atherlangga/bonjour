@@ -6,10 +6,16 @@ angular.module('roomModule', ['qiscusModule']);
 // Declare this application main module.
 angular.module('bonjour', [
 	'ngRoute',
-	'mgcrea.ngStrap',
 	'connectivityModule',
-	'roomModule'
-]);
+	'roomModule',
+  'ngAnimate',
+  'ngMaterial'
+])
+.controller('MainController', function($scope, $materialSidenav) {
+  $scope.openLeftMenu = function() {
+    $materialSidenav('left').toggle();
+  };
+});
 
 // Configure the application.
 angular.module('bonjour')
@@ -43,7 +49,7 @@ angular.module('roomModule')
 
 
 
-var xhr = new XMLHttpRequest();
+/*var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://www.qisc.us/assets/qiscus-062f3f48c42c4d051336c96edf52a4af.png', true);
 xhr.responseType = 'blob';
 xhr.onload = function(e) {
@@ -54,4 +60,4 @@ xhr.onload = function(e) {
   console.log('gambare nang %s',img);
 };
 
-xhr.send();
+xhr.send();*/

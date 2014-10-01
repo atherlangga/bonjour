@@ -3,37 +3,45 @@
 		<title>Qiscus | Messaging For Getting Work Done</title>
 		<!-- Sets initial viewport load and disables zooming  -->
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-		<link rel="stylesheet" href="assets/components/bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="assets/components/Bootflat/bootflat/css/bootflat.min.css">
-		<link rel="stylesheet" href="assets/components/fontawesome/css/font-awesome.css">
+		<link rel="stylesheet" href="components/angular-material/angular-material.css">
 		<link rel="stylesheet" href="assets/css/app.css">
 	</head>
 
-	<body>
-		<div class="toolbar">
-			<div class="bonjour-draggable">
-				Bonjour Qiscus
-			</div>
-			<div class="bonjour-controls" ng-controller="NavController">
-				<a class="bonjour-window-control bonjour-control-minimize" ng-click="minimize()"><i class="fa fa-minus"></i></a>
-            	<a class="bonjour-window-control bonjour-control-maximize" ng-click="maximize()"><i class="fa fa-expand"></i></a>
-      			<a class="bonjour-window-control bonjour-control-close" ng-click="close()"><i class="fa fa-times"></i></a>
-			</div>	
-		</div>
-		<div class="bonjour-company-logo col-xs-2" id="logo-qiscus">
-			<img src="bonjour-128.png"  alt="Bonjour">
-		</div>
-		<nav class="navbar navbar-default bonjour-navbar" role="navigation">
-          <div class="container-fluid">
-            <div class="row">
-            	<div class="col-xs-2">
-            		
-            	</div>
-            </div>
-          </div>
-        </nav>
-		<div ng-view>
-			
+	<body class="layout-demo demo-no-padding">
+		<div layout="vertical" ng-controller="MainController">
+			<material-toolbar class="material-theme-green material-whiteframe-z1">
+				<h2 class="material-toolbar-tools">
+					<span>Bonjour</span>
+				</h2>
+			</material-toolbar>
+		  <section layout="horizontal" flex layout-fill>
+		  	<material-sidenav component-id="left" class="material-sidenav-left material-whiteframe-z1 right">
+			    <material-toolbar class="material-theme-light">
+					<h2 class="material-toolbar-tools">
+						<span>Rooms</span>
+					</h2>
+				  </material-toolbar>
+			  </material-sidenav>
+
+			  <material-content flex class="material-content-padding">
+			    Center Content hahahahahaha
+			    <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+			    	<material-button ng-click="openLeftMenu()" class="material-button-raised material-button-colored" style="height:30px">
+				      Open Left Menu
+				    </material-button>
+			    </section>
+			    
+			    
+			  </material-content>
+
+			  <material-sidenav component-id="right" class="material-sidenav-right material-whiteframe-z1 right">
+			    <material-toolbar class="material-theme-light">
+					<h2 class="material-toolbar-tools">
+						<span>Topic</span>
+					</h2>
+				  </material-toolbar>
+			  </material-sidenav>
+		  </section>
 		</div>
 
 
@@ -45,7 +53,10 @@
 		<!-- First, we load all the base library/module -->
 		<script type="text/javascript" src="lib/lodash/lodash.js"></script>
 		<script type="text/javascript" src="lib/pusher/pusher.js"></script>
-		<script type="text/javascript" src="lib/angular/angular.js"></script>
+		<script type="text/javascript" src="components/angular/angular.js"></script>
+		<script type="text/javascript" src="components/angular-animate/angular-animate.js"></script>
+		<script type="text/javascript" src="components/hammerjs/hammer.js"></script>
+		<script type="text/javascript" src="components/angular-material/angular-material.js"></script>
 
 		<!-- Next, we load Qiscus-specific library -->
 		<script type="text/javascript" src="lib/qiscus/qiscus.js"></script>
@@ -61,8 +72,8 @@
 		<script type="text/javascript" src="lib/angular-route/angular-route.js"></script>
 
 		<!-- Load library for UI -->
-		<script type="text/javascript" src="assets/components/angular-strap/dist/angular-strap.min.js"></script>
-		<script type="text/javascript" src="assets/components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+		<script type="text/javascript" src="components/angular-strap/dist/angular-strap.min.js"></script>
+		<script type="text/javascript" src="components/angular-strap/dist/angular-strap.tpl.min.js"></script>
 
 		<!-- Next, we load the application configuration -->
 		<script type="text/javascript" src="src/app.js"></script>
