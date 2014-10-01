@@ -9,10 +9,15 @@
 
 	<body class="layout-demo demo-no-padding">
 		<div layout="vertical" ng-controller="MainController">
+			<div layout="horizontal" flex>
+				<div class="bonjour-draggable">
+				Bonjour Qiscus
+			</div>
 			<div class="bonjour-controls" ng-controller="NavController">
 				<a class="bonjour-window-control bonjour-control-minimize" ng-click="minimize()"><i class="fa fa-minus"></i></a>
 	        	<a class="bonjour-window-control bonjour-control-maximize" ng-click="maximize()"><i class="fa fa-expand"></i></a>
 	  			<a class="bonjour-window-control bonjour-control-close" ng-click="close()"><i class="fa fa-times"></i></a>
+			</div>
 			</div>
 			<material-toolbar class="material-theme-green material-whiteframe-z1">
 				<h2 class="material-toolbar-tools">
