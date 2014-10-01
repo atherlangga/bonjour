@@ -41,17 +41,19 @@ angular.module('qiscusModule')
 		return listener;
 	}]
 )
-.run(['user', 'listener', function(user, listener) {
+.run(['user', 'listener', '$rootScope', function(user, listener, $rootScope) {
 	// Before we execute all the code inside this module, we need to do
 	// two things:
 	//
 	// 1. Listen to the user event first,
 	listener.listenUserEvent(user.email);
 	// and ..
-	// 2. Add listeners when the room loaded, so we can
-	//    attach our listeners' event handler to it.
-	user.addOnRoomLoadedListener(function (rooms) {
-		_.each(rooms, function(room) {
+	// 2. Watch the rooms, so that whenever user's Rooms get changed,
+	//    we can attach our listener.
+	$rootScope.rooms = user.rooms;
+	$rootScope.$watchCollection('rooms', function(newRooms, oldRooms) {
+		var addedRooms = _.difference(newRooms, oldRooms);
+		_.each(addedRooms, function(room) {
 			listener.listenRoomEvent(room.channelCode);
 		});
 	});

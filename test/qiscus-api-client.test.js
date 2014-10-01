@@ -39,4 +39,20 @@ describe("Qiscus API Client", function() {
 		assert.equal(13, topics.length);
 		assert.equal("Topic title", topics[1].title);
 	});
+
+	it ("should be able to generate proper Qiscus' list comments URL", function () {
+		var baseUrl = "http://staging.qisc.us";
+		var expected = "http://staging.qisc.us/api/v1/mobile/topic/123/comment/456/token/abcd1234";
+
+		assert.equal(expected, qiscusApiClient.generateListCommentsUrl(baseUrl, "abcd1234", 123, 456))
+	});
+
+	it ("should be able to parse GET comments' response", function() {
+		var response = {"results":{"comments":[{"id":1210,"message":"Test","username_as":"QiscusTest01","username_real":"qiscustest01@dispostable.com","created_at":"2014-09-25 08:56:01","deleted":false},{"id":1209,"message":"Test","username_as":"QiscusTest01","username_real":"qiscustest01@dispostable.com","created_at":"2014-09-25 08:54:19","deleted":false},{"id":1208,"message":"Test","username_as":"QiscusTest01","username_real":"qiscustest01@dispostable.com","created_at":"2014-09-25 08:52:40","deleted":false},{"id":1064,"message":"ccmcmcm","username_as":"evnpr2","username_real":"evanpurnama5@gmail.com","created_at":"2014-05-22 07:36:00","deleted":false},{"id":1063,"message":"famcmcmcmc","username_as":"evnpr2","username_real":"evanpurnama5@gmail.com","created_at":"2014-05-22 07:35:58","deleted":false},{"id":1062,"message":"fsafaf","username_as":"evnpr2","username_real":"evanpurnama5@gmail.com","created_at":"2014-05-22 07:34:16","deleted":false},{"id":1061,"message":"qewkl","username_as":"evnpr2","username_real":"evanpurnama5@gmail.com","created_at":"2014-05-22 07:34:10","deleted":false},{"id":1060,"message":"qiscusqiscus123","username_as":"evnpr","username_real":"evanpurnama5@gmailtop.com","created_at":"2014-04-29 03:14:07","deleted":false},{"id":1059,"message":"user name: jeilerman","username_as":"evnpr","username_real":"evanpurnama5@gmailtop.com","created_at":"2014-04-29 03:13:36","deleted":false},{"id":1058,"message":"refreshed","username_as":"evnpr","username_real":"evanpurnama5@gmailtop.com","created_at":"2014-04-29 03:12:04","deleted":false},{"id":1057,"message":"okk","username_as":"evnpr","username_real":"evanpurnama5@gmailtop.com","created_at":"2014-04-29 03:11:50","deleted":false},{"id":1056,"message":"can refresh ?","username_as":"evnpr2","username_real":"evanpurnama5@gmail.com","created_at":"2014-04-29 03:11:46","deleted":false},{"id":1055,"message":"hmm strange","username_as":"evnpr2","username_real":"evanpurnama5@gmail.com","created_at":"2014-04-29 03:11:43","deleted":false},{"id":1054,"message":"but seems you offline","username_as":"evnpr2","username_real":"evanpurnama5@gmail.com","created_at":"2014-04-29 03:11:40","deleted":false},{"id":1053,"message":"I am calling","username_as":"evnpr2","username_real":"evanpurnama5@gmail.com","created_at":"2014-04-29 03:11:36","deleted":false},{"id":1052,"message":"bro?","username_as":"evnpr","username_real":"evanpurnama5@gmailtop.com","created_at":"2014-04-29 03:11:34","deleted":false},{"id":1051,"message":"i wait","username_as":"evnpr","username_real":"evanpurnama5@gmailtop.com","created_at":"2014-04-29 03:10:38","deleted":false},{"id":1050,"message":"haha okk evan you call","username_as":"evnpr","username_real":"evanpurnama5@gmailtop.com","created_at":"2014-04-29 03:10:36","deleted":false},{"id":1049,"message":"okays back in","username_as":"evnpr","username_real":"evanpurnama5@gmailtop.com","created_at":"2014-04-29 03:09:32","deleted":false},{"id":1048,"message":"you there bro ?","username_as":"evnpr","username_real":"evanpurnama5@gmailtop.com","created_at":"2014-04-29 03:07:03","deleted":false}]}};
+		var comments = qiscusApiClient.parseListCommentsResponse(response);
+
+		assert.equal(20, comments.length);
+		assert.equal("Test", comments[0].message);
+		assert.equal("ccmcmcm", comments[3].message);
+	});
 });
