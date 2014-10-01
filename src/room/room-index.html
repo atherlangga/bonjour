@@ -1,31 +1,56 @@
-	<div class="row bonjour-home-container" bonjour-container>
-		<div class="col-xs-3">
-            <div class="list-group">
-              <!-- <span class="badge badge-primary">38</span> -->
-              {{ loading }}
-              <a class="list-group-item" ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id)" ng-class="{'active':currentRoom.id==room.id}">
-              	<div class="pull-left">
-              		<img class="events-object img-rounded" src="http://placekitten.com/200/300" height="40px">
-              	</div>
-              	<div class="bonjour-room-body">
-              		<h5 class="events-heading bonjour-room-heading">{{ room.name}}</h5>
-              		<p>Raw denim you probably haven't heard of them jean shorts Austin..</p>
-              	</div>
-              </a>
-            </div>
-        </div>
-        <div class="col-xs-6">
-        	
-        </div>
-        <div class="col-xs-3">
-        	<div class="list-group">
-        		{{loadingTopic}}
-              <!-- <span class="badge badge-primary">38</span> -->
-              <a class="list-group-item" ng-repeat="topic in currentRoom.topics" ng-cloak ng-class="{'active':currentRoom.lastActiveTopic.id==topic.id}">
-              	<div class="bonjour-topic-body">
-              		<h5 class="bonjour-topic-heading"><i class="fa fa-comment"></i> {{ topic.title }}</h5>
-              	</div>
-              </a>
-            </div>
-        </div>
-	</div>
+          <material-sidenav component-id="left" class="material-sidenav-left material-whiteframe-z1 right">
+            <material-toolbar class="room-topic-list-toolbar material-theme-white material-whiteframe-z1">
+            <h2 class="material-toolbar-tools">
+              ROOMS
+            </h2>
+            </material-toolbar>
+            <material-content class="material-theme-lightgrey bonjour-room-listing">
+              <material-list>
+               <material-item ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.openRightMenu();" class="bonjour-room-item" ng-class="{'active':currentRoom.id==room.id}">
+                 <div class="material-tile-left">
+                   <!-- <img ng-src="http://placekitten.com/200/300" class="face" alt="{{item.who}}"> -->
+                 </div>
+                 <div class="material-tile-content">
+                   <h2>{{ room.name}}</h2>
+                   <h3>Raw denim you probably haven't heard of them</h3>
+                 </div>
+               </material-item>
+              </material-list>
+            </material-content>
+          </material-sidenav>
+
+          <material-content flex class="material-content-padding">
+            Center Content hahahahahaha
+            <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+              <material-button ng-click="main.openLeftMenu()" class="material-button-raised material-button-colored" style="height:30px">
+                Open Left Menu
+              </material-button>
+              <material-button ng-click="main.openRightMenu()" class="material-button-raised material-button-colored" style="height:30px">
+                Open Right Menu
+              </material-button>
+            </section>
+            
+            
+          </material-content>
+
+          <material-sidenav component-id="right" class="material-sidenav-right material-whiteframe-z1 right">
+            <material-toolbar class="room-topic-list-toolbar material-theme-white material-whiteframe-z1">
+            <h2 class="material-toolbar-tools">
+              TOPICS
+            </h2>
+            </material-toolbar>
+            <material-content class="material-theme-lightgrey bonjour-topic-listing">
+              {{loadingTopic}}
+              <material-list>
+               <material-item ng-repeat="topic in currentRoom.topics" ng-cloak class="bonjour-topic-item" ng-class="{'active':currentRoom.lastActiveTopic.id==topic.id}">
+                 <div class="material-tile-left">
+                   <!-- <i class="fa fa-comment" style="font-size:24px"></i> -->
+                 </div>
+                 <div class="material-tile-content">
+                   <h2>{{ topic.title }}</h2>
+                   <h3>Raw denim you probably haven't heard of them</h3>
+                 </div>
+               </material-item>
+              </material-list>
+            </material-content>
+          </material-sidenav>

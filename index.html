@@ -3,37 +3,34 @@
 		<title>Qiscus | Messaging For Getting Work Done</title>
 		<!-- Sets initial viewport load and disables zooming  -->
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-		<link rel="stylesheet" href="assets/components/bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="assets/components/Bootflat/bootflat/css/bootflat.min.css">
-		<link rel="stylesheet" href="assets/components/fontawesome/css/font-awesome.css">
+		<link rel="stylesheet" href="components/angular-material/angular-material.css">
+		<link rel="stylesheet" href="components/fontawesome/css/font-awesome.css">
 		<link rel="stylesheet" href="assets/css/app.css">
 	</head>
 
-	<body>
-		<div class="toolbar">
-			<div class="bonjour-draggable">
-				Bonjour Qiscus
-			</div>
-			<div class="bonjour-controls" ng-controller="NavController">
+	<body class="layout-demo demo-no-padding">
+		<div layout="vertical" ng-controller="MainController as main">
+			<div layout="horizontal" flex>
+				<div class="bonjour-draggable material-theme-darkgrey">
+					
+				</div>
+			<div class="bonjour-controls material-theme-darkgrey" ng-controller="NavController">
 				<a class="bonjour-window-control bonjour-control-minimize" ng-click="minimize()"><i class="fa fa-minus"></i></a>
-            	<a class="bonjour-window-control bonjour-control-maximize" ng-click="maximize()"><i class="fa fa-expand"></i></a>
-      			<a class="bonjour-window-control bonjour-control-close" ng-click="close()"><i class="fa fa-times"></i></a>
-			</div>	
-		</div>
-		<div class="bonjour-company-logo col-xs-2" id="logo-qiscus">
-			<img src="bonjour-128.png"  alt="Bonjour">
-		</div>
-		<nav class="navbar navbar-default bonjour-navbar" role="navigation">
-          <div class="container-fluid">
-            <div class="row">
-            	<div class="col-xs-2">
-            		
-            	</div>
-            </div>
-          </div>
-        </nav>
-		<div ng-view>
-			
+				<span ng-switch="status">
+					<a ng-cloak ng-switch-when="false" class="bonjour-window-control bonjour-control-maximize" ng-click="maximize()"><i class="fa fa-expand"></i></a>
+					<a ng-cloak ng-switch-when="true" class="bonjour-window-control bonjour-control-maximize" ng-click="normalize()"><i class="fa fa-compress"></i></a>
+				</span>
+	  			<a class="bonjour-window-control bonjour-control-close" ng-click="close()"><i class="fa fa-times"></i></a>
+			</div>
+			</div>
+			<material-toolbar class="material-theme-darkgrey material-whiteframe-z1">
+				<h2 class="material-toolbar-tools">
+					<span>Bonjour</span>
+				</h2>
+			</material-toolbar>
+		  	<section layout="horizontal" container-height flex layout-fill ng-view style="position:relative">
+			  	
+		  	</section>
 		</div>
 
 
@@ -45,7 +42,10 @@
 		<!-- First, we load all the base library/module -->
 		<script type="text/javascript" src="lib/lodash/lodash.js"></script>
 		<script type="text/javascript" src="lib/pusher/pusher.js"></script>
-		<script type="text/javascript" src="lib/angular/angular.js"></script>
+		<script type="text/javascript" src="components/angular/angular.js"></script>
+		<script type="text/javascript" src="components/angular-animate/angular-animate.js"></script>
+		<script type="text/javascript" src="components/hammerjs/hammer.js"></script>
+		<script type="text/javascript" src="components/angular-material/angular-material.js"></script>
 
 		<!-- Next, we load Qiscus-specific library -->
 		<script type="text/javascript" src="lib/qiscus/qiscus.js"></script>
@@ -61,8 +61,8 @@
 		<script type="text/javascript" src="lib/angular-route/angular-route.js"></script>
 
 		<!-- Load library for UI -->
-		<script type="text/javascript" src="assets/components/angular-strap/dist/angular-strap.min.js"></script>
-		<script type="text/javascript" src="assets/components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+		<script type="text/javascript" src="components/angular-strap/dist/angular-strap.min.js"></script>
+		<script type="text/javascript" src="components/angular-strap/dist/angular-strap.tpl.min.js"></script>
 
 		<!-- Next, we load the application configuration -->
 		<script type="text/javascript" src="src/app.js"></script>

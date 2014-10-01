@@ -11,6 +11,7 @@ angular.module('roomModule')
 		$scope.loading = "Loading";
 		roomsPromise.then(function(){
 			$scope.loading= "";
+			console.log($scope.rooms);
 			$scope.selectRoom(user.rooms[0].id);
 		})
 
