@@ -6,6 +6,10 @@
   font-style: normal;
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+
 body{
 	background: transparent;
 }
@@ -19,7 +23,7 @@ body{
 ::-webkit-scrollbar-thumb {
     background: #AAB2BD;
     /* -webkit-border-radius: 1ex; */
-    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    /* -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75); */
 }
 
 ::-webkit-scrollbar-corner {
@@ -37,8 +41,8 @@ a{
 .navbar.bonjour-navbar{
 	border-radius: 0 0 0 0;
 	margin-bottom: 0px;
-	background-color: #374249;
-	border-color: #374249;
+	background-color: #0F9D58
+	border-color: #0F9D58
 }
 
 .toolbar{
@@ -49,18 +53,20 @@ a{
 
 .bonjour-draggable{
 	width: 90%;
-	background: #374249;
 	display: inline-block;
 	float: left;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .bonjour-controls{
 	display: inline-block;
-	background: #374249;
 	width: 10%;
 	float: right;
 	position: relative;
 	text-align: right;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .bonjour-company-logo{
@@ -121,4 +127,26 @@ a.list-group-item.active:focus,
 a.list-group-item.active:hover{
 	background: #AAB2BD;
 	border-color: #AAB2BD;
+}
+
+.material-theme-darkgrey {
+	background-color: #434A54;
+	color: #f1f1f1 !important;
+}
+
+.material-theme-white {
+	background-color: white;
+	color: #434A54 !important;
+}
+
+.material-theme-lightgrey{
+	background-color: #F5F7FA;
+}
+
+.room-topic-list-toolbar{
+	min-height: 54px;
+}
+
+.room-topic-list-toolbar h2{
+	height: 42px;
 }

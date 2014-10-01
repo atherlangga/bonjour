@@ -4,54 +4,33 @@
 		<!-- Sets initial viewport load and disables zooming  -->
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link rel="stylesheet" href="components/angular-material/angular-material.css">
+		<link rel="stylesheet" href="components/fontawesome/css/font-awesome.css">
 		<link rel="stylesheet" href="assets/css/app.css">
 	</head>
 
 	<body class="layout-demo demo-no-padding">
-		<div layout="vertical" ng-controller="MainController">
+		<div layout="vertical" ng-controller="MainController as main">
 			<div layout="horizontal" flex>
-				<div class="bonjour-draggable">
-				Bonjour Qiscus
-			</div>
-			<div class="bonjour-controls" ng-controller="NavController">
+				<div class="bonjour-draggable material-theme-darkgrey">
+					
+				</div>
+			<div class="bonjour-controls material-theme-darkgrey" ng-controller="NavController">
 				<a class="bonjour-window-control bonjour-control-minimize" ng-click="minimize()"><i class="fa fa-minus"></i></a>
-	        	<a class="bonjour-window-control bonjour-control-maximize" ng-click="maximize()"><i class="fa fa-expand"></i></a>
+				<span ng-switch="status">
+					<a ng-cloak ng-switch-when="false" class="bonjour-window-control bonjour-control-maximize" ng-click="maximize()"><i class="fa fa-expand"></i></a>
+					<a ng-cloak ng-switch-when="true" class="bonjour-window-control bonjour-control-maximize" ng-click="normalize()"><i class="fa fa-compress"></i></a>
+				</span>
 	  			<a class="bonjour-window-control bonjour-control-close" ng-click="close()"><i class="fa fa-times"></i></a>
 			</div>
 			</div>
-			<material-toolbar class="material-theme-green material-whiteframe-z1">
+			<material-toolbar class="material-theme-darkgrey material-whiteframe-z1">
 				<h2 class="material-toolbar-tools">
 					<span>Bonjour</span>
 				</h2>
 			</material-toolbar>
-		  <section layout="horizontal" flex layout-fill>
-		  	<material-sidenav component-id="left" class="material-sidenav-left material-whiteframe-z1 right">
-			    <material-toolbar class="material-theme-light">
-					<h2 class="material-toolbar-tools">
-						<span>Rooms</span>
-					</h2>
-				  </material-toolbar>
-			  </material-sidenav>
-
-			  <material-content flex class="material-content-padding">
-			    Center Content hahahahahaha
-			    <section layout="vertical" layout-sm="horizontal" layout-align="center center">
-			    	<material-button ng-click="openLeftMenu()" class="material-button-raised material-button-colored" style="height:30px">
-				      Open Left Menu
-				    </material-button>
-			    </section>
-			    
-			    
-			  </material-content>
-
-			  <material-sidenav component-id="right" class="material-sidenav-right material-whiteframe-z1 right">
-			    <material-toolbar class="material-theme-light">
-					<h2 class="material-toolbar-tools">
-						<span>Topic</span>
-					</h2>
-				  </material-toolbar>
-			  </material-sidenav>
-		  </section>
+		  	<section layout="horizontal" flex layout-fill ng-view style="position:relative">
+			  	
+		  	</section>
 		</div>
 
 
