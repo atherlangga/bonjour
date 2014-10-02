@@ -3,33 +3,33 @@
             <h2 class="material-toolbar-tools">
               ROOMS
               <material-button class="material-button-fab" style="height:32px;width:32px;left:64%" ng-click="main.toggleLeftMenu()">
-                <i class="fa fa-times"></i>
+                <i class="fa fa-plus"></i>
               </material-button>
             </h2>
             </material-toolbar>
             <material-content class="material-theme-lightgrey bonjour-room-listing">
-              <material-list>
-               <material-item ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.openRightMenu();" class="bonjour-room-item" ng-class="{'active':currentRoom.id==room.id}">
-                 <div class="material-tile-left">
-                   <!-- <img ng-src="http://placekitten.com/200/300" class="face" alt="{{item.who}}"> -->
-                 </div>
-                 <div class="material-tile-content">
-                   <h2>{{ room.name}}</h2>
-                   <h3>Raw denim you probably haven't heard of them</h3>
-                 </div>
-               </material-item>
-              </material-list>
+              {{loadingRoom}}
+              <ul class="ripple">
+                <li ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.openRightMenu();" class="bonjour-room-item" ng-class="{'active':currentRoom.id==room.id}">
+                  <a bonjour-ripple>{{ room.name}}</a>
+                </li>
+              </ul>
             </material-content>
           </material-sidenav>
 
           <material-content flex class="material-content-padding">
-            Center Content hahahahahaha
+            
             <section layout="vertical" layout-sm="horizontal" layout-align="center center">
               <material-button ng-click="main.openLeftMenu()" class="material-button-raised material-button-colored" style="height:30px">
                 Open Left Menu
               </material-button>
               <material-button ng-click="main.openRightMenu()" class="material-button-raised material-button-colored" style="height:30px">
                 Open Right Menu
+              </material-button>
+            </section>
+            <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+              <material-button ng-click="main.createNotif()" class="material-button-raised material-button-colored" style="height:50px;margin-top:20px">
+                Open Notif
               </material-button>
             </section>
             

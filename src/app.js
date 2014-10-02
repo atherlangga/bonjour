@@ -9,7 +9,8 @@ angular.module('bonjour', [
 	'connectivityModule',
 	'roomModule',
   'ngAnimate',
-  'ngMaterial'
+  'ngMaterial',
+  'lodash'
 ])
 .controller('MainController', function($scope, $materialSidenav) {
   var _this = this;
@@ -27,6 +28,23 @@ angular.module('bonjour', [
   this.toggleRightMenu = function() {
     _this.rightStatus = !_this.rightStatus;
   };
+
+  this.notID = 1;
+  this.createNotif = function(){
+    var options = {
+      type: "basic",
+      title: "Primary Title",
+      message: "Primary message to display",
+      iconUrl: "bonjour-128.png"
+    }
+    chrome.notifications.create("id"+_this.notID++,options,function(notID){
+      setTimeout(function() {
+        chrome.notifications.clear(notID, function(wasCleared) {
+          console.log("Notification " + notID + " cleared: " + wasCleared);
+        });
+      }, 3000);
+    });
+  }
 });
 
 // Configure the application.
@@ -63,6 +81,10 @@ angular.module('bonjour')
   } 
 })
 
+
+angular.module('lodash', []).factory('_', function() {
+    return window._; // assumes underscore has already been loaded on the page
+});
 
 
 
