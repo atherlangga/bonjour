@@ -5,17 +5,18 @@
 ////
 
 angular.module('qiscusModule')
-.factory('apiClient', ['$http',
-	function($http) {
-		return new qiscusApiClient.Angular(
-			$http,
-			"http://staging.qisc.us",
-			"PP5H4HUz7UaiTBfyobzW");
-	}]
-)
 .factory('promises', ['$q',
 	function($q) {
 		return new qiscusPromises.Angular($q);
+	}]
+)
+.factory('apiClient', ['$http', 'promises',
+	function($http, promises) {
+		return new qiscusApiClient.Angular(
+			$http,
+			"http://staging.qisc.us",
+			"PP5H4HUz7UaiTBfyobzW",
+			promises);
 	}]
 )
 .factory('user', ['apiClient', 'promises',

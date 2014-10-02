@@ -25,6 +25,25 @@ describe("Qiscus API Client", function() {
 		assert.equal("A2", rooms[1].topics[1].title);
 	});
 
+	it ("should be able to generate proper Qiscus' list people API", function() {
+		var baseUrl  = "http://staging.qisc.us";
+		var expected = "http://staging.qisc.us/api/v1/mobile/listPeople?token=PP5H4HUz7UaiTBfyobzW&room_id=65";
+
+		assert.equal(expected, qiscusApiClient.generateListParticipantsUrl(baseUrl, "PP5H4HUz7UaiTBfyobzW", 65));
+	});
+
+	it ("should be able to parse GET list people API", function() {
+		var response = {"results":{"people":[{"id":1,"username":"evnpr2","email":"evanpurnama5@gmail.com","avatar":"https://www.qisc.us/images/default-avatar.png"},{"id":20,"username":"evnpr","email":"evanpurnama5@gmailtop.com","avatar":"https://qiscus.s3.amazonaws.com/uploads/396818874fd4b96d1b7272e07fd9720d/Screen_Shot_2014-02-20_at_10.31.09_AM.png"},{"id":22,"username":"QiscusTest01","email":"qiscustest01@dispostable.com","avatar":"https://www.qisc.us/images/default-avatar.png"}]}};
+		var avatars = {'1': 'avatar1', '20': 'avatar2', '22': 'avatar3'};
+		var participants = qiscusApiClient.parseListParticipantsResponse(response, avatars);
+
+		assert.equal(3, participants.length);
+		assert.equal(22, participants[2].id);
+		assert.equal("QiscusTest01", participants[2].username);
+		assert.equal("qiscustest01@dispostable.com", participants[2].email);
+		assert.equal("avatar3", participants[2].avatar);
+	});
+
 	it ("should be able to generate proper Qiscus' list topics API", function() {
 		var baseUrl  = "http://staging.qisc.us";
 		var expected = "http://staging.qisc.us/api/v1/mobile/topics";
