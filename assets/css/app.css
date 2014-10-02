@@ -160,3 +160,66 @@ a.list-group-item.active:hover{
 .bonjour-room-item.active .material-tile-content h3{
 	font-weight: 700;
 }
+
+
+/* ripple effect */
+
+.ripple-container{
+	overflow: hidden;
+	position: relative;
+	user-select:none;
+}
+ul.ripple {
+	background:#EAEAEA;
+	width: 100%; margin: 0 auto;
+	padding-left: 0px;
+	padding-bottom: 1px;
+}
+ul.ripple li {
+	list-style-type: none;
+	/*relative positioning for list items along with overflow hidden to contain the overflowing ripple*/
+	position: relative;
+	overflow: hidden;
+	padding-left: 8px;
+	background-color: #F5F7FA;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	margin-bottom: 4px;
+}
+
+ul.ripple li.active{
+	background-color: hsl(180, 40%, 80%);
+}
+
+ul.ripple li a {
+	font: normal 14px/28px Cantarell, Arial, sans-serif;
+	/* color: hsl(180, 40%, 40%); */
+	display: block; 
+	padding: 10px 15px;
+	text-decoration: none;
+	cursor: pointer; /*since the links are dummy without href values*/
+	/*prevent text selection*/
+	user-select: none;
+	/*static positioned elements appear behind absolutely positioned siblings(.ink in this case) hence we will make the links relatively positioned to bring them above .ink*/
+	position: relative;
+}
+
+/*.ink styles - the elements which will create the ripple effect. The size and position of these elements will be set by the JS code. Initially these elements will be scaled down to 0% and later animated to large fading circles on user click.*/
+.ink {
+	display: block; position: absolute;
+	background: hsl(180, 40%, 80%);
+	border-radius: 100%;
+	transform: scale(0);
+	-webkit-transform: scale(0);
+}
+/*animation effect*/
+.ink.animate {animation: ripple 0.65s linear;-webkit-animation: ripple 0.65s linear;}
+@keyframes ripple {
+	/*scale the element to 250% to safely cover the entire link and fade it out*/
+	100% {opacity: 0; transform: scale(2.5);-webkit-transform: scale(2.5);}
+}
+
+@-webkit-keyframes ripple {
+	/*scale the element to 250% to safely cover the entire link and fade it out*/
+	100% {opacity: 0; transform: scale(2.5);-webkit-transform: scale(2.5);}
+}
+
