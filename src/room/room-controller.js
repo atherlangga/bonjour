@@ -22,6 +22,7 @@ angular.module('roomModule')
 				$scope.loadingTopic = "";
 				$scope.currentRoom = user.getRoom(id);
 				console.log($scope.currentRoom.lastActiveTopic);
+				user.loadTopic($scope.currentRoom.lastActiveTopic.id);
 			})
 		}
 	}

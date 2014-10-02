@@ -13,11 +13,19 @@ angular.module('bonjour', [
 ])
 .controller('MainController', function($scope, $materialSidenav) {
   var _this = this;
+  this.leftStatus = true;
+  this.rightStatus = true;
   this.openLeftMenu = function() {
     $materialSidenav('left').toggle();
   };
   this.openRightMenu = function() {
     $materialSidenav('right').toggle();
+  };
+  this.toggleLeftMenu = function() {
+    _this.leftStatus = !_this.leftStatus;
+  };
+  this.toggleRightMenu = function() {
+    _this.rightStatus = !_this.rightStatus;
   };
 });
 

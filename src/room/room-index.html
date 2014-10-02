@@ -1,7 +1,10 @@
-          <material-sidenav component-id="left" class="material-sidenav-left material-whiteframe-z1 right">
+          <material-sidenav component-id="left" class="material-sidenav-left material-whiteframe-z1 right" ng-class="{'close':!main.leftStatus}">
             <material-toolbar class="room-topic-list-toolbar material-theme-white material-whiteframe-z1">
             <h2 class="material-toolbar-tools">
               ROOMS
+              <material-button class="material-button-fab" style="height:32px;width:32px;left:64%" ng-click="main.toggleLeftMenu()">
+                <i class="fa fa-times"></i>
+              </material-button>
             </h2>
             </material-toolbar>
             <material-content class="material-theme-lightgrey bonjour-room-listing">
@@ -33,7 +36,7 @@
             
           </material-content>
 
-          <material-sidenav component-id="right" class="material-sidenav-right material-whiteframe-z1 right">
+          <material-sidenav component-id="right" class="material-sidenav-right material-whiteframe-z1 right" ng-class="{'close':!main.rightStatus}">
             <material-toolbar class="room-topic-list-toolbar material-theme-white material-whiteframe-z1">
             <h2 class="material-toolbar-tools">
               TOPICS
