@@ -2,28 +2,54 @@ angular.module('roomModule')
 .controller('RoomController',[
 	'$scope',
 	'user',
-	function($scope, user) {
+	'_',
+	function($scope, user, _) {
 		//$scope.greeting = "Hello";
 		$scope.rooms = user.rooms;
 		$scope.currentRoom = null;
+		$scope.currentTopic = null;
+		$scope.loading = {
+			rooms:true,
+			topics:true,
+			comments:true
+		};
 
 		var roomsPromise = user.loadRooms();
-		$scope.loading = "Loading";
+		$scope.loading.rooms = true;
 		roomsPromise.then(function(){
-			$scope.loading= "";
+			$scope.loading.rooms= false;
 			console.log($scope.rooms);
 			$scope.selectRoom(user.rooms[0].id);
 		})
 
 		$scope.selectRoom = function(id){
 			var roomPromise = user.loadRoom(id);
-			$scope.loadingTopic = "Loading";
+			$scope.loading.topics = true;
+			$scope.loading.comments = true;
 			roomPromise.then(function(){
-				$scope.loadingTopic = "";
+				$scope.loading.topics = false;
 				$scope.currentRoom = user.getRoom(id);
 				console.log($scope.currentRoom.lastActiveTopic);
-				user.loadTopic($scope.currentRoom.lastActiveTopic.id);
+				$scope.selectTopic($scope.currentRoom.lastActiveTopic.id);
+				console.log($scope.currentRoom);
+				
 			})
+		}
+
+		$scope.selectTopic = function(id){
+			var commentPromise = user.loadTopic(id);
+			$scope.loading.comments = true;
+			commentPromise.then(function(){
+				$scope.loading.comments = false;
+				$scope.currentTopic = $scope.currentRoom.getTopic(id);
+				console.log($scope.currentTopic);
+			})
+		}
+
+		$scope.sendComment = function(){
+			console.log({id:$scope.currentTopic.id,cmt:$scope.commentMessage})
+			user.postComment($scope.currentTopic.id,$scope.commentMessage);
+			$scope.commentMessage = "";
 		}
 	}
 ]);

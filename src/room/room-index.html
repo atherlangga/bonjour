@@ -8,32 +8,58 @@
             </h2>
             </material-toolbar>
             <material-content class="material-theme-lightgrey bonjour-room-listing">
-              {{loadingRoom}}
+              <div ng-class="{'loading':loading.rooms}" class="loader">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="white">
+                  <path opacity=".25" d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"/>
+                  <path d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z">
+                    <animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="0.8s" repeatCount="indefinite" />
+                  </path>
+                </svg>
+              </div>
               <ul class="ripple">
-                <li ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.openRightMenu();" class="bonjour-room-item" ng-class="{'active':currentRoom.id==room.id}">
+                <li ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.showRightMenu();" class="bonjour-room-item" ng-class="{'active':currentRoom.id==room.id}">
                   <a bonjour-ripple>{{ room.name}}</a>
                 </li>
               </ul>
             </material-content>
           </material-sidenav>
 
-          <material-content flex class="material-content-padding">
-            
+          <material-content flex class="material-content-padding" style="position:relative;padding:0px">
+            <div ng-class="{'loading':loading.comments}" class="loader loader-comment">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="40" height="40" fill="white">
+                  <path opacity=".25" d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"/>
+                  <path d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z">
+                    <animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="0.8s" repeatCount="indefinite" />
+                  </path>
+                </svg>
+              </div>
             <section layout="vertical" layout-sm="horizontal" layout-align="center center">
-              <material-button ng-click="main.openLeftMenu()" class="material-button-raised material-button-colored" style="height:30px">
-                Open Left Menu
-              </material-button>
-              <material-button ng-click="main.openRightMenu()" class="material-button-raised material-button-colored" style="height:30px">
-                Open Right Menu
-              </material-button>
+              <material-content class="bonjour-comment-listing material-theme-lightgrey" style="width:100%;padding:16px">
+              <material-list>
+               <material-item ng-repeat="comment in currentTopic.comments" ng-cloak class="bonjour-comment-item">
+                 <div class="material-tile-left">
+                    <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}" width="30px" height="30px">
+                 </div>
+                 <div class="material-tile-content">
+                   <h2>{{ comment.sender.username }}</h2>
+                   <pre>{{comment.message}}</pre>
+                 </div>
+               </material-item>
+              </material-list>
+            </material-content>
             </section>
-            <section layout="vertical" layout-sm="horizontal" layout-align="center center">
-              <material-button ng-click="main.createNotif()" class="material-button-raised material-button-colored" style="height:50px;margin-top:20px">
-                Open Notif
-              </material-button>
+            <section layout="vertical" class="section-post-comment" ng-class="{'loading':loading.comments}">
+              <div class="comment-container">
+              <section layout="horizontal">
+                <textarea name="comment" id="comment" cols="70" rows="2" ng-model="commentMessage">
+                
+              </textarea>
+                <material-button ng-click="sendComment()" class="material-button-raised" style="height:30px;margin-left:20px;width:60px">
+                  <img src="public/img/send.svg" alt="send" style="margin-top:-4px;">
+                </material-button>
+              </section>
+              </div>
             </section>
-            
-            
           </material-content>
 
           <material-sidenav component-id="right" class="material-sidenav-right material-whiteframe-z1 right" ng-class="{'close':!main.rightStatus}">
@@ -43,9 +69,16 @@
             </h2>
             </material-toolbar>
             <material-content class="material-theme-lightgrey bonjour-topic-listing">
-              {{loadingTopic}}
+              <div ng-class="{'loading':loading.topics}" class="loader">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="white">
+                  <path opacity=".25" d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"/>
+                  <path d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z">
+                    <animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="0.8s" repeatCount="indefinite" />
+                  </path>
+                </svg>
+              </div>
               <material-list>
-               <material-item ng-repeat="topic in currentRoom.topics" ng-cloak class="bonjour-topic-item" ng-class="{'active':currentRoom.lastActiveTopic.id==topic.id}">
+               <material-item ng-repeat="topic in currentRoom.topics" ng-cloak class="bonjour-topic-item" ng-click="selectTopic(topic.id)" ng-class="{'active':currentTopic.id==topic.id}">
                  <div class="material-tile-left">
                    <!-- <i class="fa fa-comment" style="font-size:24px"></i> -->
                  </div>

@@ -22,6 +22,9 @@ angular.module('bonjour', [
   this.openRightMenu = function() {
     $materialSidenav('right').toggle();
   };
+  this.showRightMenu = function() {
+    $materialSidenav('right').open();
+  };
   this.toggleLeftMenu = function() {
     _this.leftStatus = !_this.leftStatus;
   };
@@ -33,7 +36,7 @@ angular.module('bonjour', [
   this.createNotif = function(){
     var options = {
       type: "basic",
-      title: "Primary Title",
+      title: "Notifications",
       message: "Primary message to display",
       iconUrl: "bonjour-128.png"
     }
@@ -57,6 +60,15 @@ angular.module('bonjour')
 			controller: 'RoomController'
 		});
 	}
+])
+.config( [
+    '$compileProvider',
+    function( $compileProvider )
+    {   
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|blob):|data:image\//);
+        // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
+    }
 ]);
 
 angular.module('bonjour')
@@ -68,6 +80,7 @@ angular.module('bonjour')
          elem[0].style.height = window.innerHeight-26-64;
          document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-26-64-48;
          document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-26-64-48;
+         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-26-64-48-30;
          //console.log(elem.clientHeight);
          //console.log(elem[0].style.height);
        },0);
@@ -76,6 +89,7 @@ angular.module('bonjour')
        	 elem[0].style.height = window.innerHeight-26-64;
          document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-26-64-48;
          document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-26-64-48;
+         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-26-64-48-30;
        }
   	}
   } 
@@ -88,15 +102,15 @@ angular.module('lodash', []).factory('_', function() {
 
 
 
-/*var xhr = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://www.qisc.us/assets/qiscus-062f3f48c42c4d051336c96edf52a4af.png', true);
 xhr.responseType = 'blob';
 xhr.onload = function(e) {
   var img = document.createElement('img');
   img.src = window.URL.createObjectURL(this.response);
+  console.log(this.response);
   //document.body.appendChild(img);
   document.querySelector("#logo-qiscus").appendChild(img);
-  console.log('gambare nang %s',img);
 };
 
-xhr.send();*/
+xhr.send();
