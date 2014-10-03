@@ -261,8 +261,8 @@ ul.ripple li a {
 @-webkit-keyframes enter_sequence {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, 20%, 0);
-    transform: translate3d(0, 20%, 0);
+    -webkit-transform: translate3d(0, 30%, 0);
+    transform: translate3d(0, 30%, 0);
   }
 
   100% {
@@ -274,9 +274,9 @@ ul.ripple li a {
 @keyframes enter_sequence {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, 20%, 0);
-    -ms-transform: translate3d(0, 20%, 0);
-    transform: translate3d(0, 20%, 0);
+    -webkit-transform: translate3d(0, 30%, 0);
+    -ms-transform: translate3d(0, 30%, 0);
+    transform: translate3d(0, 30%, 0);
   }
 
   100% {
@@ -318,7 +318,7 @@ ul.ripple li a {
 
 .section-post-comment{
 	position: relative;
-	padding: 5px;
+	padding: 5px 7px;
 	z-index: 2;
 	width: inherit;
 }
@@ -353,4 +353,5 @@ ul.ripple li a {
 
 .bonjour-comment-left,.bonjour-comment-content,.bonjour-comment-content pre{
 	font-size: 1rem;
+	word-wrap: break-word;
 }
