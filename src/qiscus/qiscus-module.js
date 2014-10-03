@@ -58,5 +58,8 @@ angular.module('qiscusModule')
 			listener.listenRoomEvent(room.channelCode);
 		});
 	});
+	/*$rootScope.$watchCollection('user.selectedTopic.comments', function(newVal,oldVal){
+		
+	})*/
 }])
 ;

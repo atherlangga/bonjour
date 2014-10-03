@@ -4,12 +4,8 @@ angular.module('bonjour')
  		restrict: 'A',
  		link: function(scope,element,attr){
  			var parent, ink, d, x, y;
- 			console.log($(element))
 			$(element).click(function(e){
-				console.log('ahaha');
-				parent = $(this).parent();
-				console.log(parent);
-				
+				parent = $(this).parent();				
 				//create .ink element if it doesn't exist
 				if(parent.find(".ink").length == 0)
 					parent.prepend("<span class='ink'></span>");
@@ -36,4 +32,45 @@ angular.module('bonjour')
 			})
  		}
  	}
- }])
+ }]).directive('bonjourText',['user',function(user) {
+  return {
+    restrict: 'A',
+    link: function($scope,elem,attrs) {
+      elem[0].style.width = elem[0].parentElement.clientWidth;
+      //console.log(elem);
+      elem.bind('keydown', function(e) {
+        var code = e.keyCode || e.which;
+        if ((code === 13) && !(e.shiftKey)) {
+          e.preventDefault();
+          if($scope.commentMessage){
+          	user.postComment(attrs.topicId,$scope.commentMessage);
+          	$scope.commentMessage = "";
+          }
+        }
+      });
+    }
+  }
+}]).directive('autoScroll',['$timeout','currentTopicId', function ($timeout,currentTopicId) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+            	console.log(scope);
+                $timeout(function () {
+                	var commentListing = document.querySelector(".bonjour-comment-listing");
+                	if(typeof scope.$parent.currentTopic.opened === "undefined" || currentTopicId==null || currentTopicId!=scope.$parent.currentTopic.id){
+                		scope.$parent.currentTopic.opened = false;
+                		currentTopicId=scope.$parent.currentTopic.id;
+                	}
+                	if(scope.$parent.currentTopic.opened == false){
+		               commentListing.scrollTop = commentListing.scrollHeight;
+		               scope.$parent.currentTopic.opened = true;
+		            }else{
+		            	if((commentListing.scrollHeight-commentListing.scrollTop) < 900)
+		            		commentListing.scrollTop = commentListing.scrollHeight;
+		            }
+                });
+            }
+        }
+    }
+}]);
