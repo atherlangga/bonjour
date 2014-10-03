@@ -92,6 +92,10 @@ describe("User", function() {
 });
 
 describe("Room", function() {
+	it("should be able to contain a new Participant");
+	it("should be able to receive existing Participant");
+	it("should not have duplicated Participant");
+	
 	it("should be able to contain a new topic", function() {
 		var room = new qiscus.Room(1, "One");
 		assert.equal(0, room.topics.length);
