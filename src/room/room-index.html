@@ -18,7 +18,22 @@
           </material-sidenav>
 
           <material-content flex class="material-content-padding">
-            
+            <section layout="vertical" layout-sm="horizontal" layout-align="center center">
+              <material-content class="material-theme-lightgrey" style="width:100%;">
+              {{loadingComment}}
+              <material-list>
+               <material-item ng-repeat="comment in currentTopic.comments" ng-cloak class="bonjour-comment-item">
+                 <div class="material-tile-left">
+                    <img src="{{getCommentAvatar(comment.sender)}}" class="face" alt="{{comment.sender}}">
+                 </div>
+                 <div class="material-tile-content">
+                   <h2>{{ comment.sender }}</h2>
+                   <p>{{comment.message}}</p>
+                 </div>
+               </material-item>
+              </material-list>
+            </material-content>
+            </section>
             <section layout="vertical" layout-sm="horizontal" layout-align="center center">
               <material-button ng-click="main.openLeftMenu()" class="material-button-raised material-button-colored" style="height:30px">
                 Open Left Menu
@@ -45,7 +60,7 @@
             <material-content class="material-theme-lightgrey bonjour-topic-listing">
               {{loadingTopic}}
               <material-list>
-               <material-item ng-repeat="topic in currentRoom.topics" ng-cloak class="bonjour-topic-item" ng-class="{'active':currentRoom.lastActiveTopic.id==topic.id}">
+               <material-item ng-repeat="topic in currentRoom.topics" ng-cloak class="bonjour-topic-item" ng-click="selectTopic(topic.id)" ng-class="{'active':currentTopic.id==topic.id}">
                  <div class="material-tile-left">
                    <!-- <i class="fa fa-comment" style="font-size:24px"></i> -->
                  </div>

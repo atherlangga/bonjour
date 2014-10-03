@@ -33,16 +33,16 @@ angular.module('bonjour', [
   this.createNotif = function(){
     var options = {
       type: "basic",
-      title: "Primary Title",
+      title: "Notifications",
       message: "Primary message to display",
       iconUrl: "bonjour-128.png"
     }
     chrome.notifications.create("id"+_this.notID++,options,function(notID){
-      setTimeout(function() {
+      /*setTimeout(function() {
         chrome.notifications.clear(notID, function(wasCleared) {
           console.log("Notification " + notID + " cleared: " + wasCleared);
         });
-      }, 3000);
+      }, 3000);*/
     });
   }
 });
@@ -57,6 +57,15 @@ angular.module('bonjour')
 			controller: 'RoomController'
 		});
 	}
+])
+.config( [
+    '$compileProvider',
+    function( $compileProvider )
+    {   
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension):/);
+        $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|blob):|data:image\//);
+        // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
+    }
 ]);
 
 angular.module('bonjour')
@@ -88,15 +97,15 @@ angular.module('lodash', []).factory('_', function() {
 
 
 
-/*var xhr = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://www.qisc.us/assets/qiscus-062f3f48c42c4d051336c96edf52a4af.png', true);
 xhr.responseType = 'blob';
 xhr.onload = function(e) {
   var img = document.createElement('img');
   img.src = window.URL.createObjectURL(this.response);
+  console.log(this.response);
   //document.body.appendChild(img);
   document.querySelector("#logo-qiscus").appendChild(img);
-  console.log('gambare nang %s',img);
 };
 
-xhr.send();*/
+xhr.send();
