@@ -68,9 +68,11 @@ describe("Qiscus Listener", function() {
 
 	it ("should be able to handle Comment Posted event", function() {
 		var someRoom = new qiscus.Room(65, "NameDoesntMatter");
+		var someParticipant = new qiscus.Participant(1, "QiscusTest01", "qiscustest01@dispostable.com");
 		var someTopic = new qiscus.Topic(75, "TitleDoesntMatter");
 		var user = new qiscus.User();
 
+		someRoom.addParticipant(someParticipant);
 		someRoom.addTopic(someTopic);
 		user.addRoom(someRoom);
 
@@ -84,7 +86,9 @@ describe("Qiscus Listener", function() {
 		assert.equal(1, someTopic.comments.length);
 		assert.equal(1210, someTopic.comments[0].id);
 		assert.equal("Test", someTopic.comments[0].message);
-		assert.equal("QiscusTest01", someTopic.comments[0].sender);
-		assert.equal("qiscustest01@dispostable.com", someTopic.comments[0].senderEmail);
+		assert.equal("QiscusTest01", someTopic.comments[0].sender.username);
+		
+		// Check the internal representation of date "2014-09-25T08:56:01Z"
+		assert.equal(1411635361000, someTopic.comments[0].date.getTime());
 	});
 });

@@ -41,7 +41,6 @@ describe("Qiscus API Client", function() {
 		assert.equal(22, participants[2].id);
 		assert.equal("QiscusTest01", participants[2].username);
 		assert.equal("qiscustest01@dispostable.com", participants[2].email);
-		assert.equal("avatar3", participants[2].avatar);
 	});
 
 	it ("should be able to generate proper Qiscus' list topics API", function() {
@@ -71,7 +70,23 @@ describe("Qiscus API Client", function() {
 		var comments = qiscusApiClient.parseListCommentsResponse(response);
 
 		assert.equal(20, comments.length);
-		assert.equal("Test", comments[0].message);
+		assert.equal(1210, comments[0].id);
 		assert.equal("ccmcmcm", comments[3].message);
+		assert.equal(1400718856000, comments[5].date.getTime());
+	});
+
+	it ("should be able generate proper Qiscus' post comment URL", function() {
+		var baseUrl = "http://staging.qisc.us";
+		var expected = "http://staging.qisc.us/api/v1/mobile/postcomment";
+
+		assert.equal(expected, qiscusApiClient.generatePostCommentUrl(baseUrl, "abcd1234", 123, 456));
+	});
+
+	it("should be able to parse POST comment' response", function() {
+		var response = {"success":1,"sent":"2014-10-02 23:36:02","comment_id":1214,"message":"test"};
+		var comment = qiscusApiClient.parsePostCommentResponse(response);
+
+		assert.equal(1214, comment.id);
+		assert.equal("test", comment.message);
 	});
 });
