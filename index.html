@@ -24,10 +24,29 @@
 			</div>
 			</div>
 			<material-toolbar class="material-theme-darkgrey material-whiteframe-z1">
-				<h2 class="material-toolbar-tools" id="logo-qiscus">
-					<span>Bonjour</span>
-
-				</h2>
+				<div layout="horizontal">
+				    <div class="bonjour-logo">
+				    	<h2 class="material-toolbar-tools" id="logo-qiscus">
+						</h2>
+				    </div>
+				    <div flex class="bonjour-info">
+				    	<section layout="vertical" layout-sm="horizontal" layout-align="center center" style="margin-top:10px">
+			              <material-button ng-click="main.openLeftMenu()" class="material-button-raised material-button-colored" style="height:30px">
+			                Open Left Menu
+			              </material-button>
+			              <material-button ng-click="main.openRightMenu()" class="material-button-raised material-button-colored" style="height:30px;margin-left:20px">
+			                Open Right Menu
+			              </material-button>
+			               <material-button ng-click="main.createNotif()" class="material-button-raised material-button-colored" style="height:30px;margin-left:20px">
+			                Open Notif
+			              </material-button>
+			              <material-button ng-click="main.createNotif()" class="material-button-raised" style="height:30px;margin-left:20px;width:60px">
+			                <img src="public/img/send.svg" alt="send" style="margin-top:-4px;">
+			              </material-button>	
+			            </section>
+				    </div>
+				    <div class="bonjour-tools">Tres</div>
+				  </div>
 			</material-toolbar>
 		  	<section layout="horizontal" container-height ng-view style="position:relative">
 			  	

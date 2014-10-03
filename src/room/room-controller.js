@@ -8,20 +8,26 @@ angular.module('roomModule')
 		$scope.rooms = user.rooms;
 		$scope.currentRoom = null;
 		$scope.currentTopic = null;
+		$scope.loading = {
+			rooms:true,
+			topics:true,
+			comments:true
+		};
 
 		var roomsPromise = user.loadRooms();
-		$scope.loading = "Loading";
+		$scope.loading.rooms = true;
 		roomsPromise.then(function(){
-			$scope.loading= "";
+			$scope.loading.rooms= false;
 			console.log($scope.rooms);
 			$scope.selectRoom(user.rooms[0].id);
 		})
 
 		$scope.selectRoom = function(id){
 			var roomPromise = user.loadRoom(id);
-			$scope.loadingTopic = "Loading";
+			$scope.loading.topics = true;
+			$scope.loading.comments = true;
 			roomPromise.then(function(){
-				$scope.loadingTopic = "";
+				$scope.loading.topics = false;
 				$scope.currentRoom = user.getRoom(id);
 				console.log($scope.currentRoom.lastActiveTopic);
 				$scope.selectTopic($scope.currentRoom.lastActiveTopic.id);
@@ -32,9 +38,9 @@ angular.module('roomModule')
 
 		$scope.selectTopic = function(id){
 			var commentPromise = user.loadTopic(id);
-			$scope.loadingComment = "Loading";
+			$scope.loading.comments = true;
 			commentPromise.then(function(){
-				$scope.loadingComment = "";
+				$scope.loading.comments = false;
 				$scope.currentTopic = $scope.currentRoom.getTopic(id);
 				console.log($scope.currentTopic);
 			})
@@ -42,7 +48,8 @@ angular.module('roomModule')
 
 		$scope.getCommentAvatar = function(username){
 			var usr = _.find($scope.currentRoom.participants,{'username':username});
-			return usr.avatar.data;
+			return usr.avatar;
+			
 		}
 	}
 ]);

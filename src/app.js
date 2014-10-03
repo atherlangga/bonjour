@@ -22,6 +22,9 @@ angular.module('bonjour', [
   this.openRightMenu = function() {
     $materialSidenav('right').toggle();
   };
+  this.showRightMenu = function() {
+    $materialSidenav('right').open();
+  };
   this.toggleLeftMenu = function() {
     _this.leftStatus = !_this.leftStatus;
   };
