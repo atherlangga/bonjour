@@ -85,6 +85,8 @@ describe("Qiscus Listener", function() {
 		assert.equal(1210, someTopic.comments[0].id);
 		assert.equal("Test", someTopic.comments[0].message);
 		assert.equal("QiscusTest01", someTopic.comments[0].sender);
-		assert.equal("qiscustest01@dispostable.com", someTopic.comments[0].senderEmail);
+		
+		// Check the internal representation of date "2014-09-25T08:56:01Z"
+		assert.equal(1411635361000, someTopic.comments[0].date.getTime());
 	});
 });
