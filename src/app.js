@@ -41,11 +41,11 @@ angular.module('bonjour', [
       iconUrl: "bonjour-128.png"
     }
     chrome.notifications.create("id"+_this.notID++,options,function(notID){
-      /*setTimeout(function() {
+      setTimeout(function() {
         chrome.notifications.clear(notID, function(wasCleared) {
           console.log("Notification " + notID + " cleared: " + wasCleared);
         });
-      }, 3000);*/
+      }, 3000);
     });
   }
 });
@@ -80,6 +80,7 @@ angular.module('bonjour')
          elem[0].style.height = window.innerHeight-26-64;
          document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-26-64-48;
          document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-26-64-48;
+         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-26-64-48-30;
          //console.log(elem.clientHeight);
          //console.log(elem[0].style.height);
        },0);
@@ -88,6 +89,7 @@ angular.module('bonjour')
        	 elem[0].style.height = window.innerHeight-26-64;
          document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-26-64-48;
          document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-26-64-48;
+         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-26-64-48-30;
        }
   	}
   } 

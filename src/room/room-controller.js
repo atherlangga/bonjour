@@ -46,10 +46,10 @@ angular.module('roomModule')
 			})
 		}
 
-		$scope.getCommentAvatar = function(username){
-			var usr = _.find($scope.currentRoom.participants,{'username':username});
-			return usr.avatar;
-			
+		$scope.sendComment = function(){
+			console.log({id:$scope.currentTopic.id,cmt:$scope.commentMessage})
+			user.postComment($scope.currentTopic.id,$scope.commentMessage);
+			$scope.commentMessage = "";
 		}
 	}
 ]);

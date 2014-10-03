@@ -239,7 +239,7 @@ ul.ripple li a {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	z-index: 5;
+	z-index: 3;
 	background-color: #F5F7FA;
 }
 
@@ -249,6 +249,10 @@ ul.ripple li a {
 	left: 43%;
 }
 
+.loader.loader-comment{
+	z-index: 0;
+}
+
 .loader.loader-comment svg{
 	left:45%;
 	top: 35%;
@@ -256,4 +260,19 @@ ul.ripple li a {
 
 .loader.loading{
 	display: block;
+}
+
+.section-post-comment{
+	position: fixed;
+	bottom: 0px;
+	padding: 5px;
+	z-index: 2;
+}
+
+.section-post-comment.loading{
+	z-index: -1;
+}
+
+.section-post-comment section #comment{
+	min-width: 660px;
 }
