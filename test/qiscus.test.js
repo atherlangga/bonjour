@@ -92,9 +92,33 @@ describe("User", function() {
 });
 
 describe("Room", function() {
-	it("should be able to contain a new Participant");
-	it("should be able to receive existing Participant");
-	it("should not have duplicated Participant");
+	it("should be able to contain a new Participant", function() {
+		var room = new qiscus.Room(1, "One");
+		var participant = new qiscus.Participant(1, "SomeParticipant", "someone@somewhere.net");
+		assert.equal(room.participants.length, 0);
+
+		room.addParticipant(participant);
+		assert.equal(room.participants.length, 1);
+	});
+
+	it("should be able to receive existing Participant", function() {
+		var room = new qiscus.Room(1, "One");
+		var participant = new qiscus.Participant(1, "SomeParticipant", "someone@somewhere.net");
+
+		room.addParticipant(participant);
+		assert.equal(room.participants[0], participant);
+	});
+
+	it("should not have duplicated Participant", function() {
+		var room = new qiscus.Room(1, "One");
+		var participant = new qiscus.Participant(1, "SomeParticipant", "someone@somewhere.net");
+
+		room.addParticipant(participant);
+		assert.equal(room.participants.length, 1);
+
+		room.addParticipant(participant);
+		assert.equal(room.participants.length, 1);
+	});
 	
 	it("should be able to contain a new topic", function() {
 		var room = new qiscus.Room(1, "One");
