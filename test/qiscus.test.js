@@ -195,4 +195,16 @@ describe("Topic", function() {
 		assert.equal(1, topic.comments.length);
 		assert.equal(comment, topic.comments[0]);
 	});
+
+	it("should not receive duplicated Comment", function() {
+		var topic = new qiscus.Topic(10, "TopicNumberTen");
+		var commentOne = new qiscus.Comment(100, "SomeComment");
+		var commentTwo = new qiscus.Comment(100, "SomeComment");
+
+		topic.addComment(commentOne);
+		topic.addComment(commentTwo); // should be ignored.
+
+		assert.equal(1, topic.comments.length);
+		assert.equal(commentOne, topic.comments[0]);
+	});
 });
