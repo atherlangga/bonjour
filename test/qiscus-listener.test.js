@@ -83,6 +83,7 @@ describe("Qiscus Listener", function() {
 
 		qiscusListener.handleCommentPosted(eventData, user);
 
+		// Check basic properties of the Comment.
 		assert.equal(1, someTopic.comments.length);
 		assert.equal(1210, someTopic.comments[0].id);
 		assert.equal("Test", someTopic.comments[0].message);
@@ -90,5 +91,9 @@ describe("Qiscus Listener", function() {
 		
 		// Check the internal representation of date "2014-09-25T08:56:01Z"
 		assert.equal(1411635361000, someTopic.comments[0].date.getTime());
+
+		// Check additional side-effect.
+		assert.equal(someRoom.lastTopicId, someTopic.id);
+		assert.equal(someRoom.lastCommentId, someTopic.comments[0].id);
 	});
 });

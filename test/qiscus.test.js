@@ -89,6 +89,28 @@ describe("User", function() {
 		assert.equal(roomOne, user.rooms[0]);
 		assert.equal(roomTwo, user.rooms[1]);
 	});
+
+	it ("should be able to sort Rooms based on each Room's last active Topic ID", function() {
+		var roomOne = new qiscus.Room(1, "One");
+		var roomTwo = new qiscus.Room(2, "Two");
+		var roomThree = new qiscus.Room(3, "Three");
+
+		var user = new qiscus.User();
+
+		roomOne.setLastTopicAndComment(102, 102);
+		roomTwo.setLastTopicAndComment(103, 103);
+		roomThree.setLastTopicAndComment(101, 101);
+
+		user.addRoom(roomOne);
+		user.addRoom(roomTwo);
+		user.addRoom(roomThree);
+
+		user.sortRooms();
+
+		assert.equal(roomTwo, user.rooms[0]);
+		assert.equal(roomOne, user.rooms[1]);
+		assert.equal(roomThree, user.rooms[2]);
+	});
 });
 
 describe("Room", function() {
