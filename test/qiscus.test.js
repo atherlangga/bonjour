@@ -111,6 +111,10 @@ describe("User", function() {
 		assert.equal(roomOne, user.rooms[1]);
 		assert.equal(roomThree, user.rooms[2]);
 	});
+
+	it ("should set loaded Room's loading flag to true when the loading is done");
+
+	it ("should set loaded Topic's loading flag to true when the loading is done");
 });
 
 describe("Room", function() {
@@ -206,5 +210,22 @@ describe("Topic", function() {
 
 		assert.equal(1, topic.comments.length);
 		assert.equal(commentOne, topic.comments[0]);
+	});
+
+	it ("should always have its Comments sorted", function() {
+		var topic = new qiscus.Topic(10, "TopicNumberTen");
+		
+		var commentOne = new qiscus.Comment(101, "SomeComment");
+		var commentTwo = new qiscus.Comment(102, "SomeComment");
+		var commentThree = new qiscus.Comment(103, "SomeComment");
+
+		// Adding comments *not* according to order.
+		topic.addComment(commentTwo);
+		topic.addComment(commentThree);
+		topic.addComment(commentOne);
+
+		assert.equal(topic.comments[0], commentOne);
+		assert.equal(topic.comments[1], commentTwo);
+		assert.equal(topic.comments[2], commentThree);
 	});
 });
