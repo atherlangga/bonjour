@@ -111,6 +111,10 @@ describe("User", function() {
 		assert.equal(roomOne, user.rooms[1]);
 		assert.equal(roomThree, user.rooms[2]);
 	});
+
+	it ("should set loaded Room's loading flag to true when the loading is done");
+
+	it ("should set loaded Topic's loading flag to true when the loading is done");
 });
 
 describe("Room", function() {
