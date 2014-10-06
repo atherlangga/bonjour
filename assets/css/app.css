@@ -199,8 +199,10 @@ ul.ripple li {
 ul.ripple li.bonjour-room-item.active,
 ul.ripple li.bonjour-topic-item.active{
 	background-color: hsl(180, 40%, 80%);
-	transition-duration: 200ms;
-	-webkit-transition-duration: 200ms;
+	transition-duration: 100ms;
+	-webkit-transition-duration: 100ms;
+	transition-delay:50ms;
+	-webkit-transition-delay:50ms;
 }
 
 
