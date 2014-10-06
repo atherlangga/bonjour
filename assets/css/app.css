@@ -199,8 +199,10 @@ ul.ripple li {
 ul.ripple li.bonjour-room-item.active,
 ul.ripple li.bonjour-topic-item.active{
 	background-color: hsl(180, 40%, 80%);
-	-webkit-transition-duration: 100ms;
+	transition-duration: 200ms;
+	-webkit-transition-duration: 200ms;
 }
+
 
 ul.ripple li a {
 	font: normal 14px/28px Cantarell, Arial, sans-serif;
@@ -244,6 +246,7 @@ ul.ripple li.insert-room.ng-move{
   -webkit-transform: translate3d(-100%, 0, 0);
   -webkit-transition-property: all;
   -webkit-transition-timing-function: ease-out-cubic;
+  transition-duration: 50ms;
   -webkit-transition-duration: 50ms;
 }
 
@@ -256,6 +259,7 @@ ul.ripple li.insert-topic.ng-move{
   -webkit-transform:translate3d(100%, 0, 0);
   -webkit-transition-property: all;
   -webkit-transition-timing-function: ease-out-cubic;
+  transition-duration: 50ms;
   -webkit-transition-duration: 50ms;
 }
 
