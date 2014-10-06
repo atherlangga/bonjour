@@ -4,7 +4,6 @@ angular.module('roomModule')
 	'user',
 	'_',
 	function($scope, user, _) {
-		//$scope.greeting = "Hello";
 		$scope.rooms = user.rooms;
 		$scope.currentRoom = null;
 		$scope.currentTopic = null;
@@ -18,9 +17,8 @@ angular.module('roomModule')
 		$scope.loading.rooms = true;
 		roomsPromise.then(function(){
 			$scope.loading.rooms= false;
-			console.log($scope.rooms);
 			$scope.selectRoom(user.rooms[0].id);
-		})
+		});
 
 		$scope.selectRoom = function(id){
 			var roomPromise = user.loadRoom(id);
@@ -29,10 +27,7 @@ angular.module('roomModule')
 			roomPromise.then(function(){
 				$scope.loading.topics = false;
 				$scope.currentRoom = user.getRoom(id);
-				console.log($scope.currentRoom.lastActiveTopic);
 				$scope.selectTopic($scope.currentRoom.lastActiveTopic.id);
-				console.log($scope.currentRoom);
-				
 			})
 		}
 
@@ -42,12 +37,10 @@ angular.module('roomModule')
 			commentPromise.then(function(){
 				$scope.loading.comments = false;
 				$scope.currentTopic = $scope.currentRoom.getTopic(id);
-				console.log($scope.currentTopic);
 			})
 		}
 
 		$scope.sendComment = function(){
-			console.log({id:$scope.currentTopic.id,cmt:$scope.commentMessage})
 			user.postComment($scope.currentTopic.id,$scope.commentMessage);
 			$scope.commentMessage = "";
 		}

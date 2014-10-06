@@ -17,7 +17,8 @@
                 </svg>
               </div>
               <ul class="ripple">
-                <li ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.showRightMenu();" class="bonjour-room-item" ng-class="{'active':currentRoom.id==room.id}">
+                <li ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.showRightMenu();" class="bonjour-room-item insert-room" ng-class="{'active':currentRoom.id==room.id}"
+              style="-webkit-transition-delay:{{$index * 50}}ms">
                   <a bonjour-ripple>{{ room.name}}</a>
                 </li>
               </ul>
@@ -35,29 +36,38 @@
               </div>
             <section layout="vertical" layout-sm="horizontal" layout-align="center center">
               <material-content class="bonjour-comment-listing material-theme-lightgrey" style="width:100%;padding:16px">
-              <material-list>
-               <material-item ng-repeat="comment in currentTopic.comments" ng-cloak class="bonjour-comment-item">
+              <ul id="comment-list">
+                <li ng-repeat="comment in currentTopic.comments" ng-cloak class="reveal-animation bonjour-comment-item" auto-scroll>
+                  <div class="bonjour-comment-left">
+                    <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}" width="30px" height="30px">
+                  </div>
+                  <div class="bonjour-comment-content">
+                   <strong>{{ comment.sender.username }}</strong>
+                   <pre>{{comment.message}}</pre>
+                 </div>
+                </li>
+              </ul>
+              <!-- <material-list>
+               <material-item>
                  <div class="material-tile-left">
                     <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}" width="30px" height="30px">
                  </div>
-                 <div class="material-tile-content">
+                 <div class="material-tile-content reveal-animation">
                    <h2>{{ comment.sender.username }}</h2>
                    <pre>{{comment.message}}</pre>
                  </div>
                </material-item>
-              </material-list>
+              </material-list> -->
             </material-content>
             </section>
             <section layout="vertical" class="section-post-comment" ng-class="{'loading':loading.comments}">
               <div class="comment-container">
-              <section layout="horizontal">
-                <textarea name="comment" id="comment" cols="70" rows="2" ng-model="commentMessage">
+                <textarea name="comment" id="comment" bonjour-text topic-id="{{currentTopic.id}}" class="msd-elastic bonjour-commentarea" ng-model="commentMessage">
                 
-              </textarea>
-                <material-button ng-click="sendComment()" class="material-button-raised" style="height:30px;margin-left:20px;width:60px">
+                </textarea>
+                <!-- <material-button ng-click="sendComment()" class="material-button-raised bonjour-send-comment-button" style="height:30px;margin-left:20px;width:60px">
                   <img src="public/img/send.svg" alt="send" style="margin-top:-4px;">
-                </material-button>
-              </section>
+                </material-button> -->
               </div>
             </section>
           </material-content>
@@ -77,16 +87,10 @@
                   </path>
                 </svg>
               </div>
-              <material-list>
-               <material-item ng-repeat="topic in currentRoom.topics" ng-cloak class="bonjour-topic-item" ng-click="selectTopic(topic.id)" ng-class="{'active':currentTopic.id==topic.id}">
-                 <div class="material-tile-left">
-                   <!-- <i class="fa fa-comment" style="font-size:24px"></i> -->
-                 </div>
-                 <div class="material-tile-content">
-                   <h2>{{ topic.title }}</h2>
-                   <h3>Raw denim you probably haven't heard of them</h3>
-                 </div>
-               </material-item>
-              </material-list>
+              <ul class="ripple">
+                <li ng-repeat="topic in currentRoom.topics" ng-cloak class="bonjour-topic-item insert-topic" ng-click="selectTopic(topic.id)" ng-class="{'active':currentTopic.id==topic.id}" style="-webkit-transition-delay:{{$index * 50}}ms">
+                  <a bonjour-ripple>{{ topic.title}}</a>
+                </li>
+              </ul>
             </material-content>
           </material-sidenav>

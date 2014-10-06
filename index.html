@@ -42,7 +42,11 @@
 			              </material-button>	
 			            </section>
 				    </div>
-				    <div class="bonjour-tools">Tres</div>
+				    <div class="bonjour-tools">
+				    	<material-button class="material-button-fab" style="height:32px;width:32px;" ng-click="main.refresh()">
+			                <i class="fa fa-refresh"></i>
+			              </material-button>
+				    </div>
 				  </div>
 			</material-toolbar>
 		  	<section layout="horizontal" container-height ng-view style="position:relative">
@@ -81,6 +85,7 @@
 		<!-- Load library for UI -->
 		<script type="text/javascript" src="components/angular-strap/dist/angular-strap.min.js"></script>
 		<script type="text/javascript" src="components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+		<script type="text/javascript" src="components/angular-elastic/elastic.js"></script>
 
 		<!-- Next, we load the application configuration -->
 		<script type="text/javascript" src="src/app.js"></script>

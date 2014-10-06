@@ -10,9 +10,10 @@ angular.module('bonjour', [
 	'roomModule',
   'ngAnimate',
   'ngMaterial',
-  'lodash'
+  'lodash',
+  'monospaced.elastic'
 ])
-.controller('MainController', function($scope, $materialSidenav) {
+.controller('MainController', function($scope, $materialSidenav,user) {
   var _this = this;
   this.leftStatus = true;
   this.rightStatus = true;
@@ -31,6 +32,9 @@ angular.module('bonjour', [
   this.toggleRightMenu = function() {
     _this.rightStatus = !_this.rightStatus;
   };
+  this.refresh = function(){
+    user.loadRooms();
+  }
 
   this.notID = 1;
   this.createNotif = function(){
@@ -69,7 +73,7 @@ angular.module('bonjour')
         $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|file|chrome-extension|blob):|data:image\//);
         // Angular before v1.2 uses $compileProvider.urlSanitizationWhitelist(...)
     }
-]);
+]).value('currentTopicId',null);
 
 angular.module('bonjour')
 .directive('containerHeight',function($timeout){
@@ -108,8 +112,6 @@ xhr.responseType = 'blob';
 xhr.onload = function(e) {
   var img = document.createElement('img');
   img.src = window.URL.createObjectURL(this.response);
-  console.log(this.response);
-  //document.body.appendChild(img);
   document.querySelector("#logo-qiscus").appendChild(img);
 };
 
