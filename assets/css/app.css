@@ -196,8 +196,10 @@ ul.ripple li {
 	margin-bottom: 4px;
 }
 
-ul.ripple li.active{
+ul.ripple li.bonjour-room-item.active,
+ul.ripple li.bonjour-topic-item.active{
 	background-color: hsl(180, 40%, 80%);
+	-webkit-transition-duration: 100ms;
 }
 
 ul.ripple li a {
@@ -233,25 +235,28 @@ ul.ripple li a {
 	100% {opacity: 0; transform: scale(2.5);-webkit-transform: scale(2.5);}
 }
 
+ul.ripple li.insert-room{
+  -webkit-transform:none;
+}
 
-.insert-room.ng-enter{
+ul.ripple li.insert-room.ng-enter,
+ul.ripple li.insert-room.ng-move{
   -webkit-transform: translate3d(-100%, 0, 0);
-  /* -webkit-transition-property: all;
-  -webkit-transition-timing-function: ease-out-cubic; */
+  -webkit-transition-property: all;
+  -webkit-transition-timing-function: ease-out-cubic;
   -webkit-transition-duration: 50ms;
 }
-.insert-room{
+
+ul.ripple li.insert-topic{
   -webkit-transform:none;
 }
 
-.insert-topic.ng-enter{
+ul.ripple li.insert-topic.ng-enter,
+ul.ripple li.insert-topic.ng-move{
   -webkit-transform:translate3d(100%, 0, 0);
-  /* -webkit-transition-property: all;
-  -webkit-transition-timing-function: ease-out-cubic; */
+  -webkit-transition-property: all;
+  -webkit-transition-timing-function: ease-out-cubic;
   -webkit-transition-duration: 50ms;
-}
-.insert-topic{
-  -webkit-transform:none;
 }
 
 .reveal-animation.ng-enter {

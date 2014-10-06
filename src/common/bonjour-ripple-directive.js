@@ -55,7 +55,6 @@ angular.module('bonjour')
         restrict: 'A',
         link: function (scope, element, attr) {
             if (scope.$last === true) {
-            	console.log(scope);
                 $timeout(function () {
                 	var commentListing = document.querySelector(".bonjour-comment-listing");
                 	if(typeof scope.$parent.currentTopic.opened === "undefined" || currentTopicId==null || currentTopicId!=scope.$parent.currentTopic.id){
@@ -65,10 +64,10 @@ angular.module('bonjour')
                 	if(scope.$parent.currentTopic.opened == false){
 		               commentListing.scrollTop = commentListing.scrollHeight;
 		               scope.$parent.currentTopic.opened = true;
-		            }else{
-		            	if((commentListing.scrollHeight-commentListing.scrollTop) < 900)
-		            		commentListing.scrollTop = commentListing.scrollHeight;
-		            }
+		              }else{
+		            	 if((commentListing.scrollHeight-commentListing.scrollTop) < 900)
+		            		  commentListing.scrollTop = commentListing.scrollHeight;
+		              }
                 });
             }
         }
