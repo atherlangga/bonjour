@@ -58,13 +58,13 @@ angular.module('bonjour')
             	console.log(scope);
                 $timeout(function () {
                 	var commentListing = document.querySelector(".bonjour-comment-listing");
-                	if(typeof scope.$parent.currentTopic.opened === "undefined" || currentTopicId==null || currentTopicId!=scope.$parent.currentTopic.id){
-                		scope.$parent.currentTopic.opened = false;
-                		currentTopicId=scope.$parent.currentTopic.id;
+                	if(typeof scope.$parent.selected.topic.opened === "undefined" || currentTopicId==null || currentTopicId!=scope.$parent.selected.topic.id){
+                		scope.$parent.selected.topic.opened = false;
+                		currentTopicId=scope.$parent.selected.topic.id;
                 	}
-                	if(scope.$parent.currentTopic.opened == false){
+                	if(scope.$parent.selected.topic.opened == false){
 		               commentListing.scrollTop = commentListing.scrollHeight;
-		               scope.$parent.currentTopic.opened = true;
+		               scope.$parent.selected.topic.opened = true;
 		            }else{
 		            	if((commentListing.scrollHeight-commentListing.scrollTop) < 900)
 		            		commentListing.scrollTop = commentListing.scrollHeight;

@@ -33,7 +33,15 @@ angular.module('bonjour', [
     _this.rightStatus = !_this.rightStatus;
   };
   this.refresh = function(){
-    user.loadRooms();
+    user.rooms.length = 0; // TODO: Process this in the core instead of here.
+    
+    var roomsPromise = user.loadRooms();
+    roomsPromise.then(function() {
+      var roomPromise = user.loadRoom(user.rooms[0].id);
+      roomPromise.then(function() {
+        user.loadTopic(user.selected.room.lastTopicId);
+      });
+    });
   }
 
   this.notID = 1;
