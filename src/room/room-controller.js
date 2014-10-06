@@ -13,11 +13,11 @@ angular.module('roomModule')
 
 		$scope.selectRoom = function(id){
 			$scope.currentRoom = user.getRoom(id);
-			$scope.currentTopic = $scope.currentRoom.getTopic($scope.currentRoom.lastActiveTopicId);
+			$scope.currentTopic = $scope.currentRoom.getTopic($scope.currentRoom.lastTopicId);
 
 			var roomPromise = user.loadRoom(id);
 			roomPromise.then(function(){
-				$scope.selectTopic($scope.currentRoom.lastActiveTopicId);
+				$scope.selectTopic($scope.currentRoom.lastTopicId);
 			})
 		}
 
