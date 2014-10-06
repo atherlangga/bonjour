@@ -28,12 +28,12 @@
     "tests"
   ],
   "dependencies": {
-    "Bootflat": "~2.0.4",
     "angular-strap": "~2.1.0",
     "fontawesome": "~4.2.0",
     "angular-material": "~0.0.3",
     "animate-css": "~3.2.0",
-    "angular-elastic": "~2.4.0"
+    "angular-elastic": "~2.4.0",
+    "ng-textcomplete": "~0.5.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.24"
