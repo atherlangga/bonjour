@@ -104,8 +104,6 @@ angular.module('lodash', []).factory('_', function() {
     return window._; // assumes underscore has already been loaded on the page
 });
 
-
-
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://www.qisc.us/assets/qiscus-062f3f48c42c4d051336c96edf52a4af.png', true);
 xhr.responseType = 'blob';
