@@ -6,6 +6,7 @@ angular.module('roomModule', ['qiscusModule']);
 // Declare this application main module.
 angular.module('bonjour', [
 	'ngRoute',
+  'ngSanitize',
 	'connectivityModule',
 	'roomModule',
   'ngAnimate',

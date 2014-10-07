@@ -18,7 +18,7 @@
               </div>
               <ul class="ripple">
                 <li ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.showRightMenu();" class="bonjour-room-item insert-room" ng-class="{'active':selected.room.id==room.id}"
-              style="-webkit-transition-delay:{{$index * 50}}ms">
+              style="-webkit-transition-delay:{{$index * 30}}ms">
                   <a bonjour-ripple>{{ room.name}}</a>
                 </li>
               </ul>
@@ -43,21 +43,10 @@
                   </div>
                   <div class="bonjour-comment-content">
                    <strong>{{ comment.sender.username }}</strong>
-                   <pre>{{comment.message}}</pre>
+                   <pre ng-bind-html="comment.message | linky:'_blank'"></pre>
                  </div>
                 </li>
               </ul>
-              <!-- <material-list>
-               <material-item>
-                 <div class="material-tile-left">
-                    <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}" width="30px" height="30px">
-                 </div>
-                 <div class="material-tile-content reveal-animation">
-                   <h2>{{ comment.sender.username }}</h2>
-                   <pre>{{comment.message}}</pre>
-                 </div>
-               </material-item>
-              </material-list> -->
             </material-content>
             </section>
             <section layout="vertical" class="section-post-comment" ng-class="{'loading':selected.topic == null || (selected.topic.comments.length == 0 && selected.topic.isBeingLoaded)}">
@@ -88,7 +77,7 @@
                 </svg>
               </div>
               <ul class="ripple">
-                <li ng-repeat="topic in selected.room.topics" ng-cloak class="bonjour-topic-item insert-topic" ng-click="selectTopic(topic.id)" ng-class="{'active':selected.topic.id==topic.id}" style="-webkit-transition-delay:{{$index * 50}}ms">
+                <li ng-repeat="topic in selected.room.topics" ng-cloak class="bonjour-topic-item insert-topic" ng-click="selectTopic(topic.id)" ng-class="{'active':selected.topic.id==topic.id}" style="-webkit-transition-delay:{{$index * 30}}ms">
                   <a bonjour-ripple>{{ topic.title}}</a>
                 </li>
               </ul>
