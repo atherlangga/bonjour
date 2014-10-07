@@ -115,6 +115,8 @@ describe("User", function() {
 	it ("should set loaded Room's loading flag to true when the loading is done");
 
 	it ("should set loaded Topic's loading flag to true when the loading is done");
+
+	it ("should be able to clear its internal data");
 });
 
 describe("Room", function() {
