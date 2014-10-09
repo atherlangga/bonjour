@@ -2,7 +2,7 @@
 	// Required
 	"app": {
 		"background": {
-			"scripts": ["main.js"]
+			"scripts": ["bonjour.js"]
 		}
 	},
 	"manifest_version": 2,
