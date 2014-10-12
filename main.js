@@ -1,12 +1,13 @@
 
 require.config({
 	paths: {
-		'lodash'        : 'components/lodash/dist/lodash',
-		'pusher'        : 'components/pusher/pusher',
-		'angular'       : 'components/angular/angular',
-		'angular-route' : 'components/angular-route/angular-route',
-		'angularAMD'    : 'components/angularAMD/angularAMD',
-		'ngload'        : 'components/angularAMD/ngload',
+		'lodash'            : 'components/lodash/dist/lodash',
+		'pusher'            : 'components/pusher/pusher',
+		'angular'           : 'components/angular/angular',
+		'angular-route'     : 'components/angular-route/angular-route',
+		'angular-ui-router' : 'components/angular-ui-router/release/angular-ui-router',
+		'angularAMD'        : 'components/angularAMD/angularAMD',
+		'ngload'            : 'components/angularAMD/ngload',
 
 		'qiscus'            : 'lib/qiscus/qiscus',
 		'qiscus-api-client' : 'lib/qiscus/qiscus-api-client',
@@ -25,6 +26,9 @@ require.config({
 			exports: 'angular'
 		},
 		'angular-route': {
+			deps: ['angular']
+		},
+		'angular-ui-router': {
 			deps: ['angular']
 		},
 		'angularAMD': {
