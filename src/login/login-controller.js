@@ -23,7 +23,7 @@ function(app) {
 						$rootScope.baseUrl = baseUrl;
 						$rootScope.token   = response.token;
 
-						$location.url("room");
+						$location.url("frame/chatroom");
 					}
 				});
 			};

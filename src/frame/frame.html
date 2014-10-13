@@ -1,0 +1,18 @@
+	<div layout="vertical">
+		<div layout="horizontal" flex>
+			<div class="bonjour-draggable material-theme-darkgrey">
+			</div>
+
+			<div class="bonjour-controls material-theme-darkgrey">
+				<a class="bonjour-window-control bonjour-control-minimize" ng-click="minimize()"><i class="fa fa-minus"></i></a>
+				<span ng-switch="status">
+					<a ng-cloak ng-switch-when="false" class="bonjour-window-control bonjour-control-maximize" ng-click="maximize()"><i class="fa fa-expand"></i></a>
+					<a ng-cloak ng-switch-when="true" class="bonjour-window-control bonjour-control-maximize" ng-click="normalize()"><i class="fa fa-compress"></i></a>
+				</span>
+				<a class="bonjour-window-control bonjour-control-close" ng-click="close()"><i class="fa fa-times"></i></a>
+			</div>
+
+		</div>
+
+		<div ui-view></div>
+	</div>
