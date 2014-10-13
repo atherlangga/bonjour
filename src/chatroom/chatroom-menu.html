@@ -1,0 +1,26 @@
+<material-toolbar class="material-theme-darkgrey material-whiteframe-z1">
+	<div layout="horizontal">
+		<div class="bonjour-logo">
+			<h2 class="material-toolbar-tools" id="logo-qiscus">
+			</h2>
+		</div>
+		<div flex class="bonjour-info">
+			<section layout="vertical" layout-sm="horizontal" layout-align="center center" style="margin-top:10px">
+				<material-button ng-click="openLeftMenu()" class="material-button-raised material-button-colored" style="height:30px">
+					Open Left Menu
+				</material-button>
+				<material-button ng-click="openRightMenu()" class="material-button-raised material-button-colored" style="height:30px;margin-left:20px">
+					Open Right Menu
+				</material-button>
+				<material-button ng-click="createNotification()" class="material-button-raised material-button-colored" style="height:30px;margin-left:20px">
+					Open Notif
+				</material-button>
+			</section>
+		</div>
+		<div class="bonjour-tools">
+			<material-button class="material-button-fab" style="height:32px;width:32px;" ng-click="refresh()">
+				<i class="fa fa-refresh"></i>
+			</material-button>
+		</div>
+	</div>
+</material-toolbar>

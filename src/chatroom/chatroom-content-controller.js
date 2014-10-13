@@ -1,6 +1,6 @@
 define(['../app', '../qiscus/qiscus-service'],
 function(app, qiscusService) {
-	app.controller('RoomController',['$scope', 'user',
+	app.controller('ChatroomContentController',['$scope', 'user',
 		function($scope, user) {
 			$scope.rooms = user.rooms;
 			$scope.selected = user.selected;

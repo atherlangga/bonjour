@@ -1,0 +1,11 @@
+<section layout="horizontal" container-height style="position:relative">
+
+	<div>Loading ? {{ isLoggingIn }}</div>
+
+	<form ng-submit="login()">
+		<input type="text" ng-model="email" />
+		<input type="password" ng-model="password" />
+		<input type="submit" value="Login" />
+	</form>
+
+</section>

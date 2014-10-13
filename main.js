@@ -7,6 +7,7 @@ require.config({
 		'angular-route'     : 'components/angular-route/angular-route',
 		'angular-ui-router' : 'components/angular-ui-router/release/angular-ui-router',
 		'angularAMD'        : 'components/angularAMD/angularAMD',
+		'angular-material'  : 'components/angular-material/angular-material',
 		'ngload'            : 'components/angularAMD/ngload',
 
 		'qiscus'            : 'lib/qiscus/qiscus',
@@ -32,6 +33,9 @@ require.config({
 			deps: ['angular']
 		},
 		'angularAMD': {
+			deps: ['angular']
+		},
+		'angular-material': {
 			deps: ['angular']
 		},
 		'ngload': {
