@@ -1,4 +1,4 @@
-<html ng-app="bonjour" ng-csp>
+<html ng-csp>
 	<head>
 		<title>Qiscus | Messaging For Getting Work Done</title>
 		<!-- Sets initial viewport load and disables zooming  -->
@@ -9,97 +9,9 @@
 	</head>
 
 	<body class="layout-demo demo-no-padding">
-		<div layout="vertical" ng-controller="MainController as main">
-			<div layout="horizontal" flex>
-				<div class="bonjour-draggable material-theme-darkgrey">
-					
-				</div>
-			<div class="bonjour-controls material-theme-darkgrey" ng-controller="NavController">
-				<a class="bonjour-window-control bonjour-control-minimize" ng-click="minimize()"><i class="fa fa-minus"></i></a>
-				<span ng-switch="status">
-					<a ng-cloak ng-switch-when="false" class="bonjour-window-control bonjour-control-maximize" ng-click="maximize()"><i class="fa fa-expand"></i></a>
-					<a ng-cloak ng-switch-when="true" class="bonjour-window-control bonjour-control-maximize" ng-click="normalize()"><i class="fa fa-compress"></i></a>
-				</span>
-	  			<a class="bonjour-window-control bonjour-control-close" ng-click="close()"><i class="fa fa-times"></i></a>
-			</div>
-			</div>
-			<material-toolbar class="material-theme-darkgrey material-whiteframe-z1">
-				<div layout="horizontal">
-				    <div class="bonjour-logo">
-				    	<h2 class="material-toolbar-tools" id="logo-qiscus">
-						</h2>
-				    </div>
-				    <div flex class="bonjour-info">
-				    	<section layout="vertical" layout-sm="horizontal" layout-align="center center" style="margin-top:10px">
-			              <material-button ng-click="main.openLeftMenu()" class="material-button-raised material-button-colored" style="height:30px">
-			                Open Left Menu
-			              </material-button>
-			              <material-button ng-click="main.openRightMenu()" class="material-button-raised material-button-colored" style="height:30px;margin-left:20px">
-			                Open Right Menu
-			              </material-button>
-			               <material-button ng-click="main.createNotif()" class="material-button-raised material-button-colored" style="height:30px;margin-left:20px">
-			                Open Notif
-			              </material-button>	
-			            </section>
-				    </div>
-				    <div class="bonjour-tools">
-				    	<material-button class="material-button-fab" style="height:32px;width:32px;" ng-click="main.refresh()">
-			                <i class="fa fa-refresh"></i>
-			              </material-button>
-				    </div>
-				  </div>
-			</material-toolbar>
-		  	<section layout="horizontal" container-height ng-view style="position:relative">
-			  	
-		  	</section>
-		</div>
+		<section layout="horizontal" container-height ng-view style="position:relative">
+		</section>
 
-
-		<!-- 
-		     Define the Javascript loading below.
-		     Note that order matters!
-		-->
-
-		<!-- First, we load all the base library/module -->
-		<script type="text/javascript" src="lib/lodash/lodash.js"></script>
-		<script type="text/javascript" src="lib/pusher/pusher.js"></script>
-		<script type="text/javascript" src="components/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src="components/angular/angular.js"></script>
-		<script type="text/javascript" src="components/angular-animate/angular-animate.js"></script>
-		<script type="text/javascript" src="components/hammerjs/hammer.js"></script>
-		<script type="text/javascript" src="components/angular-material/angular-material.js"></script>
-
-		<!-- Next, we load Qiscus-specific library -->
-		<script type="text/javascript" src="lib/qiscus/qiscus.js"></script>
-		<script type="text/javascript" src="lib/qiscus/qiscus-api-client.js"></script>
-		<script type="text/javascript" src="lib/qiscus/qiscus-listener.js"></script>
-
-		<!-- Load the adapters for Qiscus -->
-		<script type="text/javascript" src="lib/qiscus-adapters/qiscus-api-client-angular.js"></script>
-		<script type="text/javascript" src="lib/qiscus-adapters/qiscus-listener-pusher.js"></script>
-		<script type="text/javascript" src="lib/qiscus-adapters/qiscus-promises-angular.js"></script>
-		
-		<!-- Load Angular-based library -->
-		<script type="text/javascript" src="lib/angular-route/angular-route.js"></script>
-		<script type="text/javascript" src="components/angular-sanitize/angular-sanitize.js"></script>
-
-		<!-- Load library for UI -->
-		<script type="text/javascript" src="components/angular-strap/dist/angular-strap.min.js"></script>
-		<script type="text/javascript" src="components/angular-strap/dist/angular-strap.tpl.min.js"></script>
-		<script type="text/javascript" src="components/angular-elastic/elastic.js"></script>
-
-		<!-- Next, we load the application configuration -->
-		<script type="text/javascript" src="src/app.js"></script>
-
-		<!-- Then, load the essential module -->
-		<script type="text/javascript" src="src/connectivity/connectivity-module.js"></script>
-		<script type="text/javascript" src="src/qiscus/qiscus-module.js"></script>
-		
-		<!-- Last, we load all the controllers -->
-		<script type="text/javascript" src="src/nav-controller.js"></script>
-		<script type="text/javascript" src="src/room/room-controller.js"></script>
-
-		<!-- Common src lib-->
-		<script type="text/javascript" src="src/common/bonjour-ripple-directive.js"></script>
+		<script type="text/javascript" src="components/requirejs/require.js" data-main="main.js"></script>
 	</body>
 </html>

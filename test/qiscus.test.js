@@ -1,6 +1,6 @@
 var assert = require("assert");
+var Q      = require("q");
 var qiscus = require("../lib/qiscus/qiscus");
-var Q      = require("../lib/q/q");
 
 describe("User", function() {
 	it ("won't have Room when first instantiated", function() {
