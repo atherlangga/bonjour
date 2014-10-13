@@ -2,6 +2,7 @@
 require.config({
 	paths: {
 		'lodash'            : 'components/lodash/dist/lodash',
+		'jquery'            : 'components/jquery/dist/jquery',
 		'pusher'            : 'components/pusher/pusher',
 		'angular'           : 'components/angular/angular',
 		'angular-route'     : 'components/angular-route/angular-route',

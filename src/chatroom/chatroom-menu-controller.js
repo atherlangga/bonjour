@@ -1,4 +1,4 @@
-define(['../app', '../qiscus/qiscus-service', 'angular-material'],
+define(['../app', '../qiscus/qiscus-service', 'angular-material', './chatroom-directive'],
 function(app, qiscusService, angularMaterial) {
 	app.controller('ChatroomMenuController', ['$scope', '$materialSidenav', 'user',
 		function($scope, $materialSidenav, user) {

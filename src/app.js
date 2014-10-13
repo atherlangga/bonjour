@@ -48,7 +48,9 @@ function(angular, angularRoute, angularAMD) {
 			}
 		}));
 	}])
-	.value('baseUrl', 'http://staging.qisc.us');
+	.value('baseUrl', 'http://staging.qisc.us')
+	.value('currentTopicId', null)
+	;
 
 	return angularAMD.bootstrap(app);
 });
