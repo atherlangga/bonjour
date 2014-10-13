@@ -5,6 +5,12 @@ function(app) {
 		function($rootScope, $scope, $http, $location, baseUrl) {
 			$scope.isLoggingIn = false;
 
+			// Try getting valid default email address.
+			chrome.storage.local.get('email', function(result) {
+				$scope.email = result.email;
+				$scope.$apply();
+			});
+
 			$scope.login = function() {
 				var email    = $scope.email;
 				var password = $scope.password;
@@ -22,6 +28,9 @@ function(app) {
 						$rootScope.email   = email;
 						$rootScope.baseUrl = baseUrl;
 						$rootScope.token   = response.token;
+
+						// Store valid email address on the local storage.
+						chrome.storage.local.set({"email": $scope.email});
 
 						$location.url("frame/chatroom");
 					}
