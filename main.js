@@ -3,7 +3,7 @@ require.config({
 	paths: {
 		'lodash'            : 'components/lodash/dist/lodash',
 		'jquery'            : 'components/jquery/dist/jquery',
-		'pusher'            : 'components/pusher/pusher',
+		'pusher'            : 'components/pusher/dist/pusher',
 		'angular'           : 'components/angular/angular',
 		'angular-route'     : 'components/angular-route/angular-route',
 		'angular-ui-router' : 'components/angular-ui-router/release/angular-ui-router',

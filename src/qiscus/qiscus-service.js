@@ -4,8 +4,8 @@
 // This module is simply a wrapper over Qiscus library.
 ////
 
-define(['../app', 'qiscus-promises-angular', 'qiscus-api-client-angular'],
-function(app) {
+define(['../app', 'angularAMD', 'qiscus-promises-angular', 'qiscus-api-client-angular', 'qiscus-listener-pusher'],
+function(app, angularAMD) {
 	app.factory('promises', ['$q',
 		function($q) {
 			return new qiscusPromises.Angular($q);
@@ -44,7 +44,8 @@ function(app) {
 			return listener;
 		}]);
 
-	app.run(['user', 'listener', '$rootScope', function(user, listener, $rootScope) {
+	// This block is a replacement for `app.run` method.
+	angularAMD.inject(['user', 'listener', '$rootScope', function(user, listener, $rootScope) {
 		// Before we execute all the code inside this module, we need to do
 		// two things:
 		//
@@ -61,4 +62,5 @@ function(app) {
 			});
 		});
 	}]);
+
 });
