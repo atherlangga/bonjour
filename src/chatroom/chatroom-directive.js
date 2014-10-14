@@ -58,7 +58,6 @@ function(app) {
 			restrict: 'A',
 			link: function (scope, element, attr) {
 				if (scope.$last === true) {
-					console.log(scope);
 					$timeout(function () {
 						var commentListing = document.querySelector(".bonjour-comment-listing");
 						if(typeof scope.$parent.selected.topic.opened === "undefined" || currentTopicId==null || currentTopicId!=scope.$parent.selected.topic.id){
