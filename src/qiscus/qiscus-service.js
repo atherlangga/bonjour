@@ -26,11 +26,10 @@ function(app, angularAMD) {
 				$rootScope.email, apiClient, promises);
 		}]);
 
-	app.factory('listener', ['$rootScope', 'user',
-		function($rootScope, user) {
+	app.factory('listener', ['$rootScope', 'pusherApiKey', 'user',
+		function($rootScope, pusherApiKey, user) {
 			// Create the Pusher instance, along with the API key.
-			//var pusher = new Pusher('896d049b53f1659213a2'); // Production
-			var pusher = new Pusher('4c20f4052ecd7ffc6b0d'); // Staging
+			var pusher = new Pusher(pusherApiKey);
 
 			var onAfterEvent = function() {
 				// Everytime Pusher done processing event, we'll
