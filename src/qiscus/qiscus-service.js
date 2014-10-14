@@ -51,10 +51,17 @@ function(app, angularAMD) {
 		// 1. Listen to the user event first,
 		listener.listenUserEvent(user.email);
 		// and ..
-		// 2. Watch the rooms, so that whenever user's Rooms get changed,
-		//    we can attach our listener.
+		// 2. Watch the rooms, so we can manage Room listening accordingly.
 		$rootScope.rooms = user.rooms;
 		$rootScope.$watchCollection('rooms', function(newRooms, oldRooms) {
+			// Whenever there are removed Rooms, we unlisten them first.
+			var removedRooms = _.difference(oldRooms, newRooms);
+			_.each(removedRooms, function(room) {
+				listener.unlistenRoomEvent(room.channelCode);	
+			});
+
+			// Then, we detect where there any added Rooms. If so,
+			// we start listen to them.
 			var addedRooms = _.difference(newRooms, oldRooms);
 			_.each(addedRooms, function(room) {
 				listener.listenRoomEvent(room.channelCode);
