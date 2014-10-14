@@ -156,6 +156,13 @@ a.list-group-item.active:hover{
 	z-index: 2;
 }
 
+.bonjour-room-listing,
+.bonjour-topic-listing{
+	height: 100%;
+	overflow-y: auto;
+	overflow-x:hidden;
+}
+
 .room-topic-list-toolbar h2{
 	height: 48px;
 }

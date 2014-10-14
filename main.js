@@ -8,6 +8,7 @@ require.config({
 		'angular'           : 'components/angular/angular',
 		'angular-route'     : 'components/angular-route/angular-route',
 		'angular-ui-router' : 'components/angular-ui-router/release/angular-ui-router',
+		'angular-sanitize'	: 'components/angular-sanitize/angular-sanitize.min',
 		'angularAMD'        : 'components/angularAMD/angularAMD',
 		'angular-material'  : 'components/angular-material/angular-material',
 		'ngload'            : 'components/angularAMD/ngload',
@@ -32,6 +33,9 @@ require.config({
 			deps: ['angular']
 		},
 		'angular-ui-router': {
+			deps: ['angular']
+		},
+		'angular-sanitize':{
 			deps: ['angular']
 		},
 		'angularAMD': {
