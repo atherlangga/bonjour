@@ -112,11 +112,128 @@ describe("User", function() {
 		assert.equal(roomThree, user.rooms[2]);
 	});
 
-	it ("should set loaded Room's loading flag to true when the loading is done");
+	it ("should set loaded Room's loading flag to true when the loading is done", function(done) {
+		// Create Q promises adapter
+		var fakePromisesAdapter = {
+			all:      Q.all,
+			when:     Q.when,
+			resolved: Q.resolve,
+			rejected: Q.reject,
+			deferred: function() {
+				var deferred = Q.defer();
 
-	it ("should set loaded Topic's loading flag to true when the loading is done");
+				return {
+					promise: deferred.promise,
+					resolve: deferred.resolve,
+					reject:  deferred.reject
+				};
+			}
+		};
 
-	it ("should be able to clear its internal data");
+		var fakeAgent = {
+			'listTopics': function(roomId, callback) {
+				// Make sure when the agent is loading the Topics,
+				// flag `isBeingLoaded` is set to true.
+				assert.equal(roomOne.isBeingLoaded, true);
+				callback();
+			},
+			'listParticipants': function(roomId, callback) {
+				// Make sure when the agent is loading the Participants,
+				// flag `isBeingLoaded` is set to true.
+				assert.equal(roomOne.isBeingLoaded, true);
+				callback();
+			}
+		};
+
+		var roomOne = new qiscus.Room(1, "One");
+		var user = new qiscus.User("a@a.com", fakeAgent, fakePromisesAdapter);
+
+		user.addRoom(roomOne);
+
+		// Make sure that currently roomOne is not being loaded.
+		assert.equal(roomOne.isBeingLoaded, false);
+		user.loadRoom(roomOne.id)
+		.then(function() {
+			// Make sure that now loading is done.
+			assert.equal(roomOne.isBeingLoaded, false);
+			done();
+		});
+	});
+
+	it ("should set loaded Topic's loading flag to true when the loading is done", function(done) {
+		// Create Q promises adapter
+		var fakePromisesAdapter = {
+			all:      Q.all,
+			when:     Q.when,
+			resolved: Q.resolve,
+			rejected: Q.reject,
+			deferred: function() {
+				var deferred = Q.defer();
+
+				return {
+					promise: deferred.promise,
+					resolve: deferred.resolve,
+					reject:  deferred.reject
+				};
+			}
+		};
+
+		var fakeAgent = {
+			'listComments': function(topicId, lastCommentId, callback) {
+				// Make sure when the agent is loading the Topics,
+				// flag `isBeingLoaded` is set to true.
+				assert.equal(topicEleven.isBeingLoaded, true);
+				callback();
+			}
+		};
+
+		var roomOne = new qiscus.Room(1, "One");
+		var topicEleven = new qiscus.Topic(11, "Eleven");
+		var user = new qiscus.User("a@a.com", fakeAgent, fakePromisesAdapter);
+
+		roomOne.addTopic(topicEleven);
+		user.addRoom(roomOne);
+
+		// Make sure that currently topicEleven is not being loaded.
+		assert.equal(topicEleven.isBeingLoaded, false);
+		user.loadTopic(topicEleven.id)
+		.then(function() {
+			// Make sure that now loading is done.
+			assert.equal(topicEleven.isBeingLoaded, false);
+			done();
+		});
+	});
+
+	it ("should be able to clear its internal data", function() {
+		var roomOne = new qiscus.Room(1, "One");
+		var roomTwo = new qiscus.Room(2, "Two");
+		var roomThree = new qiscus.Room(3, "Three");
+
+		var user = new qiscus.User();
+
+		user.addRoom(roomOne);
+		user.addRoom(roomTwo);
+		user.addRoom(roomThree);
+
+		// Create another variable that holds reference to the
+		// user's Rooms.
+		var userRooms = user.rooms;
+
+		// Make sure the length is correct: 3
+		assert.equal(user.rooms.length, 3);
+		assert.equal(userRooms.length, 3);
+
+		// Start clearing.
+		user.clearData();
+
+		// Make sure the length is now equal to 0.
+		assert.equal(user.rooms.length, 0);
+		assert.equal(userRooms.length, 0);
+
+		// Equally important, make sure that the previous
+		// reference is still valid.
+		assert.equal(userRooms, user.rooms);
+	});
 });
 
 describe("Room", function() {
