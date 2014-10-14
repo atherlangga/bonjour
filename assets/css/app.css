@@ -383,8 +383,9 @@ ul.ripple li.insert-topic.ng-move{
 	display: block;
 }
 
-.bonjour-comment-left strong{
+.bonjour-comment-left span{
 	display:block;
+	font-size: 0.7em;
 	text-align: center;
 }
 
