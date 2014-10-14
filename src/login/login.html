@@ -1,11 +1,20 @@
-<section layout="horizontal" container-height style="position:relative">
-
-	<div>Loading ? {{ isLoggingIn }}</div>
-
-	<form ng-submit="login()">
-		<input type="text" ng-model="email" />
-		<input type="password" ng-model="password" />
-		<input type="submit" value="Login" />
-	</form>
+<section layout="horizontal" container-height style="position:relative;height:100%;">
+	
+	<div class="login-wrapper">
+		<form ng-submit="login()">
+			<img src="public/img/avatar/default-ava.png" class="face-login" alt="{{comment.sender}}" width="30px" height="30px">
+			<input type="text" ng-model="email" placeholder="Email" required />
+			<input type="password" ng-model="password" placeholder="Password" required />
+			<p class="login-error">{{error || " "}}</p>
+			<material-button type="submit" class="material-button-raised login-button" ng-disabled="isLoggingIn">
+				<span ng-switch="isLoggingIn">
+					<span ng-switch-when="true">Logging In. . . </span>
+					<span ng-switch-when="false">Login</span>
+				</span>
+			</material-button>
+		</form>
+	</div>
+	<div class="login-background">
+	</div>
 
 </section>

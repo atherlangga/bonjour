@@ -1,7 +1,7 @@
 define(['../app', '../qiscus/qiscus-service', '../connectivity/connectivity-service', './chatroom-directive', 'angular-material'],
 function(app) {
-	app.controller('ChatroomMenuController', ['$scope', '$materialSidenav', 'user', 'connectivityEvent',
-		function($scope, $materialSidenav, user, connectivityEvent) {
+	app.controller('ChatroomMenuController', ['$scope', '$location', '$materialSidenav', 'user', 'connectivityEvent',
+		function($scope, $location, $materialSidenav, user, connectivityEvent) {
 			var _this = this;
 			$scope.leftStatus = true;
 			$scope.rightStatus = true;
@@ -30,6 +30,12 @@ function(app) {
 			$scope.toggleRightMenu = function() {
 				_this.rightStatus = !_this.rightStatus;
 			};
+
+			$scope.logout = function(){
+				user.clearData();
+				$location.url('frame/login');
+
+			}
 
 			$scope.refresh = function() {
 				// Clear the data.

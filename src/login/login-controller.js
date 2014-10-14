@@ -1,9 +1,10 @@
-define(['../app'],
+define(['../app','angular-material'],
 function(app) {
 	app.controller('LoginController',[
 		'$rootScope', '$scope', '$http', '$location', 'baseUrl',
 		function($rootScope, $scope, $http, $location, baseUrl) {
 			$scope.isLoggingIn = false;
+			$scope.avatar = 'public/image/avatar/default-ava.png';
 
 			// Try getting valid default email address.
 			chrome.storage.local.get('email', function(result) {
@@ -14,6 +15,7 @@ function(app) {
 			$scope.login = function() {
 				var email    = $scope.email;
 				var password = $scope.password;
+				$scope.error="";
 
 				$scope.isLoggingIn = true;
 				$http({
@@ -33,6 +35,8 @@ function(app) {
 						chrome.storage.local.set({"email": $scope.email});
 
 						$location.url("frame/chatroom");
+					}else{
+						$scope.error = "The email or password you entered is incorrect.";
 					}
 				});
 			};
