@@ -48,9 +48,21 @@ function(angular, angularRoute, angularAMD) {
 			}
 		}));
 	}])
+
+	/*
+	// Production code with production database
+	.value('baseUrl', 'https://www.qisc.us')
+	.value('pusherApiKey', '896d049b53f1659213a2')
+	*/
+	/*
+	// Semi-staging code with production database
 	.value('baseUrl', 'https://qiscus-staging.herokuapp.com')
-	.value('pusherApiKey', '896d049b53f1659213a2')	  // Production
-	// .value('pusherApiKey', '4c20f4052ecd7ffc6b0d')   // Staging
+	.value('pusherApiKey', '896d049b53f1659213a2')
+	*/
+	// Staging code with staging database
+	.value('baseUrl', 'http://staging.qisc.us')
+	.value('pusherApiKey', '4c20f4052ecd7ffc6b0d')
+
 	.value('currentTopicId', null)
 	;
 
