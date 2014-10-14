@@ -32,14 +32,16 @@ function(app) {
 			};
 
 			$scope.refresh = function() {
+				// Clear the data.
 				user.clearData();
 				
-				var roomsPromise = user.loadRooms();
-				roomsPromise.then(function() {
-					var roomPromise = user.loadRoom(user.rooms[0].id);
-					roomPromise.then(function() {
-						user.loadTopic(user.selected.room.lastTopicId);
-					});
+				// Start reloading.
+				user.loadRooms()
+				.then(function(){
+					return user.loadRoom(user.rooms[0].id);
+				})
+				.then(function(){
+					return user.loadTopic(user.selected.room.lastTopicId);
 				});
 			}
 

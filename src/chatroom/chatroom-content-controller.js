@@ -2,22 +2,28 @@ define(['../app', '../qiscus/qiscus-service', '../connectivity/connectivity-serv
 function(app) {
 	app.controller('ChatroomContentController', ['$scope', 'user', 'connectivityEvent',
 		function($scope, user, connectivityEvent) {
+			// "Link" model and view.
 			$scope.rooms = user.rooms;
 			$scope.selected = user.selected;
 
-			var roomsPromise = user.loadRooms();
-			roomsPromise.then(function(){
-				$scope.selectRoom(user.rooms[0].id);
-			});
-
+			// Handle connectivity event.
 			connectivityEvent.addOnlineHandler(function() {
 				user.loadTopic(user.selected.topic.id);
+			});
+
+			// Start loading.
+			user.loadRooms()
+			.then(function(){
+				return user.loadRoom(user.rooms[0].id);
 			})
+			.then(function(){
+				return user.loadTopic(user.selected.room.lastTopicId);
+			});
 
 			$scope.selectRoom = function(id){
-				var roomPromise = user.loadRoom(id);
-				roomPromise.then(function(){
-					$scope.selectTopic(user.selected.room.lastTopicId);
+				user.loadRoom(id)
+				.then(function(){
+					return user.loadTopic(user.selected.room.lastTopicId);
 				})
 			}
 
