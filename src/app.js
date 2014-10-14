@@ -1,8 +1,8 @@
-define(['angular', 'angular-ui-router', 'angularAMD','angular-sanitize'],
+define(['angular', 'angular-ui-router', 'angularAMD','angular-sanitize','angular-material'],
 function(angular, angularRoute, angularAMD) {
 	'use strict';
 
-	var app = angular.module('bonjour', ['ui.router','ngSanitize'])
+	var app = angular.module('bonjour', ['ui.router','ngSanitize','ngMaterial'])
 	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		// The default route
 		$urlRouterProvider.otherwise('/frame');

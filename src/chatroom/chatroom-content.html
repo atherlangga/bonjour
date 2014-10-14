@@ -41,11 +41,11 @@
               <ul id="comment-list">
                 <li ng-repeat="comment in selected.topic.comments" ng-cloak class="reveal-animation bonjour-comment-item" auto-scroll>
                   <div class="bonjour-comment-left">
-                    <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}" width="30px" height="30px">
+                    <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}">
+                    <strong>{{ comment.sender.username }}</strong>
                   </div>
                   <div class="bonjour-comment-content">
-                   <strong>{{ comment.sender.username }}</strong>
-                   <pre ng-bind-html="comment.message | linky:'_blank'"></pre>
+                   <pre class="bubble" ng-bind-html="comment.message | linky:'_blank'"></pre>
                  </div>
                 </li>
               </ul>

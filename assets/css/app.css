@@ -40,6 +40,9 @@ body{
 
 a{
 	cursor: pointer;
+	word-break: break-word;
+	word-wrap: break-word;
+	white-space: pre-wrap;
 }
 
 .bonjour-draggable{
@@ -156,12 +159,12 @@ a.list-group-item.active:hover{
 	z-index: 2;
 }
 
-.bonjour-room-listing,
+/* .bonjour-room-listing,
 .bonjour-topic-listing{
 	height: 100%;
 	overflow-y: auto;
 	overflow-x:hidden;
-}
+} */
 
 .room-topic-list-toolbar h2{
 	height: 48px;
@@ -369,7 +372,70 @@ ul.ripple li.insert-topic.ng-move{
 	display: none;
 }
 
+.bonjour-comment-left{
+	display: inline-block;
+}
+
+.bonjour-comment-item{
+	list-style:none;
+	display: block;
+}
+
+.bonjour-comment-left strong{
+	display:block;
+	text-align: center;
+}
+
 .bonjour-comment-left,.bonjour-comment-content,.bonjour-comment-content pre{
 	font-size: 1rem;
 	word-wrap: break-word;
+	word-break: break-word;
+	float: none;
+}
+
+.bonjour-comment-content{
+	display: inline;
+	box-sizing:border-box;
+	margin-left:30px;
+	position:relative;
+	position: relative;
+	margin-left: 40px;
+}
+
+.face{
+	-webkit-border-radius:50%;
+	width:50px;
+	height:50px;
+	float: left;
+}
+
+
+/* bubble chat */
+
+  .bubble {
+    position: relative;
+	display:inline-block;
+    width: auto;
+    height: auto;
+    min-height: 60px;
+    padding: 10px;
+    background: #E1E8BA;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	box-sizing:border-box;
+    max-width: 60%;
+}
+
+  .bubble:after {
+    content: "";
+    position: absolute;
+    top: 40%;
+    left: -13px;
+    border-style: solid;
+    border-width: 7px 13px 7px 0;
+    border-color: transparent #E1E8BA;
+    display: block;
+    width: 0;
+    z-index: 1;
 }

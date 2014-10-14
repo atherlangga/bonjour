@@ -10,8 +10,10 @@ require.config({
 		'angular-ui-router' : 'components/angular-ui-router/release/angular-ui-router',
 		'angular-sanitize'	: 'components/angular-sanitize/angular-sanitize.min',
 		'angularAMD'        : 'components/angularAMD/angularAMD',
+		'angular-animate'	: 'components/angular-animate/angular-animate.min',
 		'angular-material'  : 'components/angular-material/angular-material',
 		'ngload'            : 'components/angularAMD/ngload',
+		'hammer'			: 'components/hammerjs/hammer',
 
 		'qiscus'            : 'lib/qiscus/qiscus',
 		'qiscus-api-client' : 'lib/qiscus/qiscus-api-client',
@@ -41,8 +43,11 @@ require.config({
 		'angularAMD': {
 			deps: ['angular']
 		},
-		'angular-material': {
+		'angular-animate':{
 			deps: ['angular']
+		},
+		'angular-material': {
+			deps: ['angular','angular-animate','hammer']
 		},
 		'ngload': {
 			deps: ['angularAMD']

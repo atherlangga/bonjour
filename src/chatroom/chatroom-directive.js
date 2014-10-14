@@ -76,5 +76,27 @@ function(app) {
 				}
 			}
 		}
-	}]);
+	}])
+	.directive('containerHeight',function($timeout){
+	  return{
+	    restrict:'A',
+	    link:function(scope,elem,attrs){
+	       $timeout(function(){
+	         elem[0].style.height = window.innerHeight-26-64;
+	         document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-26-64-48;
+	         document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-26-64-48;
+	         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-26-64-48-30;
+	         //console.log(elem.clientHeight);
+	         //console.log(elem[0].style.height);
+	       },0);
+	       window.onresize = function(){
+	          console.log('room resize');
+	       	 elem[0].style.height = window.innerHeight-26-64;
+	         document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-26-64-48;
+	         document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-26-64-48;
+	         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-26-64-48-30;
+	       }
+	  	}
+	  } 
+	});
 });
