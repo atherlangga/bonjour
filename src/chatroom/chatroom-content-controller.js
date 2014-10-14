@@ -1,7 +1,7 @@
-define(['../app', '../qiscus/qiscus-service'],
-function(app, qiscusService) {
-	app.controller('ChatroomContentController',['$scope', 'user',
-		function($scope, user) {
+define(['../app', '../qiscus/qiscus-service', '../connectivity/connectivity-service'],
+function(app) {
+	app.controller('ChatroomContentController', ['$scope', 'user', 'connectivityEvent',
+		function($scope, user, connectivityEvent) {
 			$scope.rooms = user.rooms;
 			$scope.selected = user.selected;
 
@@ -9,6 +9,10 @@ function(app, qiscusService) {
 			roomsPromise.then(function(){
 				$scope.selectRoom(user.rooms[0].id);
 			});
+
+			connectivityEvent.addOnlineHandler(function() {
+				user.loadTopic(user.selected.topic.id);
+			})
 
 			$scope.selectRoom = function(id){
 				var roomPromise = user.loadRoom(id);

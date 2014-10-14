@@ -1,10 +1,19 @@
-define(['../app', '../qiscus/qiscus-service', 'angular-material', './chatroom-directive'],
-function(app, qiscusService, angularMaterial) {
-	app.controller('ChatroomMenuController', ['$scope', '$materialSidenav', 'user',
-		function($scope, $materialSidenav, user) {
+define(['../app', '../qiscus/qiscus-service', '../connectivity/connectivity-service', './chatroom-directive', 'angular-material'],
+function(app) {
+	app.controller('ChatroomMenuController', ['$scope', '$materialSidenav', 'user', 'connectivityEvent',
+		function($scope, $materialSidenav, user, connectivityEvent) {
 			var _this = this;
 			$scope.leftStatus = true;
 			$scope.rightStatus = true;
+			$scope.connectivityStatus = "Online";
+
+			connectivityEvent.addOnlineHandler(function() {
+				$scope.connectivityStatus = "Online";
+			});
+
+			connectivityEvent.addOfflineHandler(function() {
+				$scope.connectivityStatus = "Offline";
+			});
 
 			$scope.openLeftMenu = function() {
 				$materialSidenav('left').toggle();
@@ -21,6 +30,7 @@ function(app, qiscusService, angularMaterial) {
 			$scope.toggleRightMenu = function() {
 				_this.rightStatus = !_this.rightStatus;
 			};
+
 			$scope.refresh = function() {
 				user.clearData();
 				
