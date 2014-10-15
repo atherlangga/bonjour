@@ -234,6 +234,21 @@ describe("User", function() {
 		// reference is still valid.
 		assert.equal(userRooms, user.rooms);
 	});
+
+	it ("should be able to receive Comment", function() {
+		var roomOne = new qiscus.Room(1, "One");
+		var topicEleven = new qiscus.Topic(11, "Eleven");
+		var user = new qiscus.User("a@a.com");
+		var comment = new qiscus.Comment(100, "SomeComment");
+
+		roomOne.addTopic(topicEleven);
+		user.addRoom(roomOne);
+
+		user.receiveComment(11, comment);
+
+		assert.equal(topicEleven.comments.length, 1);
+		assert.equal(topicEleven.comments[0], comment);
+	});
 });
 
 describe("Room", function() {
@@ -297,7 +312,7 @@ describe("Room", function() {
 
 	it ("should not be able to receive room with the same ID", function() {
 		var room = new qiscus.Room(1, "One");
-		
+
 		var topic = new qiscus.Topic(10, "OneTen");
 		room.addTopic(topic);
 		assert.equal(1, room.topics.length);
@@ -333,7 +348,7 @@ describe("Topic", function() {
 
 	it ("should always have its Comments sorted", function() {
 		var topic = new qiscus.Topic(10, "TopicNumberTen");
-		
+
 		var commentOne = new qiscus.Comment(101, "SomeComment");
 		var commentTwo = new qiscus.Comment(102, "SomeComment");
 		var commentThree = new qiscus.Comment(103, "SomeComment");
@@ -346,5 +361,43 @@ describe("Topic", function() {
 		assert.equal(topic.comments[0], commentOne);
 		assert.equal(topic.comments[1], commentTwo);
 		assert.equal(topic.comments[2], commentThree);
+	});
+
+	it ("should be able to sort pending Comment", function() {
+		var topic = new qiscus.Topic(10, "TopicNumberTen");
+
+		var commentOne = new qiscus.Comment(101, "SomeComment");
+		var commentTwo = new qiscus.Comment(102, "SomeComment");
+		var commentThree = new qiscus.Comment(103, "SomeComment");
+		var pendingComment = new qiscus.Comment(-1, "SomeComment");
+
+		// Adding comments *not* according to order.
+		topic.addComment(commentTwo);
+		topic.addComment(pendingComment);
+		topic.addComment(commentThree);
+		topic.addComment(commentOne);
+
+		assert.equal(topic.comments[0], commentOne);
+		assert.equal(topic.comments[1], commentTwo);
+		assert.equal(topic.comments[2], commentThree);
+		assert.equal(topic.comments[3], pendingComment);
+	});
+
+	it ("should be able to change pending Comment attributes when new valid Comment arrive", function() {
+		var topic = new qiscus.Topic(10, "TopicNumberTen");
+		
+		var pendingComment = new qiscus.Comment(-1, "SomeComment", null, "" + (Date.now() - 100));
+		pendingComment.attachUniqueId("abc");
+		topic.addComment(pendingComment);
+
+		var validDate = "" + Date.now();
+		var validComment = new qiscus.Comment(100, "SomeComment", null, validDate);
+		validComment.attachUniqueId("abc");
+		topic.addComment(validComment);
+
+		assert.equal(topic.comments.length, 1);
+		assert.equal(topic.comments[0], pendingComment);
+		assert.equal(pendingComment.id, 100);
+		assert.equal(pendingComment.date, validDate);
 	});
 });

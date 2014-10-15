@@ -16,19 +16,32 @@ function(app) {
 
 		var connectivityEvent = new ConnectivityEvent();
 
+		////////////////////////////////////////////////////////////////////////
+		// Backend
+
+		Offline.options = {
+			checks: {
+				xhr: {
+					url: "http://www.google.com/favicon.ico"
+				}
+			}
+		};
+
 		Offline.on('up', function() {
 			_.each(connectivityEvent.onlineHandlers, function(handler) {
 				handler();
 			});
 			$rootScope.$apply();
 		});
+
 		Offline.on('down', function() {
 			_.each(connectivityEvent.offlineHandlers, function(handler) {
 				handler();
 			});
 			$rootScope.$apply();
 		});
-		Offline.options = {checks: {xhr: {url: 'http://www.google.com/favicon.ico'}}};
+
+		////////////////////////////////////////////////////////////////////////
 
 		return connectivityEvent;
 	}]);
