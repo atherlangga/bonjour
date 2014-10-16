@@ -9,34 +9,34 @@ function(app) {
 			// Handle connectivity event.
 			connectivityEvent.addOnlineHandler(function() {
 				// Reload the current topic.
-				user.loadTopic(user.selected.topic.id);
+				user.selectTopic(user.selected.topic.id);
 
 				// Try to reload again in 3 seconds, this is needed
 				// because if we execute the same request in a short
 				// period of time, the server might cache our request.
 				$timeout(function() {
-					user.loadTopic(user.selected.topic.id);
+					user.selectTopic(user.selected.topic.id);
 				}, 3000);
 			});
 
-			// Start loading.
-			user.loadRooms()
+			// Start loading, and cache first 10 Rooms.
+			user.loadRooms(10)
 			.then(function(){
 				return user.loadRoom(user.rooms[0].id);
 			})
 			.then(function(){
-				return user.loadTopic(user.selected.room.lastTopicId);
+				return user.selectTopic(user.selected.room.lastTopicId);
 			});
 
 			$scope.selectRoom = function(id){
 				user.loadRoom(id)
 				.then(function(){
-					return user.loadTopic(user.selected.room.lastTopicId);
+					return user.selectTopic(user.selected.room.lastTopicId);
 				})
 			}
 
 			$scope.selectTopic = function(id){
-				user.loadTopic(id);
+				user.selectTopic(id);
 			}
 
 			$scope.sendComment = function(){
