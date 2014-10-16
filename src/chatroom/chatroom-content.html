@@ -21,7 +21,7 @@
               <ul class="ripple">
                 <li ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.showRightMenu();" class="bonjour-room-item insert-room" ng-class="{'active':selected.room.id==room.id}"
               style="-webkit-transition-delay:{{$index * 30}}ms">
-                  <a bonjour-ripple>{{ room.name}}</a>
+                  <a bonjour-ripple>{{ room.name}} <span>{{room.countUnreadComments()}}</span></a>
                 </li>
               </ul>
             </material-content>
@@ -44,8 +44,10 @@
                     <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}">
                     <span>{{ comment.sender.username }}</span>
                   </div>
+                  <div>{{ comment == selected.topic.getFirstCommentSince(comment.dateTime, 7) }}</div>
                   <div class="bonjour-comment-content">
                    <pre class="bubble" ng-bind-html="comment.message | linky:'_blank'"></pre>
+                   <span>{{comment.isSent}}</span>
                  </div>
                 </li>
               </ul>
@@ -80,7 +82,7 @@
               </div>
               <ul class="ripple">
                 <li ng-repeat="topic in selected.room.topics" ng-cloak class="bonjour-topic-item insert-topic" ng-click="selectTopic(topic.id)" ng-class="{'active':selected.topic.id==topic.id}" style="-webkit-transition-delay:{{$index * 30}}ms">
-                  <a bonjour-ripple>{{ topic.title}}</a>
+                  <a bonjour-ripple>{{ topic.title}} <span>{{topic.unreadCommentsCount}}</span></a>
                 </li>
               </ul>
             </material-content>
