@@ -376,11 +376,13 @@ ul.ripple li.insert-topic.ng-move{
 
 .bonjour-comment-left{
 	display: inline-block;
+	position: absolute;
 }
 
 .bonjour-comment-item{
 	list-style:none;
 	display: block;
+	position: relative;
 }
 
 .bonjour-comment-left span{
@@ -402,14 +404,13 @@ ul.ripple li.insert-topic.ng-move{
 	margin-left:30px;
 	position:relative;
 	position: relative;
-	margin-left: 40px;
+	left: 70px;
 }
 
 .face{
 	-webkit-border-radius:50%;
 	width:50px;
 	height:50px;
-	float: left;
 }
 
 
@@ -424,7 +425,7 @@ ul.ripple li.insert-topic.ng-move{
 }
 .bubble:after {
 	right: 100%;
-	top: 50%;
+	top: 20px;
 	border: solid transparent;
 	content: " ";
 	height: 0;
