@@ -398,6 +398,25 @@ describe("Topic", function() {
 		assert.equal(topic.comments.length, 1);
 		assert.equal(topic.comments[0], pendingComment);
 		assert.equal(pendingComment.id, 100);
-		assert.equal(pendingComment.date, validDate);
+		assert.equal(pendingComment.dateTime, validDate);
+	});
+
+	it ("should be able to find the first Comment since a specified date", function() {
+		var topic = new qiscus.Topic(10, "TopicNumberTen");
+
+		var commentLast = new qiscus.Comment(104, "last", null, new Date("2014-10-16 00:07:55 GMT"));
+		var commentLastMinusOne = new qiscus.Comment(103, "last - 1", null, new Date("2014-10-15 23:33:24 GMT"));
+		var commentLastMinusTwo = new qiscus.Comment(102, "last - 2", null, new Date("2014-10-14 21:20:14 GMT"));
+		var commentLastMinusThree = new qiscus.Comment(101, "last - 3", null, new Date("2014-09-26 07:47:22 GMT"));
+
+		topic.addComment(commentLast);
+		topic.addComment(commentLastMinusOne);
+		topic.addComment(commentLastMinusTwo);
+		topic.addComment(commentLastMinusThree);
+
+		var timezoneOffset = 7;
+		assert.equal(topic.getFirstCommentSince(commentLast.dateTime, timezoneOffset), commentLastMinusOne);
+		assert.equal(topic.getFirstCommentSince(commentLastMinusTwo.dateTime, timezoneOffset), commentLastMinusTwo);
+		assert.equal(topic.getFirstCommentSince(commentLastMinusThree.dateTime, timezoneOffset), commentLastMinusThree);
 	});
 });

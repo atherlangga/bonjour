@@ -72,7 +72,7 @@ describe("Qiscus API Client", function() {
 		assert.equal(20, comments.length);
 		assert.equal(1210, comments[0].id);
 		assert.equal("ccmcmcm", comments[3].message);
-		assert.equal(1400718856000, comments[5].date.getTime());
+		assert.equal(1400744056000, comments[5].dateTime.getTime());
 	});
 
 	it ("should be able generate proper Qiscus' post comment URL", function() {

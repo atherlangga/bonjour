@@ -90,7 +90,7 @@ describe("Qiscus Listener", function() {
 		assert.equal("QiscusTest01", someTopic.comments[0].sender.username);
 		
 		// Check the internal representation of date "2014-09-25T08:56:01Z"
-		assert.equal(1411635361000, someTopic.comments[0].date.getTime());
+		assert.equal(1411635361000, someTopic.comments[0].dateTime.getTime());
 
 		// Check additional side-effect.
 		assert.equal(someRoom.lastTopicId, someTopic.id);
