@@ -231,6 +231,31 @@ ul.ripple li a {
 	position: relative;
 }
 
+.bonjour-unread-room{
+	background-color: #FC6E51;
+	font-size: 0.9em;
+	height: 20px;
+	min-width: 20px;
+	border-radius: 4px;
+	position: absolute;
+	right: 10px;
+	color: white;
+	padding: 0px 6px;
+	line-height: normal;
+}
+.bonjour-unread-topic{
+	background-color: #FC6E51;
+	font-size: 0.9em;
+	height: 20px;
+	min-width: 20px;
+	border-radius: 4px;
+	position: absolute;
+	right: 10px;
+	color: white;
+	padding: 0px 6px;
+	line-height: normal;
+}
+
 /*.ink styles - the elements which will create the ripple effect. The size and position of these elements will be set by the JS code. Initially these elements will be scaled down to 0% and later animated to large fading circles on user click.*/
 .ink {
 	display: block; position: absolute;
@@ -471,7 +496,7 @@ ul.ripple li.insert-topic.ng-move{
 
 .bonjour-sent i{
 	font-size: 0.6em;
-	color:green;
+	color: #539653;
 }
 
 .bonjour-comment-devider{

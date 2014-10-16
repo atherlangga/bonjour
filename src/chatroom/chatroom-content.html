@@ -21,7 +21,7 @@
               <ul class="ripple">
                 <li ng-repeat="room in rooms" ng-cloak ng-click="selectRoom(room.id);main.showRightMenu();" class="bonjour-room-item insert-room" ng-class="{'active':selected.room.id==room.id}"
               style="-webkit-transition-delay:{{$index * 30}}ms">
-                  <a bonjour-ripple>{{ room.name}} <span>{{room.countUnreadComments()}}</span></a>
+                  <a bonjour-ripple>{{ room.name}} <span class="bonjour-unread-room" ng-if="room.countUnreadComments()>0">{{room.countUnreadComments()}}</span></a>
                 </li>
               </ul>
             </material-content>
@@ -89,7 +89,7 @@
               </div>
               <ul class="ripple">
                 <li ng-repeat="topic in selected.room.topics" ng-cloak class="bonjour-topic-item insert-topic" ng-click="selectTopic(topic.id)" ng-class="{'active':selected.topic.id==topic.id}" style="-webkit-transition-delay:{{$index * 30}}ms">
-                  <a bonjour-ripple>{{ topic.title}} <span>{{topic.unreadCommentsCount}}</span></a>
+                  <a bonjour-ripple>{{ topic.title}} <span class="bonjour-unread-topic" ng-if="topic.unreadCommentsCount>0">{{topic.unreadCommentsCount}}</span></a>
                 </li>
               </ul>
             </material-content>
