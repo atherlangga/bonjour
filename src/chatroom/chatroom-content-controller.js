@@ -38,7 +38,6 @@ function(app) {
 
 			$scope.selectTopic = function(id){
 				user.selectTopic(id);
-				console.log($scope.rooms);
 			}
 
 			$scope.sendComment = function(){
