@@ -5,6 +5,7 @@ function(app) {
 			// "Link" model and view.
 			$scope.rooms = user.rooms;
 			$scope.selected = user.selected;
+			$scope.currentEmail = user.email;
 
 			// Handle connectivity event.
 			connectivityEvent.addOnlineHandler(function() {
@@ -37,6 +38,7 @@ function(app) {
 
 			$scope.selectTopic = function(id){
 				user.selectTopic(id);
+				console.log($scope.rooms);
 			}
 
 			$scope.sendComment = function(){

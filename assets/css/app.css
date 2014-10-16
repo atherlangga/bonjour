@@ -383,18 +383,33 @@ ul.ripple li.insert-topic.ng-move{
 	list-style:none;
 	display: block;
 	position: relative;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+
+.bonjour-have-unread{
+	padding-top: 10px;
+}
+
+.bonjour-have-unread .bonjour-comment-left{
+	top: 10px;
 }
 
 .bonjour-comment-left span{
 	display:block;
 	font-size: 0.7em;
+	margin-top: 3px;
+	font-weight: bold;
 	text-align: center;
+	background-color: rgba(255,255,255,0.5);
+	border-radius: 4px;
+	padding: 1px;
 }
 
 .bonjour-comment-left,.bonjour-comment-content,.bonjour-comment-content pre{
 	font-size: 1rem;
 	word-wrap: break-word;
-	word-break: break-word;
 	top: -25px;
 }
 
@@ -402,9 +417,8 @@ ul.ripple li.insert-topic.ng-move{
 	display: inline;
 	box-sizing:border-box;
 	margin-left:30px;
-	position:relative;
 	position: relative;
-	left: 70px;
+	left: 75px;
 }
 
 .face{
@@ -418,10 +432,12 @@ ul.ripple li.insert-topic.ng-move{
 
 .bubble {
 	position: relative;
-	max-width: 60%;
-	background: #88b7d5;
+	max-width: 75%;
+	background: #F5F7FA;
 	padding: 20px;
-	border-color:#88b7d5;
+	border-color:#F5F7FA;
+	min-width: 89px;
+	display: inline-block;
 }
 .bubble:after {
 	right: 100%;
@@ -438,6 +454,79 @@ ul.ripple li.insert-topic.ng-move{
 	margin-top: -10px;
 }
 
+.bonjour-sent-time{
+	font-size: 0.6em;
+	display: inline-block;
+	color: darkgrey;
+	position: absolute;
+	right: 25px;
+}
+
+.bonjour-sent{
+	display: inline-block;
+	position: absolute;
+	right: 10px;
+	bottom: 7px;
+}
+
+.bonjour-sent i{
+	font-size: 0.6em;
+	color:green;
+}
+
+.bonjour-comment-devider{
+	display: block;
+	position: relative;
+	margin-top: -30px;
+	color:white;
+	margin-bottom: 35px;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+.bonjour-comment-devider span{
+	background-color: darkgrey;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: 96px;
+	padding: 3px 10px;
+}
+
+.bonjour-me .bonjour-comment-left{
+	right:20px;
+	display: none;
+}
+
+.bonjour-me .bonjour-comment-content{
+	float: none;
+	left: 0px;
+}
+
+.bonjour-me .bonjour-comment-content .bubble{
+	left: auto;
+	margin-left: auto;
+	margin-right: 30px;
+	display: block;
+	float: none;
+	position:relative;
+	border-color: #DBEDC3;
+	background: #DBEDC3;
+	right: 0px;
+	width: auto !important;
+}
+
+.bonjour-me .bonjour-comment-content .bubble:after{
+	right:none;
+	left: 100%;
+	border-right-color:transparent;
+	border-left-color:inherit;
+}
+
+.bonjour-me .bonjour-comment-content .bubble pre{
+	text-align:right;
+}
 /* login layout */
 .login-background{
 	position:absolute;

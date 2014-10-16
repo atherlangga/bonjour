@@ -39,15 +39,22 @@
             <section layout="vertical" layout-sm="horizontal" layout-align="center center">
               <material-content class="bonjour-comment-listing material-theme-lightgrey" style="width:100%;padding:16px">
               <ul id="comment-list">
-                <li ng-repeat="comment in selected.topic.comments" ng-cloak class="reveal-animation bonjour-comment-item" auto-scroll>
+                <li ng-repeat="comment in selected.topic.comments" ng-cloak class="reveal-animation bonjour-comment-item" ng-class="{'bonjour-me':comment.sender.email==currentEmail,'bonjour-have-unread':comment == selected.topic.getFirstCommentSince(comment.dateTime, 7)}" auto-scroll>
+                  <div ng-if="comment == selected.topic.getFirstCommentSince(comment.dateTime, 7)" class="bonjour-comment-devider"><span>{{comment.dateTime | date:'MMM dd, yyyy'}}</span></div>
                   <div class="bonjour-comment-left">
-                    <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}">
-                    <span>{{ comment.sender.username }}</span>
+                    <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}" style="border:3px solid {{comment.sender.color}};">
+                    <span style="color:{{comment.sender.color}}">{{ comment.sender.username }}</span>
                   </div>
-                  <div>{{ comment == selected.topic.getFirstCommentSince(comment.dateTime, 7) }}</div>
                   <div class="bonjour-comment-content">
-                   <pre class="bubble" ng-bind-html="comment.message | linky:'_blank'"></pre>
-                   <span>{{comment.isSent}}</span>
+                    <div class="bubble">
+                      <pre ng-bind-html="comment.message | linky:'_blank'"></pre>
+                      <span class="bonjour-sent" ng-if="comment.sender.email==currentEmail" ng-switch="comment.isSent">
+                        <i class="fa fa-clock-o" ng-switch-when="false"></i>
+                        <i class="fa fa-exclamation-circle" ng-switch-when="!null&&false"></i>
+                        <i class="fa fa-check" ng-switch-when="true"></i>
+                      </span>
+                      <span class="bonjour-sent-time">{{comment.dateTime | date:'hh:mm'}}</span>
+                    </div>
                  </div>
                 </li>
               </ul>
