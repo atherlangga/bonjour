@@ -10,7 +10,6 @@ chrome.app.runtime.onLaunched.addListener(function () {
 		},
 		minWidth: 420,
 		minHeight: 220,
-		transparentBackground: true
 	});
 });
 
