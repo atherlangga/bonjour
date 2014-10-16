@@ -45,7 +45,7 @@
                     <span>{{ comment.sender.username }}</span>
                   </div>
                   <div class="bonjour-comment-content">
-                   <pre class="bubble" ng-bind-html="comment.message | linky:'_blank'"></pre>
+                   <pre class="bubble" ng-bind-html="comment.message | linky:'_blank'" style="background-color:{{comment.sender.color}}"></pre>
                  </div>
                 </li>
               </ul>
