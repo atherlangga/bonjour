@@ -19,10 +19,8 @@ function(app) {
 				$timeout(function() {
 					user.loadRooms(10)
 					.then(function() {
-						return user.selectRoom(user.selected.room.id);
-					})
-					.then(function() {
-						user.selectTopic(user.selected.topic.id);
+						return $scope.selectRoom(user.selected.room.id,
+							user.selected.topic.id);
 					});
 				}, 3000);
 			});
@@ -30,21 +28,32 @@ function(app) {
 			// Start loading, and cache first 10 Rooms.
 			user.loadRooms(10)
 			.then(function(){
-				return user.selectRoom(user.rooms[0].id);
-			})
-			.then(function(){
-				return user.selectTopic(user.selected.room.lastTopicId);
+				return $scope.selectRoom(user.rooms[0].id);
 			});
 
-			$scope.selectRoom = function(id){
-				user.selectRoom(id)
+			$scope.selectRoom = function(id, initialTopicId){
+				return user.selectRoom(id)
 				.then(function(){
-					return user.selectTopic(user.selected.room.lastTopicId);
-				})
+					// Determine initial Topic to load based on what
+					// the caller wants. If it's null, then we're
+					// gonna load the last Topic of the loaded Room.
+					var initialTopicId = initialTopicId || user.selected.room.lastTopicId;
+
+					return $scope.selectTopic(initialTopicId);
+				});
 			}
 
 			$scope.selectTopic = function(id){
-				user.selectTopic(id);
+				// Reset unread comments count.
+				$scope.unreadCommentsCount = 0;
+
+				return user.selectTopic(id)
+				.then(function() {
+					// Determine unread comments count.
+					$scope.unreadCommentsCount = user.selected.topic.unreadCommentsCount;
+
+					return user.markTopicAsRead(id);
+				});
 			}
 
 			$scope.sendComment = function(){
