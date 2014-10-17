@@ -90,6 +90,40 @@ describe("User", function() {
 		assert.equal(roomTwo, user.rooms[1]);
 	});
 
+	it ("should not have the same Rooms when Rooms are reloaded", function() {
+		// Prepare the fake Room to be returned.
+		var roomOne = new qiscus.Room(1, "One");
+		var roomTwo = new qiscus.Room(2, "Two");
+
+		// Create the fake loader.
+		var RoomLoader = function(){
+		};
+		RoomLoader.prototype.listRooms = function(onSuccess, onFailure) {
+			onSuccess([roomOne, roomTwo]);
+		};
+
+		// Create partial Q promises adapter
+		var promisesAdapter = {};
+		promisesAdapter.deferred = function() {
+			var deferred = Q.defer();
+			return {
+				promise: deferred.promise,
+				resolve: deferred.resolve,
+				reject : deferred.reject
+			};
+		}
+
+		var r = new RoomLoader();
+		var user = new qiscus.User("a@a.com", new RoomLoader(), promisesAdapter);
+
+		user.loadRooms();
+		user.loadRooms();
+
+		assert.equal(2, user.rooms.length);
+		assert.equal(roomOne, user.rooms[0]);
+		assert.equal(roomTwo, user.rooms[1]);
+	});
+
 	it ("should be able to sort Rooms based on each Room's last active Topic ID", function() {
 		var roomOne = new qiscus.Room(1, "One");
 		var roomTwo = new qiscus.Room(2, "Two");
