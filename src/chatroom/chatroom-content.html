@@ -49,14 +49,14 @@
                   </div>
                   <div class="bonjour-comment-left">
                     <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}" style="border:3px solid {{comment.sender.color}};">
-                    <span style="color:{{comment.sender.color}}">{{ comment.sender.username }}</span>
                   </div>
                   <div class="bonjour-comment-content">
                     <div class="bubble">
+                      <span class="bonjour-bubble-username" style="color:{{comment.sender.color}}">{{ comment.sender.username }}</span>
                       <pre ng-bind-html="comment.message | linky:'_blank'"></pre>
                       <span class="bonjour-sent" ng-if="comment.sender.email==currentEmail" ng-switch="comment.isSent">
                         <i class="fa fa-clock-o" ng-switch-when="false"></i>
-                        <i class="fa fa-exclamation-circle" ng-switch-when="!null&&false"></i>
+                        <i class="fa fa-exclamation-circle" style="color:#E9573F" ng-switch-when="!null&&false"></i>
                         <i class="fa fa-check" ng-switch-when="true"></i>
                       </span>
                       <span class="bonjour-sent-time">{{comment.dateTime | date:'hh:mm'}}</span>

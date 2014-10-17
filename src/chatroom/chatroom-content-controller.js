@@ -1,5 +1,5 @@
-define(['../app', '../qiscus/qiscus-service', '../connectivity/connectivity-service'],
-function(app) {
+define(['../app', 'random-color', '../qiscus/qiscus-service', '../connectivity/connectivity-service'],
+function(app,RColor) {
 	app.controller('ChatroomContentController', ['$scope', '$timeout', 'user', 'connectivityEvent',
 		function($scope, $timeout, user, connectivityEvent) {
 			// "Link" model and view.
@@ -38,7 +38,10 @@ function(app) {
 					// the caller wants. If it's null, then we're
 					// gonna load the last Topic of the loaded Room.
 					var initialTopicId = initialTopicId || user.selected.room.lastTopicId;
-
+					var color = new RColor;
+					_.each(user.selected.room.participants,function(participant){
+						participant.color = color.get(true);//.get(true, 0.3, 0.99);
+					});
 					return $scope.selectTopic(initialTopicId);
 				});
 			}
@@ -55,12 +58,6 @@ function(app) {
 					return user.markTopicAsRead(id);
 				});
 			}
-
-			/*$scope.sendComment = function(){
-				$scope.unreadCommentsCount = 0;
-				user.postComment($scope.currentTopic.id,$scope.commentMessage);
-				$scope.commentMessage = "";
-			}*/
 		}]
 	);
 });

@@ -15,6 +15,8 @@ require.config({
 		'ngload'            : 'components/angularAMD/ngload',
 		'hammer'			: 'components/hammerjs/hammer',
 
+		'random-color'		: 'lib/random-color',
+
 		'qiscus'            : 'lib/qiscus/qiscus',
 		'qiscus-api-client' : 'lib/qiscus/qiscus-api-client',
 		'qiscus-listener'   : 'lib/qiscus/qiscus-listener',
@@ -57,7 +59,7 @@ require.config({
 			deps: ['lodash']
 		},
 		'qiscus-api-client': {
-			deps: ['qiscus']
+			deps: ['qiscus','random-color']
 		},
 		'qiscus-listener': {
 			deps: ['qiscus']

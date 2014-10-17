@@ -452,13 +452,18 @@ ul.ripple li.insert-topic.ng-move{
 	background-color: rgba(255,255,255,0.5);
 	border-radius: 4px;
 	padding: 1px;
+	line-height: normal;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
 }
 
 .bonjour-comment-left,.bonjour-comment-content,.bonjour-comment-content pre{
 	word-wrap: break-word;
 	top: -25px;
 	font: normal 14px/28px Cantarell, Arial, sans-serif;
-	margin: 10px;
+}
+
+.bonjour-comment-content pre{
+	margin: 10px 0px;
 }
 
 .bonjour-comment-content{
@@ -466,7 +471,7 @@ ul.ripple li.insert-topic.ng-move{
 	box-sizing:border-box;
 	margin-left:30px;
 	position: relative;
-	left: 75px;
+	left: 40px;
 }
 
 .face{
@@ -500,6 +505,17 @@ ul.ripple li.insert-topic.ng-move{
 	border-right-color: inherit;
 	border-width: 10px;
 	margin-top: -10px;
+}
+
+.bonjour-bubble-username{
+	top:0px;
+	position:absolute;
+	left: 10px;
+	font-size:0.8em;
+}
+
+.bonjour-me .bonjour-bubble-username{
+	display:none;
 }
 
 .bonjour-sent-time{
