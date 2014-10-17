@@ -284,6 +284,10 @@ describe("User", function() {
 		assert.equal(topicEleven.comments.length, 1);
 		assert.equal(topicEleven.comments[0], comment);
 	});
+
+	it ("should not increase unread count when newly-received comment is from the user itself");
+
+	it ("should not change the selected Topic when selected Room is not changed");
 });
 
 describe("Room", function() {
