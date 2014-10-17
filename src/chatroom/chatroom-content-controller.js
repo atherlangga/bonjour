@@ -56,10 +56,11 @@ function(app) {
 				});
 			}
 
-			$scope.sendComment = function(){
+			/*$scope.sendComment = function(){
+				$scope.unreadCommentsCount = 0;
 				user.postComment($scope.currentTopic.id,$scope.commentMessage);
 				$scope.commentMessage = "";
-			}
+			}*/
 		}]
 	);
 });

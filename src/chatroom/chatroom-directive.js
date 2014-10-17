@@ -45,6 +45,7 @@ function(app) {
 				if ((code === 13) && !(e.shiftKey)) {
 					e.preventDefault();
 					if($scope.commentMessage){
+						$scope.unreadCommentsCount = 0;
 						user.postComment(attrs.topicId,$scope.commentMessage);
 						$scope.commentMessage = "";
 					}

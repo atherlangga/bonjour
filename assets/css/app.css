@@ -508,13 +508,14 @@ ul.ripple li.insert-topic.ng-move{
 	color: darkgrey;
 	position: absolute;
 	right: 25px;
+	bottom: 0px;
 }
 
 .bonjour-sent{
 	display: inline-block;
 	position: absolute;
 	right: 10px;
-	bottom: 7px;
+	bottom: 10px;
 }
 
 .bonjour-sent i{
