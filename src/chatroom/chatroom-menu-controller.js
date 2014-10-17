@@ -44,10 +44,10 @@ function(app) {
 				// Start reloading.
 				user.loadRooms()
 				.then(function(){
-					return user.loadRoom(user.rooms[0].id);
+					return user.selectRoom(user.rooms[0].id);
 				})
 				.then(function(){
-					return user.loadTopic(user.selected.room.lastTopicId);
+					return user.selectTopic(user.selected.room.lastTopicId);
 				});
 			}
 
