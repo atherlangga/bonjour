@@ -273,7 +273,8 @@ describe("User", function() {
 		var roomOne = new qiscus.Room(1, "One");
 		var topicEleven = new qiscus.Topic(11, "Eleven");
 		var user = new qiscus.User("a@a.com");
-		var comment = new qiscus.Comment(100, "SomeComment");
+		var participant = new qiscus.Participant(1, "a", "a@a.com");
+		var comment = new qiscus.Comment(100, "SomeComment", participant);
 
 		roomOne.addTopic(topicEleven);
 		user.addRoom(roomOne);
