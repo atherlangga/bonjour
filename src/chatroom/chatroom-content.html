@@ -39,8 +39,14 @@
             <section layout="vertical" layout-sm="horizontal" layout-align="center center">
               <material-content class="bonjour-comment-listing material-theme-lightgrey" style="width:100%;padding:16px">
               <ul id="comment-list">
-                <li ng-repeat="comment in selected.topic.comments" ng-cloak class="reveal-animation bonjour-comment-item" ng-class="{'bonjour-me':comment.sender.email==currentEmail,'bonjour-have-unread':comment == selected.topic.getFirstCommentSince(comment.dateTime, 7)}" auto-scroll>
-                  <div ng-if="comment == selected.topic.getFirstCommentSince(comment.dateTime, 7)" class="bonjour-comment-devider"><span>{{comment.dateTime | date:'MMM dd, yyyy'}}</span></div>
+                <li ng-repeat="comment in selected.topic.comments" ng-cloak class="reveal-animation bonjour-comment-item" ng-class="{'bonjour-me':comment.sender.email==currentEmail,'bonjour-have-date-devider':comment == selected.topic.getFirstCommentSince(comment.dateTime, 7) ,'bonjour-have-unread': $index == selected.topic.comments.length - unreadCommentsCount}" auto-scroll>
+                  <div class="bonjour-unread-separator" ng-if="$index == selected.topic.comments.length - unreadCommentsCount">
+                    <span ng-if="$last">Unread Message</span>
+                    <span ng-if="!$last">Unread Messages</span>
+                  </div>
+                  <div ng-if="comment == selected.topic.getFirstCommentSince(comment.dateTime, 7)" class="bonjour-comment-devider">
+                    <span>{{comment.dateTime | date:'MMM dd, yyyy'}}</span>
+                  </div>
                   <div class="bonjour-comment-left">
                     <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}" style="border:3px solid {{comment.sender.color}};">
                     <span style="color:{{comment.sender.color}}">{{ comment.sender.username }}</span>
