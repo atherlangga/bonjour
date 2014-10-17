@@ -40,7 +40,7 @@ function(app,RColor) {
 					var initialTopicId = initialTopicId || user.selected.room.lastTopicId;
 					var color = new RColor;
 					_.each(user.selected.room.participants,function(participant){
-						participant.color = color.get(true);//.get(true, 0.3, 0.99);
+						participant.color = color.get(true,0.25,0.8);//.get(true, 0.3, 0.99);
 					});
 					return $scope.selectTopic(initialTopicId);
 				});
