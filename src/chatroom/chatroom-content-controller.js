@@ -32,6 +32,9 @@ function(app,RColor) {
 			});
 
 			$scope.selectRoom = function(id, initialTopicId){
+				// Reset unread comments count.
+				$scope.unreadCommentsCount = 0;
+
 				return user.selectRoom(id)
 				.then(function(){
 					// Determine initial Topic to load based on what
