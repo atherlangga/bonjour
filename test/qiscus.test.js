@@ -285,9 +285,36 @@ describe("User", function() {
 		assert.equal(topicEleven.comments[0], comment);
 	});
 
+	it ("should update last Topic ID and last Comment ID of a Room when receiving new Comment", function() {
+		var roomOne = new qiscus.Room(1, "One");
+		var topicEleven = new qiscus.Topic(11, "Eleven");
+		var topicTwelve = new qiscus.Topic(12, "Twelve");
+
+		var user = new qiscus.User("a@a.com");
+		var participant = new qiscus.Participant(1, "a", "a@a.com");
+		
+		var commentOneHundred = new qiscus.Comment(100, "Comment", participant);
+		var commentOneHunderdAndOne = new qiscus.Comment(101, "AnotherComment", participant);
+
+		roomOne.addTopic(topicEleven);
+		roomOne.addTopic(topicTwelve);
+		user.addRoom(roomOne);
+
+		user.receiveComment(11, commentOneHundred);
+		
+		assert.equal(roomOne.lastTopicId, 11);
+		assert.equal(roomOne.lastCommentId, 100);
+
+		user.receiveComment(12, commentOneHunderdAndOne);
+
+		assert.equal(roomOne.lastTopicId, 12);
+		assert.equal(roomOne.lastCommentId, 101);
+	});
+
 	it ("should not increase unread count when newly-received comment is from the user itself");
 
 	it ("should not change the selected Topic when selected Room is not changed");
+
 });
 
 describe("Room", function() {
