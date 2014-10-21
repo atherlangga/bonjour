@@ -38,6 +38,10 @@ function(app) {
 					}else{
 						$scope.error = "The email or password you entered is incorrect.";
 					}
+				})
+				.error(function(response) {
+					$scope.isLoggingIn = false;
+					$scope.error = "Error connecting to the server.";
 				});
 			};
 		}
