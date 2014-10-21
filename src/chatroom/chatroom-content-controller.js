@@ -37,7 +37,7 @@ function(app,RColor) {
 				// Reload all Rooms when we got back our Internet
 				// connection.
 
-				// Wait 3 seconds to reload. We need to wait a while
+				// Wait one second to reload. We need to wait a while
 				// before reloading because the backend library *might*
 				// try to replay our previously-failed requests. In
 				// that case, we need to wait for the data source (most
@@ -48,7 +48,7 @@ function(app,RColor) {
 						return $scope.selectRoom(user.selected.room.id,
 							user.selected.topic.id);
 					});
-				}, 3000);
+				}, 1000);
 			});
 
 			// Start loading.
