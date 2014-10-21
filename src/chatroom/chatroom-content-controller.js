@@ -38,10 +38,13 @@ function(app,RColor) {
 					// the caller wants. If it's null, then we're
 					// gonna load the last Topic of the loaded Room.
 					var initialTopicId = initialTopicId || user.selected.room.lastTopicId;
+
+					// "Colorize" each participant.
 					var color = new RColor;
 					_.each(user.selected.room.participants,function(participant){
 						participant.color = color.get(true);//.get(true, 0.3, 0.99);
 					});
+					
 					return $scope.selectTopic(initialTopicId);
 				});
 			}
