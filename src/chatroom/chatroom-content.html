@@ -52,7 +52,7 @@
                   <div class="bonjour-comment-content">
                     <div class="bubble">
                       <span class="bonjour-bubble-username" style="color:{{comment.sender.color}}">{{ comment.sender.username }}</span>
-                      <pre ng-bind-html="comment.message | linky:'_blank'"></pre>
+                      <div ng-bind-html="comment.message | linky:'_blank'"></div>
                       <span class="bonjour-sent" ng-if="comment.sender.email==currentEmail" ng-switch="comment.isSent">
                         <i class="fa fa-clock-o" ng-switch-when="false"></i>
                         <i class="fa fa-exclamation-circle" style="color:#E9573F" ng-switch-when="!null&&false"></i>
