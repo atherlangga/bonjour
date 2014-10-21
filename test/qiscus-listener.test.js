@@ -96,4 +96,6 @@ describe("Qiscus Listener", function() {
 		assert.equal(someRoom.lastTopicId, someTopic.id);
 		assert.equal(someRoom.lastCommentId, someTopic.comments[0].id);
 	});
+
+	it ("should be able to handle Incoming Message event");
 });
