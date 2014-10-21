@@ -17,7 +17,7 @@ function(app,RColor) {
 				// that case, we need to wait for the data source (most
 				// likely a server) to be done processing.
 				$timeout(function() {
-					user.loadRooms(10)
+					user.loadRooms()
 					.then(function() {
 						return $scope.selectRoom(user.selected.room.id,
 							user.selected.topic.id);
@@ -26,7 +26,7 @@ function(app,RColor) {
 			});
 
 			// Start loading, and cache first 10 Rooms.
-			user.loadRooms(10)
+			user.loadRooms()
 			.then(function(){
 				return $scope.selectRoom(user.rooms[0].id);
 			});
