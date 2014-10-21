@@ -311,6 +311,8 @@ describe("User", function() {
 		assert.equal(roomOne.lastCommentId, 101);
 	});
 
+	it ("should be able to load the Room when there is new Comment that belongs to not-yet loaded Room");
+
 	it ("should not increase unread count when newly-received comment is from the user itself");
 
 	it ("should not change the selected Topic when selected Room is not changed");
