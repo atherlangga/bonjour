@@ -487,4 +487,43 @@ describe("Topic", function() {
 		assert.equal(topic.getFirstCommentSince(commentLastMinusTwo.dateTime, timezoneOffset), commentLastMinusTwo);
 		assert.equal(topic.getFirstCommentSince(commentLastMinusThree.dateTime, timezoneOffset), commentLastMinusThree);
 	});
+
+	it ("should be able to correctly maintain unread Comment state", function() {
+		var initialUnreadCommentsCount = 0;
+		var topic = new qiscus.Topic(10, "TopicNumberTen", initialUnreadCommentsCount);
+
+		var commentOne = new qiscus.Comment(101, "SomeComment");
+		var commentTwo = new qiscus.Comment(102, "SomeComment");
+		var commentThree = new qiscus.Comment(103, "SomeComment");
+
+		// Check initial state.
+		assert.equal(topic.unreadCommentsCount, 0);
+		assert.equal(topic.firstUnreadComment, null);
+
+		topic.addComment(commentOne);
+		topic.increaseUnreadCommentsCount();
+
+		assert.equal(topic.unreadCommentsCount, 1);
+		assert.equal(topic.firstUnreadComment, commentOne);
+
+		topic.addComment(commentTwo);
+		topic.increaseUnreadCommentsCount();
+
+		assert.equal(topic.unreadCommentsCount, 2);
+		assert.equal(topic.firstUnreadComment, commentOne); // Still commentOne.
+
+		topic.markAsRead();
+
+		assert.equal(topic.unreadCommentsCount, 0);
+		assert.equal(topic.firstUnreadComment, commentOne);
+
+		topic.resetFirstUnreadComment();
+		topic.addComment(commentThree);
+		topic.increaseUnreadCommentsCount();
+
+		assert.equal(topic.unreadCommentsCount, 1);
+		assert.equal(topic.firstUnreadComment, commentThree);
+
+
+	});
 });

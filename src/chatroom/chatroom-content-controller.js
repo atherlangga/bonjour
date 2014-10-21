@@ -32,9 +32,6 @@ function(app,RColor) {
 			});
 
 			$scope.selectRoom = function(id, initialTopicId){
-				// Reset unread comments count.
-				$scope.unreadCommentsCount = 0;
-
 				return user.selectRoom(id)
 				.then(function(){
 					// Determine initial Topic to load based on what
@@ -53,14 +50,8 @@ function(app,RColor) {
 			}
 
 			$scope.selectTopic = function(id){
-				// Reset unread comments count.
-				$scope.unreadCommentsCount = 0;
-
 				return user.selectTopic(id)
 				.then(function() {
-					// Determine unread comments count.
-					$scope.unreadCommentsCount = user.selected.topic.unreadCommentsCount;
-
 					return user.markTopicAsRead(id);
 				});
 			}
