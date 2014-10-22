@@ -460,6 +460,7 @@ ul.ripple li.insert-topic.ng-move{
 
 .bonjour-comment-content pre{
 	margin: 30px 0 10px 0;
+	white-space: pre-line;
 }
 
 .bonjour-comment-content{
@@ -487,6 +488,7 @@ ul.ripple li.insert-topic.ng-move{
 	border-color:#F5F7FA;
 	min-width: 89px;
 	display: inline-block;
+	overflow-wrap: break-word;
 }
 .bubble:after {
 	right: 100%;
