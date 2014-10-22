@@ -51,7 +51,7 @@
                   </div>
                   <div class="bonjour-comment-content">
                     <div class="bubble">
-                      <span class="bonjour-bubble-username" style="color:{{comment.sender.color}}">{{ comment.sender.username }}</span>
+                      <span class="bonjour-bubble-username" style="color: {{comment.sender.color}}; border-bottom: 1px dotted {{comment.sender.color}}">{{ comment.sender.username }}</span>
                       <pre ng-bind-html="comment.message | linky:'_blank'"></pre>
                       <span class="bonjour-sent" ng-if="comment.sender.email==currentEmail" ng-switch="comment.isSent">
                         <i class="fa fa-clock-o" ng-switch-when="false"></i>
