@@ -576,6 +576,7 @@ ul.ripple li.insert-topic.ng-move{
 	background: #DBEDC3;
 	right: 0px;
 	width: auto !important;
+	overflow-wrap: break-word;
 }
 
 .bonjour-me .bonjour-comment-content .bubble:after{
@@ -586,7 +587,7 @@ ul.ripple li.insert-topic.ng-move{
 }
 
 .bonjour-me .bonjour-comment-content .bubble pre{
-	text-align:right;
+	white-space: pre-line;
 }
 /* login layout */
 .login-background{
