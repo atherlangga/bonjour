@@ -7,25 +7,44 @@ function(app,RColor) {
 			$scope.selected     = user.selected;
 			$scope.currentEmail = user.email;
 
+			// A "cache" to keep Topic ID that user wants to load.
+			// This is needed in order to make `$scope.selectRoom`
+			// do what the user wants.
+			var lastSelectedTopicId = null;
+
 			$scope.selectRoom = function(id, initialTopicId){
 				return user.selectRoom(id)
-				.then(function(){
-					// Determine initial Topic to load based on what
-					// the caller wants. If it's null, then we're
-					// gonna load the last Topic of the loaded Room.
-					var initialTopicId = initialTopicId || user.selected.room.lastTopicId;
-
+				.then(function() {
 					// "Colorize" each participant.
 					var color = new RColor;
 					_.each(user.selected.room.participants,function(participant){
 						participant.color = color.get(true);//.get(true, 0.3, 0.99);
 					});
+
+					// Determine initial Topic to load based on
+					// this priority:
+					// 1. The initial Topic that user wants to
+					//    load.
+					// 2. The last Topic that the user load.
+					// 3. Final alternative: the last active Topic
+					//    of the selected Room.
+					var topicIdToLoad = initialTopicId ||
+						lastSelectedTopicId ||
+						user.selected.room.lastTopicId;
 					
-					return $scope.selectTopic(initialTopicId);
+					return $scope.selectTopic(topicIdToLoad);
+				})
+				.then(function() {
+					// After Room and the Topic is loaded, we
+					// set back the lastSelectedTopicId to
+					// null.
+					lastSelectedTopicId = null;
+					return;
 				});
 			}
 
 			$scope.selectTopic = function(id){
+				lastSelectedTopicId = id;
 				return user.selectTopic(id)
 				.then(function() {
 					return user.markTopicAsRead(id);
