@@ -21,7 +21,7 @@ function(app) {
 				$http({
 					method  : 'POST',
 					url     : baseUrl + "/users/sign_in.json",
-					data    : "user[email]=" + email + "&" + "user[password]=" + password,
+					data    : "user[email]=" + encodeURIComponent(email) + "&" + "user[password]=" + encodeURIComponent(password),
 					headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
 				})
 				.success(function(response) {
