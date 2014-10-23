@@ -407,6 +407,7 @@ ul.ripple li.insert-topic.ng-move{
 	margin-top: 5px;
 	margin-bottom: 5px;
 	width: 100%;
+	clear: both;
 }
 
 .bonjour-have-date-devider{
@@ -577,16 +578,15 @@ ul.ripple li.insert-topic.ng-move{
 
 .bonjour-me .bonjour-comment-content .bubble{
 	left: auto;
-	margin-left: auto;
 	margin-right: 30px;
-	display: block;
-	float: none;
-	position:relative;
+	position: relative;
 	border-color: #DBEDC3;
 	background: #DBEDC3;
 	right: 0px;
 	width: auto !important;
 	overflow-wrap: break-word;
+	float: right;
+	margin-top: 10px;
 }
 
 .bonjour-me .bonjour-comment-content .bubble:after{
@@ -598,6 +598,7 @@ ul.ripple li.insert-topic.ng-move{
 
 .bonjour-me .bonjour-comment-content .bubble pre{
 	white-space: pre-line;
+	margin: 10px 0 10px 0;
 }
 /* login layout */
 .login-background{
