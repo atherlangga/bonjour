@@ -48,6 +48,13 @@ function(angular, angularRoute, angularAMD) {
 			}
 		}));
 	}])
+	
+	
+	.controller('DialogController',['$scope','$materialDialog',function($scope,$materialDialog){
+		$scope.answer = function(answer) {
+		   $materialDialog.hide(answer);
+		};
+	}])
 
 	/*
 	// Production code with production database
