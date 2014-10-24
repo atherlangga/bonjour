@@ -39,7 +39,6 @@ function(app) {
 			restrict: 'A',
 			link: function($scope,elem,attrs) {
 				elem[0].style.width = elem[0].parentElement.clientWidth;
-				//console.log(elem);
 				elem.bind('keydown', function(e) {
 				var code = e.keyCode || e.which;
 				if ((code === 13) && !(e.shiftKey)) {
@@ -54,7 +53,7 @@ function(app) {
 		}
 	  }
 	}])
-	.directive('autoScroll',['$timeout','currentTopicId','user', function ($timeout,currentTopicId,user) {
+	.directive('autoScroll',['$location','$timeout','currentTopicId','user', function ($location,$timeout,currentTopicId,user) {
 		return {
 			restrict: 'A',
 			link: function (scope, element, attr) {
@@ -73,12 +72,18 @@ function(app) {
 							if((commentListing.scrollHeight-commentListing.scrollTop) < 900)
 								commentListing.scrollTop = commentListing.scrollHeight;
 						}
-					});
+					},200);
 				}
 
 				commentListing.onscroll = function(e){
 					if(e.target.scrollTop==0){
-						user.loadMoreComments();
+						var loadMorePromise = user.loadMoreComments();
+						scope.$parent.loadMoreLoading = true;
+						var lastSeenId = scope.$parent.selected.topic.comments[0].id;
+						loadMorePromise.then(function(){
+							scope.$parent.loadMoreLoading = false;
+							$location.hash('comment-'+lastSeenId);
+						})
 					}
 				}
 			}
@@ -89,21 +94,37 @@ function(app) {
 	    restrict:'A',
 	    link:function(scope,elem,attrs){
 	       $timeout(function(){
-	         elem[0].style.height = window.innerHeight-26-64;
-	         document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-26-64-48;
-	         document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-26-64-48;
-	         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-26-64-48-30;
-	         //console.log(elem.clientHeight);
-	         //console.log(elem[0].style.height);
+	         elem[0].style.height = window.innerHeight-64;
+	         document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-64-48;
+	         document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-64-48;
+	         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-64-48-30;
 	       },0);
 	       window.onresize = function(){
 	          console.log('room resize');
-	       	 elem[0].style.height = window.innerHeight-26-64;
-	         document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-26-64-48;
-	         document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-26-64-48;
-	         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-26-64-48-30;
+	       	 elem[0].style.height = window.innerHeight-64;
+	       	 document.querySelector('#comment').style.width = document.querySelector('#comment').parentElement.clientWidth;
+	         document.querySelector('.bonjour-room-listing').style.height = window.innerHeight-64-48;
+	         document.querySelector('.bonjour-topic-listing').style.height = window.innerHeight-64-48;
+	         document.querySelector('.bonjour-comment-listing').style.height = window.innerHeight-64-48-30;
 	       }
 	  	}
 	  } 
+	}).filter('fileup',function(){
+
+		// for matching the [file] [/file] tag
+		var rgx = /^\[file\].*\[\/file\]/;
+		// for matching the file type extension
+		var rgx_type = /\.([0-9a-z]+)(?:[\?#]|$)/i;
+
+		return function(text){
+			if(text.match(rgx)){
+				var raw = text.match(rgx)[0].substring(7).slice(0,-8);
+				var node = '[.'+raw.match(rgx_type)[1]+' file] ';
+				var filename = (raw.match(/[^\\/]+\.[^\\/]+$/) || []).pop();
+				return node+'<a href="'+raw+'" target="_blank"/>'+filename+'</a>';
+			}else{
+				return text;
+			}
+		}
 	});
 });

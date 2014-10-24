@@ -375,10 +375,12 @@ ul.ripple li.insert-topic.ng-move{
 	z-index: -1;
 }
 
+
+
 .section-post-comment .comment-container #comment{
 	position: fixed;
 	bottom: 5px;
-	min-width: 460px;
+	min-width: 300px;
 	min-height: 67px;
 	line-height: 1.6em;
 	border:1px solid darkgrey;
@@ -388,6 +390,40 @@ ul.ripple li.insert-topic.ng-move{
 	font-size: 1em;
 }
 
+.comment-load-more-loading{
+	position: relative;
+	margin-bottom: 30px;
+	margin-top: -15px;
+	padding: 10px 0px;
+	list-style: none;
+	display: block;
+}
+
+.first-comment{
+	margin-top: 20px;
+}
+
+.bonjour-image-attachment{
+	max-width: 100%;
+	margin-top: 35px;
+	margin-bottom: 10px;
+	height: auto;
+}
+
+.comment-load-more-loading svg{
+	display: block;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+}
+.comment-load-more-loading span{
+	display: block;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	font-weight: bold;
+}
 
 .bonjour-send-comment-button{
 	position: fixed;
@@ -490,7 +526,7 @@ ul.ripple li.insert-topic.ng-move{
 	min-width: 89px;
 	display: inline-block;
 	overflow-wrap: break-word;
-	-webkit-user-select: text;
+	/* -webkit-user-select: text; */
 }
 .bubble:after {
 	right: 100%;
@@ -505,6 +541,11 @@ ul.ripple li.insert-topic.ng-move{
 	border-right-color: inherit;
 	border-width: 10px;
 	margin-top: -10px;
+}
+
+.bubble.has-image{
+	/* max-height: 400px;
+	overflow: hidden; */
 }
 
 .bonjour-bubble-username{
@@ -523,7 +564,9 @@ ul.ripple li.insert-topic.ng-move{
 }
 
 .bonjour-me .bonjour-bubble-username{
-	display:none;
+	/* display:none; */
+	color:#9DAE86 !important;
+	border-bottom: 1px dotted #9DAE86 !important;
 }
 
 .bonjour-sent-time{
@@ -568,8 +611,13 @@ ul.ripple li.insert-topic.ng-move{
 }
 
 .bonjour-me .bonjour-comment-left{
+	float: right;
 	right:20px;
-	display: none;
+	margin-top: 10px;
+}
+
+.bonjour-me .bonjour-comment-left img{
+	border: 3px solid #9DAE86 !important;
 }
 
 .bonjour-me .bonjour-comment-content{
@@ -579,7 +627,7 @@ ul.ripple li.insert-topic.ng-move{
 
 .bonjour-me .bonjour-comment-content .bubble{
 	left: auto;
-	margin-right: 30px;
+	margin-right: 90px;
 	position: relative;
 	border-color: #DBEDC3;
 	background: #DBEDC3;
@@ -599,7 +647,7 @@ ul.ripple li.insert-topic.ng-move{
 
 .bonjour-me .bonjour-comment-content .bubble pre{
 	white-space: pre-line;
-	margin: 10px 0 10px 0;
+	margin: 30px 0 10px 0;
 }
 /* login layout */
 .login-background{
@@ -662,4 +710,17 @@ ul.ripple li.insert-topic.ng-move{
 	padding-left:0px;
 	position:absolute;
 	margin-top:3px;
+}
+
+
+/* bonjour menu */
+
+.bonjour-user-face{
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	-webkit-border-radius:50%;
+	float: right;
+	margin-right: 10px;
+	margin-top: 12px;
 }

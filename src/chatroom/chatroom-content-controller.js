@@ -3,9 +3,10 @@ function(app,RColor) {
 	app.controller('ChatroomContentController', ['$scope', '$timeout', 'user', 'connectivityEvent',
 		function($scope, $timeout, user, connectivityEvent) {
 			// "Link" model and view.
-			$scope.rooms        = user.rooms;
-			$scope.selected     = user.selected;
-			$scope.currentEmail = user.email;
+			$scope.rooms        	= user.rooms;
+			$scope.selected     	= user.selected;
+			$scope.currentEmail 	= user.email;
+			$scope.loadMoreLoading 	= false;
 
 			$scope.selectRoom = function(id, initialTopicId){
 				return user.selectRoom(id)
@@ -59,6 +60,12 @@ function(app,RColor) {
 			user.loadRooms()
 			.then(function(){
 				return $scope.selectRoom(user.rooms[0].id);
+			})
+			.then(function(){
+				//chrome.storage.local.set({"user":user});
+			})
+			.then(function(){
+				chrome.storage.local.set({"user":user});
 			});			
 		}]
 	);
