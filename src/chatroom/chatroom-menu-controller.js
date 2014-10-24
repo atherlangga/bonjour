@@ -6,6 +6,7 @@ function(app) {
 			$scope.leftStatus = true;
 			$scope.rightStatus = true;
 			$scope.connectivityStatus = "Online";
+			$scope.currentUser = user;
 
 			connectivityEvent.addOnlineHandler(function() {
 				$scope.connectivityStatus = "Online";
