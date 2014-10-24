@@ -38,7 +38,16 @@
             <section layout="vertical" layout-sm="horizontal" layout-align="center center">
               <material-content class="bonjour-comment-listing material-theme-lightgrey" style="width:100%;padding:16px">
               <ul id="comment-list">
-                <li ng-repeat="comment in selected.topic.comments" ng-cloak class="reveal-animation bonjour-comment-item" ng-class="{'bonjour-me':comment.sender.email==currentEmail,'bonjour-have-date-devider':comment == selected.topic.getFirstCommentSince(comment.dateTime, 7) ,'bonjour-have-unread': comment == selected.topic.firstUnreadComment}" auto-scroll>
+                <li ng-if="loadMoreLoading" class="comment-load-more-loading">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="white">
+                    <path opacity=".25" d="M16 0 A16 16 0 0 0 16 32 A16 16 0 0 0 16 0 M16 4 A12 12 0 0 1 16 28 A12 12 0 0 1 16 4"/>
+                    <path d="M16 0 A16 16 0 0 1 32 16 L28 16 A12 12 0 0 0 16 4z">
+                      <animateTransform attributeName="transform" type="rotate" from="0 16 16" to="360 16 16" dur="0.8s" repeatCount="indefinite" />
+                    </path>
+                  </svg>
+                  <span>loading more comments...</span>
+                </li>
+                <li ng-repeat="comment in selected.topic.comments" ng-cloak id="comment-{{comment.id}}" class="reveal-animation bonjour-comment-item" ng-class="{'bonjour-me':comment.sender.email==currentEmail,'bonjour-have-date-devider':comment == selected.topic.getFirstCommentSince(comment.dateTime, 7) ,'bonjour-have-unread': comment == selected.topic.firstUnreadComment,'first-comment':$first}" auto-scroll>
                   <div class="bonjour-unread-separator" ng-if="comment == selected.topic.firstUnreadComment">
                     <span ng-if="$last">Unread Message</span>
                     <span ng-if="!$last">Unread Messages</span>
@@ -50,17 +59,16 @@
                     <img ng-src="{{comment.sender.avatar}}" class="face" alt="{{comment.sender}}" style="border:3px solid {{comment.sender.color}};">
                   </div>
                   <div class="bonjour-comment-content">
-                    <div class="bubble">
+                    <div class="bubble" ng-class="{'has-image':comment.isAttachmentImage()}">
                       <span class="bonjour-bubble-username" style="color: {{comment.sender.color}}; border-bottom: 1px dotted {{comment.sender.color}}">{{ comment.sender.username }}</span>
                       <span ng-switch="comment.isAttachment()">
                         <pre ng-bind-html="comment.message | linky:'_blank'" ng-switch-when="false"></pre>
                         <span ng-switch-when="true" ng-switch="comment.isAttachmentImage()" >
-                          <!-- <div>This is an attachment, access it with comment.attachment</div> -->
                           <span ng-switch-when="true">
-                            <!-- <div>This is an image attachment</div> -->
+                            <img class="bonjour-image-attachment" ng-src="{{comment.attachment}}" />
                           </span>
                           <span ng-switch-when="false">
-                            <!-- <div>This is not an image attachment</div> -->
+                            <pre ng-bind-html="comment.message | fileup"></pre>
                           </span>
                         </span>
                       </span>

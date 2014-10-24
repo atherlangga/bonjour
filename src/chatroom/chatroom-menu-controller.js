@@ -31,6 +31,9 @@ function(app) {
 			$scope.toggleRightMenu = function() {
 				_this.rightStatus = !_this.rightStatus;
 			};
+			$scope.isMaximized = function(){
+				return chrome.app.window.current().isMaximized();
+			}
 
 			$scope.logout = function(){
 				user.clearData();

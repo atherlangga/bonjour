@@ -4,13 +4,14 @@ function(app) {
 		'$rootScope', '$scope', '$http', '$location', 'baseUrl',
 		function($rootScope, $scope, $http, $location, baseUrl) {
 			$scope.isLoggingIn = false;
-			$scope.avatar = 'public/image/avatar/default-ava.png';
+			$scope.avatar = 'public/img/avatar/default-ava.png';
 
-			// Try getting valid default email address.
-			chrome.storage.local.get('email', function(result) {
-				$scope.email = result.email;
+			chrome.storage.local.get('user',function(result){
+				console.info('sudah get user lho',result);
+				$scope.avatar	= result.user.avatar;
+				$scope.email	= result.user.email;
 				$scope.$apply();
-			});
+			})
 
 			$scope.login = function() {
 				var email    = $scope.email;
