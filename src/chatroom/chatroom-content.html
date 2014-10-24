@@ -52,7 +52,18 @@
                   <div class="bonjour-comment-content">
                     <div class="bubble">
                       <span class="bonjour-bubble-username" style="color: {{comment.sender.color}}; border-bottom: 1px dotted {{comment.sender.color}}">{{ comment.sender.username }}</span>
-                      <pre ng-bind-html="comment.message | linky:'_blank'"></pre>
+                      <span ng-switch="comment.isAttachment">
+                        <pre ng-bind-html="comment.message | linky:'_blank'" ng-switch-when="false"></pre>
+                        <span ng-switch-when="true" ng-switch="comment.isImageAttachment" >
+                          <!-- <div>This is an attachment, access it with comment.attachment</div> -->
+                          <span ng-switch-when="true">
+                            <!-- <div>This is an image attachment</div> -->
+                          </span>
+                          <span ng-switch-when="false">
+                            <!-- <div>This is not an image attachment</div> -->
+                          </span>
+                        </span>
+                      </span>
                       <span class="bonjour-sent" ng-if="comment.sender.email==currentEmail" ng-switch="comment.isSent">
                         <i class="fa fa-clock-o" ng-switch-when="false"></i>
                         <i class="fa fa-exclamation-circle" style="color:#E9573F" ng-switch-when="!null&&false"></i>
