@@ -523,7 +523,20 @@ describe("Topic", function() {
 
 		assert.equal(topic.unreadCommentsCount, 1);
 		assert.equal(topic.firstUnreadComment, commentThree);
+	});
 
+	it ("should ignore empty uniqueId in a string", function() {
+		var topic = new qiscus.Topic(10, "TopicNumberTen");
 
+		var commentOne = new qiscus.Comment(101, "SomeComment");
+		var commentTwo = new qiscus.Comment(102, "DifferentComment");
+
+		commentOne.attachUniqueId("");
+		commentTwo.attachUniqueId("");
+
+		topic.addComment(commentOne);
+		topic.addComment(commentTwo);
+
+		assert.equal(topic.comments.length, 2);
 	});
 });

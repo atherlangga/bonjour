@@ -98,4 +98,8 @@ describe("Qiscus Listener", function() {
 	});
 
 	it ("should be able to handle Incoming Message event");
+
+	it ("should only load non-selected Room when message incoming");
+
+	it ("should only load non-selected Topic when message incoming");
 });
