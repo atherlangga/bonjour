@@ -490,6 +490,7 @@ ul.ripple li.insert-topic.ng-move{
 	min-width: 89px;
 	display: inline-block;
 	overflow-wrap: break-word;
+	-webkit-user-select: text;
 }
 .bubble:after {
 	right: 100%;

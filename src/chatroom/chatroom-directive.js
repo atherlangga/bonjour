@@ -54,13 +54,13 @@ function(app) {
 		}
 	  }
 	}])
-	.directive('autoScroll',['$timeout','currentTopicId', function ($timeout,currentTopicId) {
+	.directive('autoScroll',['$timeout','currentTopicId','user', function ($timeout,currentTopicId,user) {
 		return {
 			restrict: 'A',
 			link: function (scope, element, attr) {
+				var commentListing = document.querySelector(".bonjour-comment-listing");
 				if (scope.$last === true) {
 					$timeout(function () {
-						var commentListing = document.querySelector(".bonjour-comment-listing");
 						if(typeof scope.$parent.selected.topic.opened === "undefined" || currentTopicId==null || currentTopicId!=scope.$parent.selected.topic.id){
 							scope.$parent.selected.topic.opened = false;
 							currentTopicId=scope.$parent.selected.topic.id;
@@ -74,6 +74,12 @@ function(app) {
 								commentListing.scrollTop = commentListing.scrollHeight;
 						}
 					});
+				}
+
+				commentListing.onscroll = function(e){
+					if(e.target.scrollTop==0){
+						user.loadMoreComments();
+					}
 				}
 			}
 		}
