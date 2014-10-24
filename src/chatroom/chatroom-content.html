@@ -86,7 +86,7 @@
             </section>
             <section layout="vertical" class="section-post-comment" ng-class="{'loading':selected.topic == null || (selected.topic.comments.length == 0 && selected.topic.isBeingLoaded)}">
               <div class="comment-container">
-                <textarea name="comment" id="comment" bonjour-text topic-id="{{selected.topic.id}}" class="msd-elastic bonjour-commentarea" ng-model="commentMessage">
+                <textarea name="comment" id="comment" msd-elastic bonjour-text topic-id="{{selected.topic.id}}" class="msd-elastic bonjour-commentarea" ng-model="commentMessage">
                 
                 </textarea>
                 <!-- <material-button ng-click="sendComment()" class="material-button-raised bonjour-send-comment-button" style="height:30px;margin-left:20px;width:60px">
