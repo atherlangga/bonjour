@@ -14,6 +14,7 @@ require.config({
 		'angular-material'  : 'components/angular-material/angular-material',
 		'ngload'            : 'components/angularAMD/ngload',
 		'hammer'			: 'components/hammerjs/hammer',
+		'msd-elastic'		: 'components/angular-elastic/elastic',
 
 		'random-color'		: 'lib/random-color',
 
@@ -50,6 +51,9 @@ require.config({
 		},
 		'angular-material': {
 			deps: ['angular','angular-animate','hammer']
+		},
+		'msd-elastic':{
+			deps: ['angular']
 		},
 		'ngload': {
 			deps: ['angularAMD']

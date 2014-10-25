@@ -1,8 +1,8 @@
-define(['angular', 'angular-ui-router', 'angularAMD','angular-sanitize','angular-material'],
+define(['angular', 'angular-ui-router', 'angularAMD','angular-sanitize','angular-material','msd-elastic'],
 function(angular, angularRoute, angularAMD) {
 	'use strict';
 
-	var app = angular.module('bonjour', ['ui.router','ngSanitize','ngMaterial'])
+	var app = angular.module('bonjour', ['ui.router','ngSanitize','ngMaterial','monospaced.elastic'])
 	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		// The default route
 		$urlRouterProvider.otherwise('/frame');
@@ -47,6 +47,13 @@ function(angular, angularRoute, angularAMD) {
 				})
 			}
 		}));
+	}])
+	
+	
+	.controller('DialogController',['$scope','$materialDialog',function($scope,$materialDialog){
+		$scope.answer = function(answer) {
+		   $materialDialog.hide(answer);
+		};
 	}])
 
 	/*

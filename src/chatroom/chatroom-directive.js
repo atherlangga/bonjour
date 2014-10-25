@@ -1,4 +1,4 @@
-define(['../app', 'lodash', 'jquery'],
+define(['../app', 'angular-material', 'lodash', 'jquery'],
 function(app) {
 	app
 	.directive('bonjourRipple',[function(){
@@ -109,7 +109,21 @@ function(app) {
 	       }
 	  	}
 	  } 
-	}).filter('fileup',function(){
+	}).directive('showImageAttachment',['$materialDialog',function($materialDialog){
+		return{
+			restrict: 'A',
+			link: function(scope,elem,attrs){
+				elem.bind('click', function($event) {
+			      var hideDialog = $materialDialog({
+			        template: '<material-dialog><img src="'+elem[0].src+'" class="image-dialog" /></material-dialog>',
+			        targetEvent: $event
+			      });
+			      console.log(scope,elem);
+			    });
+			}
+		}
+	}])
+	.filter('fileup',function(){
 
 		// for matching the [file] [/file] tag
 		var rgx = /^\[file\].*\[\/file\]/;

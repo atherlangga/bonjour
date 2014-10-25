@@ -408,6 +408,7 @@ ul.ripple li.insert-topic.ng-move{
 	margin-top: 35px;
 	margin-bottom: 10px;
 	height: auto;
+	cursor: pointer;
 }
 
 .comment-load-more-loading svg{
@@ -526,7 +527,7 @@ ul.ripple li.insert-topic.ng-move{
 	min-width: 89px;
 	display: inline-block;
 	overflow-wrap: break-word;
-	/* -webkit-user-select: text; */
+	-webkit-user-select: text;
 }
 .bubble:after {
 	right: 100%;
@@ -723,4 +724,10 @@ ul.ripple li.insert-topic.ng-move{
 	float: right;
 	margin-right: 10px;
 	margin-top: 12px;
+}
+
+/* image dialog */
+
+.image-dialog{
+	height: 100%;
 }

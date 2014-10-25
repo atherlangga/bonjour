@@ -4,7 +4,7 @@
             <material-toolbar class="room-topic-list-toolbar material-theme-white material-whiteframe-z1">
             <h2 class="material-toolbar-tools">
               ROOMS
-              <material-button class="material-button-fab" style="height:32px;width:32px;left:64%" ng-click="main.toggleLeftMenu()">
+              <material-button class="material-button-fab" style="height:32px;width:32px;left:64%" ng-click="dialogAdvanced()">
                 <i class="fa fa-plus"></i>
               </material-button>
             </h2>
@@ -65,7 +65,7 @@
                         <pre ng-bind-html="comment.message | linky:'_blank'" ng-switch-when="false"></pre>
                         <span ng-switch-when="true" ng-switch="comment.isAttachmentImage()" >
                           <span ng-switch-when="true">
-                            <img class="bonjour-image-attachment" ng-src="{{comment.attachment}}" />
+                            <img class="bonjour-image-attachment" ng-src="{{comment.attachment}}" show-image-attachment />
                           </span>
                           <span ng-switch-when="false">
                             <pre ng-bind-html="comment.message | fileup"></pre>
@@ -86,7 +86,7 @@
             </section>
             <section layout="vertical" class="section-post-comment" ng-class="{'loading':selected.topic == null || (selected.topic.comments.length == 0 && selected.topic.isBeingLoaded)}">
               <div class="comment-container">
-                <textarea name="comment" id="comment" bonjour-text topic-id="{{selected.topic.id}}" class="msd-elastic bonjour-commentarea" ng-model="commentMessage">
+                <textarea name="comment" id="comment" msd-elastic bonjour-text topic-id="{{selected.topic.id}}" class="msd-elastic bonjour-commentarea" ng-model="commentMessage">
                 
                 </textarea>
                 <!-- <material-button ng-click="sendComment()" class="material-button-raised bonjour-send-comment-button" style="height:30px;margin-left:20px;width:60px">

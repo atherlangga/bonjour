@@ -66,7 +66,7 @@ function(app,RColor) {
 			})
 			.then(function(){
 				chrome.storage.local.set({"user":user});
-			});			
+			});
 		}]
 	);
 });
