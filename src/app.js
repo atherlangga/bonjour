@@ -48,8 +48,6 @@ function(angular, angularRoute, angularAMD) {
 			}
 		}));
 	}])
-	
-	
 	.controller('DialogController',['$scope','$materialDialog',function($scope,$materialDialog){
 		$scope.answer = function(answer) {
 		   $materialDialog.hide(answer);
@@ -69,7 +67,6 @@ function(angular, angularRoute, angularAMD) {
 	.value('baseUrl', 'http://staging.qisc.us')
 	.value('pusherApiKey', '4c20f4052ecd7ffc6b0d')
 	*/
-
 	.value('currentTopicId', null)
 	;
 
