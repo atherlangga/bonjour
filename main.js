@@ -2,6 +2,7 @@
 require.config({
 	paths: {
 		'lodash'            : 'components/lodash/dist/lodash',
+		'jshashes'          : 'components/jshashes/hashes',
 		'jquery'            : 'components/jquery/dist/jquery',
 		'pusher'            : 'components/pusher/dist/pusher',
 		'offline'           : 'components/offline/offline.min',
@@ -15,6 +16,7 @@ require.config({
 		'ngload'            : 'components/angularAMD/ngload',
 		'hammer'			: 'components/hammerjs/hammer',
 		'msd-elastic'		: 'components/angular-elastic/elastic',
+		'chroma'            : 'components/chroma-js/chroma',
 
 		'random-color'		: 'lib/random-color',
 
