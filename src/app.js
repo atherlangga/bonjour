@@ -68,6 +68,8 @@ function(angular, angularRoute, angularAMD) {
 	.value('pusherApiKey', '4c20f4052ecd7ffc6b0d')
 	*/
 	.value('currentTopicId', null)
+
+	.constant('startupTimestamp', Date.now());
 	;
 
 	return angularAMD.bootstrap(app);
