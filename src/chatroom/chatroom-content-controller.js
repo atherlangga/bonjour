@@ -60,12 +60,6 @@ function(app,RColor) {
 			user.loadRooms()
 			.then(function(){
 				return $scope.selectRoom(user.rooms[0].id);
-			})
-			.then(function(){
-				//chrome.storage.local.set({"user":user});
-			})
-			.then(function(){
-				chrome.storage.local.set({"user":user});
 			});
 		}]
 	);
