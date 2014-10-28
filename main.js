@@ -3,6 +3,7 @@ require.config({
 	paths: {
 		'lodash'            : 'components/lodash/dist/lodash',
 		'jshashes'          : 'components/jshashes/hashes',
+		'seedrandom'        : 'components/seedrandom/seedrandom',
 		'jquery'            : 'components/jquery/dist/jquery',
 		'pusher'            : 'components/pusher/dist/pusher',
 		'offline'           : 'components/offline/offline.min',
