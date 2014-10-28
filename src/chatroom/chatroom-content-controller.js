@@ -1,8 +1,8 @@
-define(['../app', 'random-color', '../qiscus/qiscus-service', '../connectivity/connectivity-service'],
-function(app,RColor) {
-	app.controller('ChatroomContentController', ['$scope', '$timeout', 'user', 'connectivityEvent',
-		function($scope, $timeout, user, connectivityEvent) {
-			// "Link" model and view.
+define(['../app', 'chroma', 'seedrandom', '../qiscus/qiscus-service', '../connectivity/connectivity-service'],
+function(app, chroma, seedrandom) {
+	app.controller('ChatroomContentController', ['$scope', '$timeout', 'startupTimestamp', 'user', 'connectivityEvent',
+		function($scope, $timeout, startupTimestamp, user, connectivityEvent) {
+			// Connect model and view.
 			$scope.rooms        	= user.rooms;
 			$scope.selected     	= user.selected;
 			$scope.currentEmail 	= user.email;
@@ -12,10 +12,8 @@ function(app,RColor) {
 				return user.selectRoom(id)
 				.then(function() {
 					// "Colorize" each participant.
-					var color = new RColor;
-					_.each(user.selected.room.participants,function(participant){
-						participant.color = color.get(true);//.get(true, 0.3, 0.99);
-					});
+					colorizeParticipants(user.selected.room.id + startupTimestamp,
+						user.selected.room.participants);
 
 					// Determine initial Topic to load based on
 					// this priority:
@@ -63,4 +61,25 @@ function(app,RColor) {
 			});
 		}]
 	);
+
+	var colorizeParticipants = function(seed, participants) {
+		// Define base and range parameters.
+		var lightnessBase  =  20;
+		var lightnessRange =  30;
+		var chromaBase     =  60;
+		var chromaRange    =  20;
+		var hueBase        =   0;
+		var hueRange       = 360;
+
+		// Set the seed, so we can be sure that we get "controlled" random.
+		Math.seedrandom(seed);
+
+		// Start colorizing.
+		_.each(participants, function(participant) {
+			var l = lightnessBase + Math.floor(Math.random() * lightnessRange);
+			var c = chromaBase + Math.floor(Math.random() * chromaRange);
+			var h = hueBase + Math.floor(Math.random() * hueRange);
+			participant.color = chroma.lch(l, c, h).hex();
+		});
+	};
 });
