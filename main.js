@@ -19,8 +19,6 @@ require.config({
 		'msd-elastic'		: 'components/angular-elastic/elastic',
 		'chroma'            : 'components/chroma-js/chroma',
 
-		'random-color'		: 'lib/random-color',
-
 		'qiscus'            : 'lib/qiscus/qiscus',
 		'qiscus-api-client' : 'lib/qiscus/qiscus-api-client',
 		'qiscus-listener'   : 'lib/qiscus/qiscus-listener',
@@ -66,7 +64,7 @@ require.config({
 			deps: ['lodash']
 		},
 		'qiscus-api-client': {
-			deps: ['qiscus','random-color']
+			deps: ['qiscus']
 		},
 		'qiscus-listener': {
 			deps: ['qiscus']
