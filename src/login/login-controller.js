@@ -6,9 +6,8 @@ function(app) {
 			$scope.isLoggingIn = false;
 			$scope.avatar = 'public/img/avatar/default-ava.png';
 
-			chrome.storage.local.get('user',function(result){
-				$scope.avatar	= result.user.avatar;
-				$scope.email	= result.user.email;
+			chrome.storage.local.get('email',function(result){
+				$scope.email = result.email;
 				$scope.$apply();
 			})
 
