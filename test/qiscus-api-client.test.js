@@ -38,7 +38,6 @@ describe("Qiscus API Client", function() {
 		var participants = qiscusApiClient.parseListParticipantsResponse(response, avatars);
 
 		assert.equal(3, participants.length);
-		assert.equal(22, participants[2].id);
 		assert.equal("QiscusTest01", participants[2].username);
 		assert.equal("qiscustest01@dispostable.com", participants[2].email);
 	});

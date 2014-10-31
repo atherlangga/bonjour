@@ -68,7 +68,7 @@ describe("Qiscus Listener", function() {
 
 	it ("should be able to handle Comment Posted event", function() {
 		var someRoom = new qiscus.Room(65, "NameDoesntMatter");
-		var someParticipant = new qiscus.Participant(1, "QiscusTest01", "qiscustest01@dispostable.com");
+		var someParticipant = new qiscus.Participant("QiscusTest01", "qiscustest01@dispostable.com");
 		var someTopic = new qiscus.Topic(75, "TitleDoesntMatter");
 		var user = new qiscus.User();
 
