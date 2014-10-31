@@ -3,36 +3,22 @@ function(app, chroma, seedrandom) {
 	app.controller('ChatroomContentController', ['$scope', '$timeout', 'startupTimestamp', 'user', 'connectivityEvent',
 		function($scope, $timeout, startupTimestamp, user, connectivityEvent) {
 			// Connect model and view.
-			$scope.rooms        	= user.rooms;
-			$scope.selected     	= user.selected;
-			$scope.currentEmail 	= user.email;
-			$scope.loadMoreLoading 	= false;
+			$scope.rooms           = user.rooms;
+			$scope.selected        = user.selected;
+			$scope.currentEmail    = user.email;
+			$scope.loadMoreLoading = false;
 
-			$scope.selectRoom = function(id, initialTopicId){
+			$scope.selectRoom = function(id){
 				return user.selectRoom(id)
 				.then(function() {
 					// "Colorize" each participant.
 					colorizeParticipants(user.selected.room.id + startupTimestamp,
 						user.selected.room.participants);
-
-					// Determine initial Topic to load based on
-					// this priority:
-					// 1. The initial Topic that user wants to
-					//    load.
-					// 2. Next alternative: the last active Topic
-					//    of the selected Room.
-					var topicIdToLoad = initialTopicId ||
-						user.selected.room.lastTopicId;
-					
-					return $scope.selectTopic(topicIdToLoad);
 				});
 			}
 
 			$scope.selectTopic = function(id){
-				return user.selectTopic(id)
-				.then(function() {
-					return user.markTopicAsRead(id);
-				});
+				return user.selectTopic(id);
 			}
 
 			// Handle connectivity event.
@@ -48,8 +34,7 @@ function(app, chroma, seedrandom) {
 				$timeout(function() {
 					user.loadRooms()
 					.then(function() {
-						return $scope.selectRoom(user.selected.room.id,
-							user.selected.topic.id);
+						return $scope.selectRoom(user.selected.room.id);
 					});
 				}, 1000);
 			});
