@@ -64,7 +64,7 @@ function(app, angularAMD) {
 			// we start listen to them.
 			var addedRooms = _.difference(newRooms, oldRooms);
 			_.each(addedRooms, function(room) {
-				listener.listenRoomEvent(room.channelCode);
+				listener.listenRoomEvent(room.channelCode, room.id);
 			});
 		});
 	}]);

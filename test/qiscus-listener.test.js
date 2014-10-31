@@ -97,9 +97,13 @@ describe("Qiscus Listener", function() {
 		assert.equal(someRoom.lastCommentId, someTopic.comments[0].id);
 	});
 
-	it ("should be able to handle Incoming Message event");
+	it ("should be able to handle incoming message event");
 
 	it ("should only load non-selected Room when message incoming");
 
 	it ("should only load non-selected Topic when message incoming");
+
+	it ("should handle Topic marked-as-read event");
+
+	it ("should be able to handle newly-joined Participant into Room");
 });
