@@ -389,6 +389,31 @@ describe("Room", function() {
 		room.addTopic(topic);
 		assert.equal(1, room.topics.length);
 	});
+
+	it ("should be able to sort Topics properly", function () {
+		var room = new qiscus.Room(1, "One");
+
+		// Create many Topics.
+		var topic10 = new qiscus.Topic(10, "OneTen");
+		var topic11 = new qiscus.Topic(11, "OneEleven");
+		var topic12 = new qiscus.Topic(12, "OneTwelve");
+		var topic19 = new qiscus.Topic(19, "OneNineteen");
+
+		// Unorderly add them.
+		room.addTopic(topic12);
+		room.addTopic(topic10);
+		room.addTopic(topic19);
+		room.addTopic(topic11);
+
+		// Sort the Topics.
+		room.sortTopics();
+
+		// Assert their order.
+		assert.equal(topic10, room.topics[0]);
+		assert.equal(topic11, room.topics[1]);
+		assert.equal(topic12, room.topics[2]);
+		assert.equal(topic19, room.topics[3]);
+	});
 });
 
 describe("Topic", function() {
