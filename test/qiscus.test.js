@@ -381,12 +381,12 @@ describe("Room", function() {
 	it ("should not be able to receive room with the same ID", function() {
 		var room = new qiscus.Room(1, "One");
 
-		var topic = new qiscus.Topic(10, "OneTen");
-		room.addTopic(topic);
+		var firstTopicInstance = new qiscus.Topic(10, "OneTen");
+		room.addTopic(firstTopicInstance);
 		assert.equal(1, room.topics.length);
 
-		var topic = new qiscus.Topic(10, "OneTen");
-		room.addTopic(topic);
+		var secondTopicInstance = new qiscus.Topic(10, "OneTen");
+		room.addTopic(secondTopicInstance);
 		assert.equal(1, room.topics.length);
 	});
 
