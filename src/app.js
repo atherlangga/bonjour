@@ -1,8 +1,8 @@
-define(['angular', 'angular-ui-router', 'angularAMD','angular-sanitize','angular-material','msd-elastic'],
+define(['angular', 'angular-ui-router', 'angularAMD', 'angular-sanitize', 'angular-material', 'msd-elastic', 'ment.io'],
 function(angular, angularRoute, angularAMD) {
 	'use strict';
 
-	var app = angular.module('bonjour', ['ui.router','ngSanitize','ngMaterial','monospaced.elastic'])
+	var app = angular.module('bonjour', ['ui.router','ngSanitize','ngMaterial','monospaced.elastic', 'mentio'])
 	.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 		// The default route
 		$urlRouterProvider.otherwise('/frame');

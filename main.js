@@ -10,13 +10,14 @@ require.config({
 		'angular'           : 'components/angular/angular',
 		'angular-route'     : 'components/angular-route/angular-route',
 		'angular-ui-router' : 'components/angular-ui-router/release/angular-ui-router',
-		'angular-sanitize'	: 'components/angular-sanitize/angular-sanitize.min',
+		'angular-sanitize'  : 'components/angular-sanitize/angular-sanitize.min',
 		'angularAMD'        : 'components/angularAMD/angularAMD',
-		'angular-animate'	: 'components/angular-animate/angular-animate.min',
+		'angular-animate'   : 'components/angular-animate/angular-animate.min',
 		'angular-material'  : 'components/angular-material/angular-material',
 		'ngload'            : 'components/angularAMD/ngload',
-		'hammer'			: 'components/hammerjs/hammer',
-		'msd-elastic'		: 'components/angular-elastic/elastic',
+		'hammer'            : 'components/hammerjs/hammer',
+		'msd-elastic'       : 'components/angular-elastic/elastic',
+		'ment.io'           : 'components/ment.io/dist/mentio',
 		'chroma'            : 'components/chroma-js/chroma',
 
 		'qiscus'            : 'lib/qiscus/qiscus',
@@ -52,6 +53,9 @@ require.config({
 		},
 		'angular-material': {
 			deps: ['angular','angular-animate','hammer']
+		},
+		'ment.io': {
+			deps: ['angular']
 		},
 		'msd-elastic':{
 			deps: ['angular']

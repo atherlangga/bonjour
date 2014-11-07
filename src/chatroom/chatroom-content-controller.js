@@ -14,6 +14,12 @@ function(app, chroma, seedrandom) {
 					// "Colorize" each participant.
 					colorizeParticipants(user.selected.room.id + startupTimestamp,
 						user.selected.room.participants);
+
+					// Attach "label" data, this data will be used for mentioning
+					// participants.
+					_.each(user.selected.room.participants, function(participant) {
+						participant.label = participant.username;
+					});
 				});
 			}
 

@@ -86,12 +86,24 @@
             </section>
             <section layout="vertical" class="section-post-comment" ng-class="{'loading':selected.topic == null || (selected.topic.comments.length == 0 && selected.topic.isBeingLoaded)}">
               <div class="comment-container">
-                <textarea name="comment" id="comment" msd-elastic bonjour-text topic-id="{{selected.topic.id}}" class="msd-elastic bonjour-commentarea" ng-model="commentMessage">
-                
+
+                <textarea name="comment" id="comment" msd-elastic bonjour-text topic-id="{{selected.topic.id}}" class="msd-elastic bonjour-commentarea" ng-model="commentMessage" mentio mentio-items="selected.room.participants" mentio-template-url="participant-mention.tpl" >
                 </textarea>
-                <!-- <material-button ng-click="sendComment()" class="material-button-raised bonjour-send-comment-button" style="height:30px;margin-left:20px;width:60px">
+
+                <script type="text/ng-template" id="participant-mention.tpl">
+                  <ul class="list-group participant-search">
+                    <li mentio-menu-item="participant" ng-repeat="participant in items" class="list-group-item">
+                      <img ng-src="{{participant.avatar}}" class="participant-photo">
+                      <span class="text-primary" ng-bind-html="participant.username | mentioHighlight:typedTerm:'menu-highlighted' | unsafe"></span>
+                    </li>
+                  </ul>
+                </script>
+
+                <!--
+                <material-button ng-click="sendComment()" class="material-button-raised bonjour-send-comment-button" style="height:30px;margin-left:20px;width:60px">
                   <img src="public/img/send.svg" alt="send" style="margin-top:-4px;">
-                </material-button> -->
+                </material-button>
+                -->
               </div>
             </section>
           </material-content>
