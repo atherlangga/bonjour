@@ -106,4 +106,23 @@ describe("Qiscus Listener", function() {
 	it ("should handle Topic marked-as-read event");
 
 	it ("should be able to handle newly-joined Participant into Room");
+
+	it ("should be able to handle Comment Deleted event", function() {
+		var someComment = new qiscus.Comment(160654, "MessageAlsoDoesntMatter");
+		var someTopic = new qiscus.Topic(3565, "TitleDoesntMatter");
+		var someRoom = new qiscus.Room(65, "NameDoesntMatter");
+		var user = new qiscus.User();
+
+		someTopic.addComment(someComment);
+		someRoom.addTopic(someTopic);
+		user.addRoom(someRoom);
+
+		assert.equal(someTopic.comments.length, 1);
+
+		var eventData = {"comment_id":160654,"topic_id":3565,"timestamp":1415349793223,"event":"delete"};
+
+		qiscusListener.handleCommentDeleted(eventData, user);
+
+		assert.equal(someTopic.comments.length, 0);
+	});
 });
